@@ -335,23 +335,75 @@ CREATE TABLE event_approvals(
 -- VIEWS
 
 CREATE VIEW events_view AS
-    SELECT id as entity_id, event_register_id as event_id, event_station_id as station_id, event_admin_id as admin_id, stamp, 'Registration' as event_type FROM asset_registrations
+    SELECT
+        e.id AS entity_id,
+        e.event_register_id AS event_id,
+        e.event_station_id AS station_id,
+        s.station_name,
+        e.event_admin_id AS admin_id,
+        sp.full_name AS admin_name,
+        e.stamp::DATE AS event_date,
+        e.stamp,
+        'Registration' AS event_type
+    FROM asset_registrations e
+    JOIN stations s ON s.id = e.event_station_id
+    JOIN staff_profiles sp ON sp.id = e.event_admin_id
     UNION ALL
-    SELECT id as entity_id, event_register_id as event_id, event_station_id as station_id, event_admin_id as admin_id, stamp, 'Transfer' as event_type FROM asset_transfers
+    SELECT
+        e.id, e.event_register_id, e.event_station_id, s.station_name,
+        e.event_admin_id, sp.full_name, e.stamp::DATE, e.stamp, 'Transfer'
+    FROM asset_transfers e
+    JOIN stations s ON s.id = e.event_station_id
+    JOIN staff_profiles sp ON sp.id = e.event_admin_id
     UNION ALL
-    SELECT id as entity_id, event_register_id as event_id, event_station_id as station_id, event_admin_id as admin_id, stamp, 'Issuance' as event_type FROM asset_issuances
+    SELECT
+        e.id, e.event_register_id, e.event_station_id, s.station_name,
+        e.event_admin_id, sp.full_name, e.stamp::DATE, e.stamp, 'Issuance'
+    FROM asset_issuances e
+    JOIN stations s ON s.id = e.event_station_id
+    JOIN staff_profiles sp ON sp.id = e.event_admin_id
     UNION ALL
-    SELECT id as entity_id, event_register_id as event_id, event_station_id as station_id, event_admin_id as admin_id, stamp, 'Verification' as event_type FROM asset_verifications
+    SELECT
+        e.id, e.event_register_id, e.event_station_id, s.station_name,
+        e.event_admin_id, sp.full_name, e.stamp::DATE, e.stamp, 'Verification'
+    FROM asset_verifications e
+    JOIN stations s ON s.id = e.event_station_id
+    JOIN staff_profiles sp ON sp.id = e.event_admin_id
     UNION ALL
-    SELECT id as entity_id, event_register_id as event_id, event_station_id as station_id, event_admin_id as admin_id, stamp, 'Evaluation' as event_type FROM asset_evaluations
+    SELECT
+        e.id, e.event_register_id, e.event_station_id, s.station_name,
+        e.event_admin_id, sp.full_name, e.stamp::DATE, e.stamp, 'Evaluation'
+    FROM asset_evaluations e
+    JOIN stations s ON s.id = e.event_station_id
+    JOIN staff_profiles sp ON sp.id = e.event_admin_id
     UNION ALL
-    SELECT id as entity_id, event_register_id as event_id, event_station_id as station_id, event_admin_id as admin_id, stamp, 'Incident' as event_type FROM asset_incidents
+    SELECT
+        e.id, e.event_register_id, e.event_station_id, s.station_name,
+        e.event_admin_id, sp.full_name, e.stamp::DATE, e.stamp, 'Incident'
+    FROM asset_incidents e
+    JOIN stations s ON s.id = e.event_station_id
+    JOIN staff_profiles sp ON sp.id = e.event_admin_id
     UNION ALL
-    SELECT id as entity_id, event_register_id as event_id, event_station_id as station_id, event_admin_id as admin_id, stamp, 'Request' as event_type FROM asset_requests
+    SELECT
+        e.id, e.event_register_id, e.event_station_id, s.station_name,
+        e.event_admin_id, sp.full_name, e.stamp::DATE, e.stamp, 'Request'
+    FROM asset_requests e
+    JOIN stations s ON s.id = e.event_station_id
+    JOIN staff_profiles sp ON sp.id = e.event_admin_id
     UNION ALL
-    SELECT id as entity_id, event_register_id as event_id, event_station_id as station_id, event_admin_id as admin_id, stamp, 'Placement' as event_type FROM asset_placements
+    SELECT
+        e.id, e.event_register_id, e.event_station_id, s.station_name,
+        e.event_admin_id, sp.full_name, e.stamp::DATE, e.stamp, 'Placement'
+    FROM asset_placements e
+    JOIN stations s ON s.id = e.event_station_id
+    JOIN staff_profiles sp ON sp.id = e.event_admin_id
     UNION ALL
-    SELECT id as entity_id, event_register_id as event_id, event_station_id as station_id, event_admin_id as admin_id, stamp, 'Disposal' as event_type FROM asset_disposals;
+    SELECT
+        e.id, e.event_register_id, e.event_station_id, s.station_name,
+        e.event_admin_id, sp.full_name, e.stamp::DATE, e.stamp, 'Disposal'
+    FROM asset_disposals e
+    JOIN stations s ON s.id = e.event_station_id
+    JOIN staff_profiles sp ON sp.id = e.event_admin_id;
 
 
 -- UTILITY TABLES 
