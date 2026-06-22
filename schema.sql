@@ -143,11 +143,6 @@ CREATE TABLE staff_roles(
     UNIQUE(staff_profile_id, role_type_id, role_station_id)
 );
 
--- a person at a station can hold role 40 (supervisory) OR role 50 (management), never both
-CREATE UNIQUE INDEX staff_roles_approval_exclusive
-ON staff_roles(staff_profile_id, role_station_id)
-WHERE role_type_id IN (40, 50);
-
 -- programs
 CREATE TABLE programs(
     id SERIAL PRIMARY KEY,
