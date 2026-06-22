@@ -11,12 +11,9 @@ const search = dataSearchModel()
 const stationSupervisory = dataFromCache('role/40')
 const stationManagement = dataFromCache('role/50')
 
-// role 40 (supervisory) takes precedence — if present, use it; else fall back to role 50 (management)
-const dataKey = computed(() => {
-  if (stationSupervisory.value) return `approvals/supervisory/${stationSupervisory.value}`
-  if (stationManagement.value) return `approvals/management/${stationManagement.value}`
-  return null
-})
+// role 40 takes precedence; falls back to role 50 — never both (enforced at DB level)
+const station = computed(() => stationSupervisory.value || stationManagement.value)
+const dataKey = computed(() => station.value ? `approvals/pending/${station.value}` : null)
 const dataRecords = computed(() => dataKey.value ? dataFromCache(dataKey.value).value : null)
 const dataRefresh = () => dataKey.value && dataFetchToCache(dataKey.value)
 const columns = computed(() => objectHeaders(dataRecords.value ?? []))
