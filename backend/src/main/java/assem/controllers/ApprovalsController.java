@@ -49,4 +49,11 @@ public class ApprovalsController {
         Result<List<Map<String, Object>>> result = managementRepository.managementHistory(station);
         return result.isOk() ? ResponseEntity.ok(result.getData()) : ResponseEntity.badRequest().body(result.getMessage());
     }
+
+    @GetMapping("/{eventId}/details")
+    public ResponseEntity<?> eventApprovals(@PathVariable int eventId, HttpSession session) {
+        if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
+        Result<List<Map<String, Object>>> result = managementRepository.getEventApprovals(eventId);
+        return result.isOk() ? ResponseEntity.ok(result.getData()) : ResponseEntity.badRequest().body(result.getMessage());
+    }
 }
