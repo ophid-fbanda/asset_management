@@ -30,10 +30,10 @@ const selectionMode = computed(() => Math.max(0, ...context.options.map((option)
 
 const collect = () => objectSet(context, 'dialog', true)
 
-const toggleCollectId = (id) => {
-  const index = context.collector.indexOf(id)
+const toggleCollect = (row) => {
+  const index = context.collector.findIndex((r) => r.entity_id === row.entity_id)
   if (index === -1) {
-    context.collector.push(id)
+    context.collector.push(row)
     if (selectionMode.value === 1) collect()
   } else {
     context.collector.splice(index, 1)
@@ -110,15 +110,15 @@ onMounted(() => {
             severity="info"
             size="small"
             text
-            @click="toggleCollectId(data.entity_id)"
+            @click="toggleCollect(data)"
           />
           <Button
             v-else
-            :icon="context.collector.includes(data.entity_id) ? 'pi pi-check-square' : 'pi pi-stop'"
+            :icon="context.collector.some((r) => r.entity_id === data.entity_id) ? 'pi pi-check-square' : 'pi pi-stop'"
             severity="info"
             size="small"
             text
-            @click="toggleCollectId(data.entity_id)"
+            @click="toggleCollect(data)"
           />
         </template>
       </Column>
