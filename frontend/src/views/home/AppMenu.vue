@@ -43,7 +43,7 @@ const menuLinkActiveClass = 'bg-[#5b6aa1] font-semibold text-white [&_i]:text-wh
       <span>Assets Admin</span>
     </RouterLink>
 
-    <RouterLink v-else-if="primaryRole === 40" to="/approvals" :class="menuLinkClass" :active-class="menuLinkActiveClass">
+    <RouterLink v-else-if="primaryRole === 40" to="/supervisory" :class="menuLinkClass" :active-class="menuLinkActiveClass">
       <i class="pi pi-check-circle" />
       <span>Supervisory</span>
     </RouterLink>
