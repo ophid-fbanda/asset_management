@@ -48,9 +48,9 @@ const menuLinkActiveClass = 'bg-[#5b6aa1] font-semibold text-white [&_i]:text-wh
       <span>Approvals</span>
     </RouterLink>
 
-    <RouterLink v-else-if="primaryRole === 50" to="/approvals" :class="menuLinkClass" :active-class="menuLinkActiveClass">
-      <i class="pi pi-check-circle" />
-      <span>Approvals</span>
+    <RouterLink v-else-if="primaryRole === 50" to="/management" :class="menuLinkClass" :active-class="menuLinkActiveClass">
+      <i class="pi pi-verified" />
+      <span>Management</span>
     </RouterLink>
 
     <RouterLink v-if="hasRole(60)" to="/audits" :class="menuLinkClass" :active-class="menuLinkActiveClass">
