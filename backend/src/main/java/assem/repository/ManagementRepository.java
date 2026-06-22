@@ -13,27 +13,86 @@ public class ManagementRepository {
     @Autowired
     private BaseRepo base;
 
-    // All events at the station that have not yet received any approval.
-    public Result<List<Map<String, Object>>> pending(int stationId) {
+    private static final int SUPERVISORY_APPROVAL_TYPE_ID = 40;
+    private static final int MANAGEMENT_APPROVAL_TYPE_ID  = 50;
+
+    // Events at the station with no approval yet — visible to role 40 (supervisory).
+    public Result<List<Map<String, Object>>> supervisoryPending(int stationId) {
         return base.fetch("""
-                SELECT me.event_type,
-                       me.entity_id,
-                       me.event_register_id,
-                       to_char(me.stamp, 'DD/MM/YYYY') AS event_date,
-                       sp.full_name                     AS submitted_by
-                FROM view_management_events me
-                JOIN staff_profiles sp ON sp.id = me.event_admin_id
-                WHERE me.event_station_id = :stationId
-                  AND NOT EXISTS (
-                      SELECT 1 FROM event_approvals ea
-                      WHERE ea.event_register_id = me.event_register_id
-                  )
-                ORDER BY me.stamp DESC
+                SELECT events_view.event_type,
+                       events_view.entity_id,
+                       events_view.event_id,
+                       to_char(events_view.event_date, 'DD/MM/YYYY') AS event_date,
+                       events_view.station_name,
+                       events_view.admin_name
+                FROM events_view
+                WHERE events_view.station_id = :stationId
+                  AND events_view.latest_approval IS NULL
+                ORDER BY events_view.stamp DESC
                 """, Map.of("stationId", stationId));
     }
 
-    // All events at the station that received an approval this calendar month.
-    // Takes the most recent approval per event when multiple approval types exist.
+    // Events at the station approved by supervisory (type 40) — history for role 40.
+    public Result<List<Map<String, Object>>> supervisoryHistory(int stationId) {
+        return base.fetch("""
+                SELECT events_view.event_type,
+                       events_view.entity_id,
+                       events_view.event_id,
+                       to_char(events_view.event_date, 'DD/MM/YYYY')          AS event_date,
+                       events_view.station_name,
+                       events_view.admin_name,
+                       events_view.latest_approval,
+                       events_view.latest_approver_name,
+                       to_char(events_view.latest_approval_stamp, 'DD/MM/YYYY') AS approval_date
+                FROM events_view
+                WHERE events_view.station_id = :stationId
+                  AND events_view.latest_approval_type_id = :approvalTypeId
+                ORDER BY events_view.latest_approval_stamp DESC
+                """, Map.of("stationId", stationId, "approvalTypeId", SUPERVISORY_APPROVAL_TYPE_ID));
+    }
+
+    // Events at the station approved by supervisory, awaiting management — visible to role 50.
+    public Result<List<Map<String, Object>>> managementPending(int stationId) {
+        return base.fetch("""
+                SELECT events_view.event_type,
+                       events_view.entity_id,
+                       events_view.event_id,
+                       to_char(events_view.event_date, 'DD/MM/YYYY')          AS event_date,
+                       events_view.station_name,
+                       events_view.admin_name,
+                       events_view.latest_approval,
+                       events_view.latest_approver_name,
+                       to_char(events_view.latest_approval_stamp, 'DD/MM/YYYY') AS approval_date
+                FROM events_view
+                WHERE events_view.station_id = :stationId
+                  AND events_view.latest_approval_type_id = :approvalTypeId
+                ORDER BY events_view.stamp DESC
+                """, Map.of("stationId", stationId, "approvalTypeId", SUPERVISORY_APPROVAL_TYPE_ID));
+    }
+
+    // Events at the station fully approved by management (type 50) — history for role 50.
+    public Result<List<Map<String, Object>>> managementHistory(int stationId) {
+        return base.fetch("""
+                SELECT events_view.event_type,
+                       events_view.entity_id,
+                       events_view.event_id,
+                       to_char(events_view.event_date, 'DD/MM/YYYY')          AS event_date,
+                       events_view.station_name,
+                       events_view.admin_name,
+                       events_view.latest_approval,
+                       events_view.latest_approver_name,
+                       to_char(events_view.latest_approval_stamp, 'DD/MM/YYYY') AS approval_date
+                FROM events_view
+                WHERE events_view.station_id = :stationId
+                  AND events_view.latest_approval_type_id = :approvalTypeId
+                ORDER BY events_view.latest_approval_stamp DESC
+                """, Map.of("stationId", stationId, "approvalTypeId", MANAGEMENT_APPROVAL_TYPE_ID));
+    }
+
+    // DEAD CODE — replaced by supervisoryHistory / managementHistory above.
+    // Kept temporarily so the old ManagementController still compiles; remove once
+    // the controller is deleted.
+    @Deprecated
     public Result<List<Map<String, Object>>> history(int stationId) {
         return base.fetch("""
                 SELECT 'Registration' AS event_type,
