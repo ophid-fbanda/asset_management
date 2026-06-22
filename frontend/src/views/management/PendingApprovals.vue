@@ -8,11 +8,17 @@ import { colorPalette } from '@/api/colorx'
 import FormRouter from '@/commons/FormRouter.vue'
 
 const search = dataSearchModel()
-const station = dataFromCache('role/40')
+const stationSupervisory = dataFromCache('role/40')
+const stationManagement = dataFromCache('role/50')
 
-const dataKey = computed(() => `approvals/pending/${station.value}`)
-const dataRecords = computed(() => dataFromCache(dataKey.value).value)
-const dataRefresh = () => dataFetchToCache(dataKey.value)
+// role 40 (supervisory) takes precedence — if present, use it; else fall back to role 50 (management)
+const dataKey = computed(() => {
+  if (stationSupervisory.value) return `approvals/supervisory/${stationSupervisory.value}`
+  if (stationManagement.value) return `approvals/management/${stationManagement.value}`
+  return null
+})
+const dataRecords = computed(() => dataKey.value ? dataFromCache(dataKey.value).value : null)
+const dataRefresh = () => dataKey.value && dataFetchToCache(dataKey.value)
 const columns = computed(() => objectHeaders(dataRecords.value ?? []))
 
 const filteredRecords = computed(() => arraySearch(dataRecords.value ?? [], search.value))
