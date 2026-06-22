@@ -10,8 +10,10 @@ const roleTypeIds = computed(() => {
   return [...new Set(roles.map((role) => role.roleTypeId))]
 })
 
-// role 10 is always present; all other roles are mutually exclusive — pick the first one found
-const activeRole = computed(() => roleTypeIds.value.find((id) => id !== 10) ?? null)
+const hasRole = (id) => roleTypeIds.value.includes(id)
+
+// roles 20, 40, 50 are mutually exclusive — if 20 then assets-admin, else if 40 then supervisory approvals, else if 50 then management approvals
+const primaryRole = computed(() => [20, 40, 50].find((id) => roleTypeIds.value.includes(id)) ?? null)
 
 const menuLinkClass =
   'flex items-center gap-2.5 rounded-lg px-3.5 py-2.5 text-sm leading-5 text-[#a0a9ca] no-underline transition [&_i]:text-[#a0a9ca] hover:bg-white/10 hover:text-white hover:[&_i]:text-white'
@@ -36,27 +38,27 @@ const menuLinkActiveClass = 'bg-[#5b6aa1] font-semibold text-white [&_i]:text-wh
       </RouterLink>
     </template>
 
-    <RouterLink v-if="activeRole === 20" to="/assets-admin" :class="menuLinkClass" :active-class="menuLinkActiveClass">
+    <RouterLink v-if="primaryRole === 20" to="/assets-admin" :class="menuLinkClass" :active-class="menuLinkActiveClass">
       <i class="pi pi-database" />
       <span>Assets Admin</span>
     </RouterLink>
 
-    <RouterLink v-if="activeRole === 40 || activeRole === 50" to="/approvals" :class="menuLinkClass" :active-class="menuLinkActiveClass">
+    <RouterLink v-else-if="primaryRole === 40 || primaryRole === 50" to="/approvals" :class="menuLinkClass" :active-class="menuLinkActiveClass">
       <i class="pi pi-check-circle" />
       <span>Approvals</span>
     </RouterLink>
 
-    <RouterLink v-if="activeRole === 60" to="/audits" :class="menuLinkClass" :active-class="menuLinkActiveClass">
+    <RouterLink v-if="hasRole(60)" to="/audits" :class="menuLinkClass" :active-class="menuLinkActiveClass">
       <i class="pi pi-search" />
       <span>Audits</span>
     </RouterLink>
 
-    <RouterLink v-if="activeRole === 70" to="/users" :class="menuLinkClass" :active-class="menuLinkActiveClass">
+    <RouterLink v-if="hasRole(70)" to="/users" :class="menuLinkClass" :active-class="menuLinkActiveClass">
       <i class="pi pi-users" />
       <span>Users</span>
     </RouterLink>
 
-    <RouterLink v-if="activeRole === 80" to="/system" :class="menuLinkClass" :active-class="menuLinkActiveClass">
+    <RouterLink v-if="hasRole(80)" to="/system" :class="menuLinkClass" :active-class="menuLinkActiveClass">
       <i class="pi pi-cog" />
       <span>System</span>
     </RouterLink>
