@@ -3,7 +3,7 @@ import { computed, reactive, watch, onMounted } from 'vue'
 import { Button, Column, DataTable, Tag } from 'primevue'
 import { arraySearch, objectHeaders, objectReset, objectSet } from '@/api/objectx'
 import { exportToExcel } from '@/api/exportx'
-import { dataFetchToCache, dataFromCache, dataSearchModel, dataClearSearch } from '@/api/datax'
+import { dataRefreshCache, dataFromCache, dataSearchModel, dataClearSearch } from '@/api/datax'
 import { colorPalette } from '@/api/colorx'
 import FormRouter from '@/commons/FormRouter.vue'
 
@@ -12,7 +12,7 @@ const station = dataFromCache('role/40')
 
 const dataKey = computed(() => `approvals/pending/${station.value}`)
 const dataRecords = computed(() => dataFromCache(dataKey.value).value)
-const dataRefresh = () => dataFetchToCache(dataKey.value)
+const dataRefresh = () => dataRefreshCache(dataKey.value)
 const columns = computed(() => objectHeaders(dataRecords.value ?? []))
 
 const filteredRecords = computed(() => arraySearch(dataRecords.value ?? [], search.value))
