@@ -26,53 +26,51 @@ public class ApprovalsController {
 
     private final ControllerCheck checks = ControllerCheck.instance();
 
-    @GetMapping("/pending/{station}")
-    public ResponseEntity<?> pending(@PathVariable int station, HttpSession session) {
+    @GetMapping("/supervisory/pending/{station}")
+    public ResponseEntity<?> supervisoryPending(@PathVariable int station, HttpSession session) {
         ProfileExchange profile = checks.getProfile(session);
-        if (profile == null) {
-            return ResponseEntity.status(403).body("Forbidden");
-        }
-
-        Result<List<Map<String, Object>>> result;
-
-        if (profile.hasRole(SUPERVISORY_ROLE_TYPE_ID, station)) {
-            result = managementRepository.supervisoryPending(station);
-        } else if (profile.hasRole(MANAGEMENT_ROLE_TYPE_ID, station)) {
-            result = managementRepository.managementPending(station);
-        } else {
+        if (profile == null) return ResponseEntity.status(403).body("Forbidden");
+        if (!profile.hasRole(SUPERVISORY_ROLE_TYPE_ID, station)) {
             session.invalidate();
             return ResponseEntity.status(403).body("You are not authorized for this station.");
         }
-
-        if (!result.isOk()) {
-            return ResponseEntity.badRequest().body(result.getMessage());
-        }
-
-        return ResponseEntity.ok(result.getData());
+        Result<List<Map<String, Object>>> result = managementRepository.supervisoryPending(station);
+        return result.isOk() ? ResponseEntity.ok(result.getData()) : ResponseEntity.badRequest().body(result.getMessage());
     }
 
-    @GetMapping("/history/{station}")
-    public ResponseEntity<?> history(@PathVariable int station, HttpSession session) {
+    @GetMapping("/supervisory/history/{station}")
+    public ResponseEntity<?> supervisoryHistory(@PathVariable int station, HttpSession session) {
         ProfileExchange profile = checks.getProfile(session);
-        if (profile == null) {
-            return ResponseEntity.status(403).body("Forbidden");
-        }
-
-        Result<List<Map<String, Object>>> result;
-
-        if (profile.hasRole(SUPERVISORY_ROLE_TYPE_ID, station)) {
-            result = managementRepository.supervisoryHistory(station);
-        } else if (profile.hasRole(MANAGEMENT_ROLE_TYPE_ID, station)) {
-            result = managementRepository.managementHistory(station);
-        } else {
+        if (profile == null) return ResponseEntity.status(403).body("Forbidden");
+        if (!profile.hasRole(SUPERVISORY_ROLE_TYPE_ID, station)) {
             session.invalidate();
             return ResponseEntity.status(403).body("You are not authorized for this station.");
         }
+        Result<List<Map<String, Object>>> result = managementRepository.supervisoryHistory(station);
+        return result.isOk() ? ResponseEntity.ok(result.getData()) : ResponseEntity.badRequest().body(result.getMessage());
+    }
 
-        if (!result.isOk()) {
-            return ResponseEntity.badRequest().body(result.getMessage());
+    @GetMapping("/management/pending/{station}")
+    public ResponseEntity<?> managementPending(@PathVariable int station, HttpSession session) {
+        ProfileExchange profile = checks.getProfile(session);
+        if (profile == null) return ResponseEntity.status(403).body("Forbidden");
+        if (!profile.hasRole(MANAGEMENT_ROLE_TYPE_ID, station)) {
+            session.invalidate();
+            return ResponseEntity.status(403).body("You are not authorized for this station.");
         }
+        Result<List<Map<String, Object>>> result = managementRepository.managementPending(station);
+        return result.isOk() ? ResponseEntity.ok(result.getData()) : ResponseEntity.badRequest().body(result.getMessage());
+    }
 
-        return ResponseEntity.ok(result.getData());
+    @GetMapping("/management/history/{station}")
+    public ResponseEntity<?> managementHistory(@PathVariable int station, HttpSession session) {
+        ProfileExchange profile = checks.getProfile(session);
+        if (profile == null) return ResponseEntity.status(403).body("Forbidden");
+        if (!profile.hasRole(MANAGEMENT_ROLE_TYPE_ID, station)) {
+            session.invalidate();
+            return ResponseEntity.status(403).body("You are not authorized for this station.");
+        }
+        Result<List<Map<String, Object>>> result = managementRepository.managementHistory(station);
+        return result.isOk() ? ResponseEntity.ok(result.getData()) : ResponseEntity.badRequest().body(result.getMessage());
     }
 }

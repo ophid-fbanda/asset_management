@@ -10,7 +10,7 @@ import FormRouter from '@/commons/FormRouter.vue'
 const search = dataSearchModel()
 const station = dataFromCache('role/40')
 
-const dataKey = computed(() => `approvals/pending/${station.value}`)
+const dataKey = computed(() => `approvals/supervisory/pending/${station.value}`)
 const dataRecords = computed(() => dataFromCache(dataKey.value).value)
 const dataRefresh = () => dataRefreshCache(dataKey.value)
 const columns = computed(() => objectHeaders(dataRecords.value ?? []))
