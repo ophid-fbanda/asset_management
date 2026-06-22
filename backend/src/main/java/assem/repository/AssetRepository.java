@@ -60,6 +60,29 @@ public class AssetRepository {
                 """, Map.of("station", station));
     }
 
+    // Assets belonging to a single registration, shaped for the template line-item table.
+    public Result<List<Map<String, Object>>> getRegistrationAssets(int registrationId) {
+        return base.fetch("""
+                SELECT
+                    registered_assets.asset_number,
+                    registered_assets.serial_number,
+                    asset_types.name      AS asset_type,
+                    brand_types.name      AS brand,
+                    model_types.name      AS model,
+                    condition_types.name  AS condition,
+                    registered_assets.acquisition_value AS value
+                FROM registered_assets
+                JOIN asset_models  ON asset_models.id  = registered_assets.asset_model_id
+                JOIN asset_brands  ON asset_brands.id  = asset_models.asset_brand_id
+                JOIN asset_types   ON asset_types.id   = asset_brands.asset_type_id
+                JOIN brand_types   ON brand_types.id   = asset_brands.brand_type_id
+                JOIN model_types   ON model_types.id   = asset_models.model_type_id
+                JOIN condition_types ON condition_types.id = registered_assets.condition_type_id
+                WHERE registered_assets.asset_registration_id = :registrationId
+                ORDER BY registered_assets.id
+                """, Map.of("registrationId", registrationId));
+    }
+
     // Get-or-create by the unique supplier_name. The no-op DO UPDATE forces
     // RETURNING to yield the row even when the supplier already exists (plain
     // DO NOTHING returns nothing on conflict). Returns the id, or null on failure.
