@@ -8,7 +8,7 @@ import { colorPalette } from '@/api/colorx'
 import FormRouter from '@/commons/FormRouter.vue'
 
 const search = dataSearchModel()
-const station = dataFromCache('role/40')
+const station = dataFromCache('role/50')
 
 const dataKey = computed(() => `approvals/history/${station.value}`)
 const dataRecords = computed(() => dataFromCache(dataKey.value).value)

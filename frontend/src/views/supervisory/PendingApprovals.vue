@@ -8,7 +8,7 @@ import { colorPalette } from '@/api/colorx'
 import FormRouter from '@/commons/FormRouter.vue'
 
 const search = dataSearchModel()
-const station = dataFromCache('role/50')
+const station = dataFromCache('role/40')
 
 const dataKey = computed(() => `approvals/pending/${station.value}`)
 const dataRecords = computed(() => dataFromCache(dataKey.value).value)
@@ -46,7 +46,7 @@ const closeRouter = () => {
 }
 
 const exportExcel = () => {
-  exportToExcel(filteredRecords.value, 'pending-approvals', 'Pending Approvals')
+  exportToExcel(filteredRecords.value, 'supervisory-pending', 'Pending Approvals')
 }
 
 watch(dataKey, dataRefresh, { immediate: true })
@@ -60,7 +60,7 @@ onMounted(() => {
   <div class="flex min-h-0 flex-1 flex-col gap-3">
     <div class="flex items-center justify-between gap-3">
       <div class="flex items-baseline gap-3">
-        <h2 class="text-base font-semibold text-[#384884]">Pending Requests</h2>
+        <h2 class="text-base font-semibold text-[#384884]">Pending Approvals</h2>
         <span class="text-xs text-surface-500">{{ filteredRecords.length }} records</span>
       </div>
       <div class="flex items-center gap-2">

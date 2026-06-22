@@ -24,9 +24,9 @@ const router = createRouter({
       component: () => import('@/views/asset-admin/HomePage.vue'),
     },
     {
-      path: '/approvals',
-      name: 'approvals',
-      component: () => import('@/views/management/HomePage.vue'),
+      path: '/supervisory',
+      name: 'supervisory',
+      component: () => import('@/views/supervisory/HomePage.vue'),
     },
     {
       path: '/management',

@@ -1,12 +1,12 @@
 <script setup>
 import { computed, onMounted, reactive } from 'vue'
 import { Select } from 'primevue'
-import { arrayFilter, objectFirstId } from '@/api/objectx'
-import { dataFromProfile, dataToCache } from '@/api/datax'
-import PendingApprovals from '@/views/management/PendingApprovals.vue'
-import ApprovalsHistory from '@/views/management/ApprovalsHistory.vue'
+import { arrayFilter, objectFirstId, objectSet } from '@/api/objectx'
+import { dataToCache, dataFromProfile } from '@/api/datax'
+import PendingApprovals from '@/views/supervisory/PendingApprovals.vue'
+import ApprovalsHistory from '@/views/supervisory/ApprovalsHistory.vue'
 
-const ROLE_TYPE_ID = 50
+const ROLE_TYPE_ID = 40
 
 const menuItems = [
   { id: 'pending', label: 'Pending', icon: 'pi-inbox', view: PendingApprovals },
@@ -61,11 +61,11 @@ const menuBtnClass = (id) => [
         @change="onStationChange"
       />
       <h1 class="shrink-0 text-sm font-bold whitespace-nowrap text-white sm:text-base">
-        Management
+        Supervisory
       </h1>
       <nav
         class="no-scrollbar flex flex-1 items-center justify-start gap-1.5 overflow-x-auto lg:justify-end"
-        aria-label="Approval sections"
+        aria-label="Supervisory sections"
       >
         <button
           v-for="item in menuItems"
@@ -73,7 +73,7 @@ const menuBtnClass = (id) => [
           type="button"
           :class="menuBtnClass(item.id)"
           :title="item.label"
-          @click="ui.menuItemId = item.id"
+          @click="objectSet(ui, 'menuItemId', item.id)"
         >
           <i class="pi text-sm" :class="item.icon" />
           <span>{{ item.label }}</span>
