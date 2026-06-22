@@ -3,6 +3,7 @@ import { computed, onMounted, reactive } from 'vue'
 import { Dialog } from 'primevue'
 import { objectSet } from '@/api/objectx'
 import RegistrationForm from '@/views/asset-admin/forms/RegistrationForm.vue'
+import RegistrationTemplate from '@/views/templates/RegistrationTemplate.vue'
 
 const props = defineProps({
   header: {
@@ -152,8 +153,9 @@ onMounted(() => {
         </div>
       </aside>
 
-      <aside class="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden bg-white p-3">
+      <aside class="flex min-h-0 min-w-0 flex-1 flex-col overflow-auto bg-slate-100 p-6 items-center">
         <RegistrationForm v-if="context.formId === 'regForm'" :collected="collected" />
+        <RegistrationTemplate v-else-if="context.formId === 'regTemplate'" :collected="collected" />
       </aside>
     </div>
   </Dialog>
