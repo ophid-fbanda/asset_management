@@ -334,6 +334,7 @@ CREATE TABLE event_approvals(
 
 -- VIEWS
 
+DROP VIEW IF EXISTS events_view;
 CREATE VIEW events_view AS
     SELECT
         events.*,
