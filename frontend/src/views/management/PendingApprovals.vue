@@ -22,7 +22,7 @@ const context = reactive({
   external: null,
   collector: [],
   options: [
-    { id: 'approvalTemplate', name: 'Approval', table: 1 },
+    { id: 'regTemplate', name: 'Registration', table: 1, target: 0, choices: [50, 51] },
   ],
 })
 
@@ -131,9 +131,9 @@ onMounted(() => {
       >
         <template #body="{ data }">
           <Tag
-            v-if="col.field === 'status'"
-            :value="data.status"
-            :severity="colorPalette(data.status_id)"
+            v-if="col.field === 'latest_approval'"
+            :value="data.latest_approval"
+            :severity="colorPalette(data.latest_approval_type_id)"
           />
           <span
             v-else-if="col.field === 'quantity'"

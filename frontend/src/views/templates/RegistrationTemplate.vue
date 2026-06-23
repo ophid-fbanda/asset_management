@@ -126,47 +126,45 @@ onMounted(() => {
         </p>
       </div>
 
-      <!-- Signature block -->
-      <div class="border-t border-[#e2e8f0] pt-6 grid grid-cols-2 gap-12 items-stretch">
+      <!-- Signature block: horizontal rows, split 50/50 -->
+      <div class="border-t border-[#e2e8f0] pt-6 flex flex-col">
 
-        <!-- Supervisor -->
-        <div class="flex flex-col justify-between">
-          <template v-if="supervisorApproval">
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-[8px] font-bold uppercase tracking-widest" :style="{ color: approvalColor(supervisorApproval.approval_type_id) }">
-                {{ supervisorApproval.approval }}
-              </span>
-              <span class="text-[8px] text-[#64748b]">{{ supervisorApproval.stamp }}</span>
-            </div>
-            <div class="border-b pb-1 mb-2" :style="{ borderColor: approvalColor(supervisorApproval.approval_type_id) }">
-              <span class="font-semibold">{{ supervisorApproval.approved_by }}</span>
-            </div>
-            <p v-if="supervisorApproval.notes" class="text-[9px] text-[#64748b] italic">{{ supervisorApproval.notes }}</p>
-          </template>
-          <template v-else>
-            <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Supervisor — Name, Signature &amp; Date</span>
-            <div class="border-b border-[#0f172a] mt-10"></div>
-          </template>
+        <!-- Row 1: status label + timestamp -->
+        <div class="flex gap-16 pb-2">
+          <div class="flex-1 flex items-center justify-between">
+            <span
+              class="text-[8px] font-bold uppercase tracking-widest"
+              :style="{ color: supervisorApproval ? approvalColor(supervisorApproval.approval_type_id) : '#384884' }"
+            >{{ supervisorApproval ? supervisorApproval.approval : 'Supervisor — Name, Signature &amp; Date' }}</span>
+            <span v-if="supervisorApproval" class="text-[8px] text-[#64748b]">{{ supervisorApproval.stamp }}</span>
+          </div>
+          <div class="flex-1 flex items-center justify-between">
+            <span
+              class="text-[8px] font-bold uppercase tracking-widest"
+              :style="{ color: managerApproval ? approvalColor(managerApproval.approval_type_id) : '#384884' }"
+            >{{ managerApproval ? managerApproval.approval : 'Manager — Name, Signature &amp; Date' }}</span>
+            <span v-if="managerApproval" class="text-[8px] text-[#64748b]">{{ managerApproval.stamp }}</span>
+          </div>
         </div>
 
-        <!-- Manager -->
-        <div class="flex flex-col justify-between">
-          <template v-if="managerApproval">
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-[8px] font-bold uppercase tracking-widest" :style="{ color: approvalColor(managerApproval.approval_type_id) }">
-                {{ managerApproval.approval }}
-              </span>
-              <span class="text-[8px] text-[#64748b]">{{ managerApproval.stamp }}</span>
-            </div>
-            <div class="border-b pb-1 mb-2" :style="{ borderColor: approvalColor(managerApproval.approval_type_id) }">
-              <span class="font-semibold">{{ managerApproval.approved_by }}</span>
-            </div>
-            <p v-if="managerApproval.notes" class="text-[9px] text-[#64748b] italic">{{ managerApproval.notes }}</p>
-          </template>
-          <template v-else>
-            <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Manager — Name, Signature &amp; Date</span>
-            <div class="border-b border-[#0f172a] mt-10"></div>
-          </template>
+        <!-- Row 2: signature lines — gap-16 creates a visible break so they read as two separate lines -->
+        <div class="flex gap-16 pt-6 pb-1">
+          <div class="flex-1 border-b" :style="{ borderColor: supervisorApproval ? approvalColor(supervisorApproval.approval_type_id) : '#94a3b8' }">
+            <span class="font-semibold text-[11px]">{{ supervisorApproval ? supervisorApproval.approved_by : '' }}</span>
+          </div>
+          <div class="flex-1 border-b" :style="{ borderColor: managerApproval ? approvalColor(managerApproval.approval_type_id) : '#94a3b8' }">
+            <span class="font-semibold text-[11px]">{{ managerApproval ? managerApproval.approved_by : '' }}</span>
+          </div>
+        </div>
+
+        <!-- Row 3: notes -->
+        <div v-if="supervisorApproval?.notes || managerApproval?.notes" class="flex gap-16 pt-1">
+          <div class="flex-1">
+            <p v-if="supervisorApproval?.notes" class="text-[9px] text-[#64748b] italic">{{ supervisorApproval.notes }}</p>
+          </div>
+          <div class="flex-1">
+            <p v-if="managerApproval?.notes" class="text-[9px] text-[#64748b] italic">{{ managerApproval.notes }}</p>
+          </div>
         </div>
 
       </div>
