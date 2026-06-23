@@ -140,10 +140,10 @@ onMounted(() => {
       </div>
 
       <!-- Signature block -->
-      <div class="border-t border-[#e2e8f0] pt-6 grid grid-cols-2 gap-12">
+      <div class="border-t border-[#e2e8f0] pt-6 grid grid-cols-2 gap-12 items-stretch">
 
         <!-- Supervisor -->
-        <div>
+        <div class="flex flex-col justify-between">
           <template v-if="supervisorApproval">
             <div class="flex items-center justify-between mb-3">
               <span class="text-[8px] font-bold uppercase tracking-widest" :style="{ color: approvalColor(supervisorApproval.approval_type_id) }">
@@ -163,7 +163,7 @@ onMounted(() => {
         </div>
 
         <!-- Manager -->
-        <div>
+        <div class="flex flex-col justify-between">
           <template v-if="managerApproval">
             <div class="flex items-center justify-between mb-3">
               <span class="text-[8px] font-bold uppercase tracking-widest" :style="{ color: approvalColor(managerApproval.approval_type_id) }">
