@@ -269,7 +269,8 @@ public class AssetRepository {
         Result<Map<String, Object>> pending = hasPendingTransfer(assetIds);
         if (!pending.isOk()) return Result.error("Could not check for pending transfers.");
         if (pending.getData() != null) {
-            return Result.error(pendingRef(pending.getData()) + " already has a pending transfer.");
+            Object ref = pending.getData().getOrDefault("asset_number", pending.getData().get("serial_number"));
+            return Result.error(ref + " already has a pending transfer.");
         }
 
         Integer eventId = base.createEventId();
@@ -342,14 +343,6 @@ public class AssetRepository {
     // 41 = Supervisory Rejected, 50 = Management Approved, 51 = Management Rejected.
     // Only 40 (Supervisory Approved, awaiting management) keeps the asset locked.
 
-    // Builds a human-readable reference from a pending-check result row.
-    // Prefers asset_number; falls back to serial_number.
-    public static String pendingRef(Map<String, Object> row) {
-        Object num = row.get("asset_number");
-        if (num != null && !num.toString().isBlank()) return num.toString();
-        Object serial = row.get("serial_number");
-        return serial != null ? serial.toString() : "unknown asset";
-    }
 
     public Result<Map<String, Object>> hasPendingTransfer(List<Integer> assetIds) {
         return base.fetchOne("""
