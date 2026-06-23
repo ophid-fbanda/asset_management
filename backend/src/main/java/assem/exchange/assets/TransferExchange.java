@@ -22,9 +22,11 @@ import java.util.List;
 public class TransferExchange extends ExchangeBase {
 
     @NotNull(message = "Destination station is required.")
+    @Setter(AccessLevel.NONE)
     Integer receivingStationId;
 
     @NotNull(message = "Origin station is required.")
+    @Setter(AccessLevel.NONE)
     Integer eventStationId;
 
     @NotEmpty(message = "At least one asset must be selected.")
@@ -33,6 +35,16 @@ public class TransferExchange extends ExchangeBase {
     List<TransferItemExchange> items;
 
     String notes;
+
+    public void setReceivingStationId(String value) {
+        try { this.receivingStationId = Integer.parseInt(value); }
+        catch (Exception e) { this.receivingStationId = null; }
+    }
+
+    public void setEventStationId(String value) {
+        try { this.eventStationId = Integer.parseInt(value); }
+        catch (Exception e) { this.eventStationId = null; }
+    }
 
     public void setItems(String value) {
         this.items = TypeConvertor.instance().readJson(value, new TypeReference<List<TransferItemExchange>>() {});
