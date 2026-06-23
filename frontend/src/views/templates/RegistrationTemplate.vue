@@ -1,6 +1,7 @@
 <script setup>
 import { computed, onMounted } from 'vue'
 import { dataFetchToCache, dataFromCache } from '@/api/datax'
+import logo from '@/assets/logo.png'
 
 const props = defineProps({
   collected: { type: Array, required: true },
@@ -25,7 +26,7 @@ onMounted(() => {
 
     <!-- Coloured header band -->
     <div class="bg-[#384884] px-[18mm] py-5 flex items-center justify-between gap-6">
-      <img src="/logo.png" alt="Logo" class="h-12 w-auto object-contain" />
+      <img :src="logo" alt="Logo" class="h-12 w-auto object-contain" />
       <div class="flex flex-col items-center text-center text-white">
         <span class="text-[11px] font-bold uppercase tracking-[0.18em] opacity-75">Asset Registration Record</span>
         <span class="text-[9px] uppercase tracking-widest opacity-50 mt-0.5">Assets Management System</span>
