@@ -262,6 +262,16 @@ public class AssetRepository {
     // asset_transfers row, then loops over each item inserting into asset_transfer_items.
     // On any failure the items and parent are deleted before returning the error.
     public Result<Boolean> createTransfer(TransferExchange dto) {
+        List<Integer> assetIds = dto.getItems().stream()
+                .map(TransferItemExchange::getRegisteredAssetId)
+                .toList();
+
+        Result<Boolean> pending = hasPendingTransfer(assetIds);
+        if (!pending.isOk()) return pending;
+        if (Boolean.TRUE.equals(pending.getData())) {
+            return Result.error("One or more selected assets already has a pending transfer.");
+        }
+
         Integer eventId = base.createEventId();
         if (eventId == null) {
             return Result.error("Could not start the transfer.");
@@ -317,6 +327,130 @@ public class AssetRepository {
             }
         }
         return Result.ok(true);
+    }
+
+    // -------------------------------------------------------------------------
+    // Pending event guards
+    //
+    // Each method returns true when one or more of the supplied asset IDs are
+    // already locked inside an in-flight event of that type (i.e. no management
+    // decision — approval_type_id 50/51 — has been recorded yet). Callers
+    // should block a new event of the same type when the result is true.
+    // -------------------------------------------------------------------------
+
+    private static final List<Integer> MANAGEMENT_FINAL = List.of(50, 51);
+
+    // Shared EXISTS runner for the five pending-check queries below.
+    private Result<Boolean> hasPendingEvent(String sql, List<Integer> assetIds) {
+        Result<Map<String, Object>> result = base.fetchOne(sql, Map.of("assetIds", assetIds));
+        if (!result.isOk() || result.getData() == null) {
+            return Result.error("Could not check for pending events.");
+        }
+        return Result.ok((Boolean) result.getData().get("exists"));
+    }
+
+    public Result<Boolean> hasPendingTransfer(List<Integer> assetIds) {
+        return hasPendingEvent("""
+                SELECT EXISTS (
+                    SELECT 1 FROM asset_transfer_items
+                    JOIN asset_transfers ON asset_transfers.id = asset_transfer_items.asset_transfer_id
+                    LEFT JOIN LATERAL (
+                        SELECT event_approvals.approval_type_id
+                        FROM event_approvals
+                        WHERE event_approvals.event_register_id = asset_transfers.event_register_id
+                        ORDER BY event_approvals.stamp DESC
+                        LIMIT 1
+                    ) AS t1 ON TRUE
+                    WHERE asset_transfer_items.registered_asset_id IN (:assetIds)
+                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (50, 51))
+                )
+                """, assetIds);
+    }
+
+    public Result<Boolean> hasPendingIssuance(List<Integer> assetIds) {
+        return hasPendingEvent("""
+                SELECT EXISTS (
+                    SELECT 1 FROM asset_issuance_items
+                    JOIN asset_issuances ON asset_issuances.id = asset_issuance_items.asset_issuance_id
+                    LEFT JOIN LATERAL (
+                        SELECT event_approvals.approval_type_id
+                        FROM event_approvals
+                        WHERE event_approvals.event_register_id = asset_issuances.event_register_id
+                        ORDER BY event_approvals.stamp DESC
+                        LIMIT 1
+                    ) AS t1 ON TRUE
+                    WHERE asset_issuance_items.registered_asset_id IN (:assetIds)
+                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (50, 51))
+                )
+                """, assetIds);
+    }
+
+    public Result<Boolean> hasPendingVerification(List<Integer> assetIds) {
+        return hasPendingEvent("""
+                SELECT EXISTS (
+                    SELECT 1 FROM asset_verifications
+                    LEFT JOIN LATERAL (
+                        SELECT event_approvals.approval_type_id
+                        FROM event_approvals
+                        WHERE event_approvals.event_register_id = asset_verifications.event_register_id
+                        ORDER BY event_approvals.stamp DESC
+                        LIMIT 1
+                    ) AS t1 ON TRUE
+                    WHERE asset_verifications.registered_asset_id IN (:assetIds)
+                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (50, 51))
+                )
+                """, assetIds);
+    }
+
+    public Result<Boolean> hasPendingEvaluation(List<Integer> assetIds) {
+        return hasPendingEvent("""
+                SELECT EXISTS (
+                    SELECT 1 FROM asset_evaluations
+                    LEFT JOIN LATERAL (
+                        SELECT event_approvals.approval_type_id
+                        FROM event_approvals
+                        WHERE event_approvals.event_register_id = asset_evaluations.event_register_id
+                        ORDER BY event_approvals.stamp DESC
+                        LIMIT 1
+                    ) AS t1 ON TRUE
+                    WHERE asset_evaluations.registered_asset_id IN (:assetIds)
+                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (50, 51))
+                )
+                """, assetIds);
+    }
+
+    public Result<Boolean> hasPendingPlacement(List<Integer> assetIds) {
+        return hasPendingEvent("""
+                SELECT EXISTS (
+                    SELECT 1 FROM asset_placements
+                    LEFT JOIN LATERAL (
+                        SELECT event_approvals.approval_type_id
+                        FROM event_approvals
+                        WHERE event_approvals.event_register_id = asset_placements.event_register_id
+                        ORDER BY event_approvals.stamp DESC
+                        LIMIT 1
+                    ) AS t1 ON TRUE
+                    WHERE asset_placements.registered_asset_id IN (:assetIds)
+                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (50, 51))
+                )
+                """, assetIds);
+    }
+
+    public Result<Boolean> hasPendingDisposal(List<Integer> assetIds) {
+        return hasPendingEvent("""
+                SELECT EXISTS (
+                    SELECT 1 FROM asset_disposals
+                    LEFT JOIN LATERAL (
+                        SELECT event_approvals.approval_type_id
+                        FROM event_approvals
+                        WHERE event_approvals.event_register_id = asset_disposals.event_register_id
+                        ORDER BY event_approvals.stamp DESC
+                        LIMIT 1
+                    ) AS t1 ON TRUE
+                    WHERE asset_disposals.registered_asset_id IN (:assetIds)
+                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (50, 51))
+                )
+                """, assetIds);
     }
 
     // Compensating cleanup for registration: children first (FK), then the parent row.

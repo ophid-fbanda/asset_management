@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onMounted, reactive } from 'vue'
 import { Select, Textarea } from 'primevue'
-import { objectComplete, objectResetSet } from '@/api/objectx'
+import { objectComplete, objectReset, objectResetSet } from '@/api/objectx'
 import { dataFetchToCache, dataFromCache, dataSend } from '@/api/datax'
 import FeedBack from '@/commons/FeedBack.vue'
 
@@ -38,6 +38,7 @@ const submitForm = async () => {
   }
   const response = await dataSend('assets/transfer', payload)
   if (response.status === 200) {
+    objectReset(form)
     objectResetSet(ui, 'success', 'Transfer submitted successfully.')
   } else {
     objectResetSet(ui, 'error', response.data)
