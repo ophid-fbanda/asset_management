@@ -1,9 +1,14 @@
 <script setup>
 import { computed, onMounted, reactive } from 'vue'
 import { Dialog, Select, Textarea, useToast } from 'primevue'
-import { objectSet, objectReset } from '@/api/objectx'
+import { objectSet } from '@/api/objectx'
 import { dataFetchToCache, dataFromCache, dataSend } from '@/api/datax'
 import RegistrationForm from '@/views/asset-admin/forms/RegistrationForm.vue'
+import TransferForm from '@/views/asset-admin/forms/TransferForm.vue'
+import IssuanceForm from '@/views/asset-admin/forms/IssuanceForm.vue'
+import VerificationForm from '@/views/asset-admin/forms/VerificationForm.vue'
+import EvaluationForm from '@/views/asset-admin/forms/EvaluationForm.vue'
+import PlacementForm from '@/views/asset-admin/forms/PlacementForm.vue'
 import RegistrationTemplate from '@/views/templates/RegistrationTemplate.vue'
 
 const props = defineProps({
@@ -163,8 +168,13 @@ onMounted(() => {
 
       <aside class="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
         <div class="flex min-h-0 flex-1 flex-col items-center overflow-auto bg-slate-100 p-6">
-          <RegistrationForm v-if="context.formId === 'regForm'" :collected="collected" />
-          <RegistrationTemplate v-else-if="context.formId === 'regTemplate'" :collected="collected" />
+          <RegistrationForm     v-if="context.formId === 'regForm'"          :collected="collected" />
+          <TransferForm         v-else-if="context.formId === 'transferForm'"    :collected="collected" />
+          <IssuanceForm         v-else-if="context.formId === 'issuanceForm'"    :collected="collected" />
+          <VerificationForm     v-else-if="context.formId === 'verificationForm'" :collected="collected" />
+          <EvaluationForm       v-else-if="context.formId === 'evaluationForm'"  :collected="collected" />
+          <PlacementForm        v-else-if="context.formId === 'placementForm'"   :collected="collected" />
+          <RegistrationTemplate v-else-if="context.formId === 'regTemplate'"    :collected="collected" />
         </div>
 
         <div v-if="showApprovalFooter" class="shrink-0 border-t border-slate-200 bg-white px-6 py-4 flex items-end gap-4">
