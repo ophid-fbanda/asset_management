@@ -118,12 +118,7 @@ onMounted(() => {
       >
         <template #body="{ data }">
           <Tag
-            v-if="col.field === 'disposed'"
-            :value="data.disposed ? 'Disposed' : 'Active'"
-            :severity="data.disposed ? 'danger' : 'success'"
-          />
-          <Tag
-            v-else-if="col.field === 'condition'"
+            v-if="col.field === 'condition'"
             :value="data.condition"
             :severity="conditionSeverity(data.condition)"
           />

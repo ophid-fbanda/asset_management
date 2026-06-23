@@ -227,10 +227,10 @@ public class AssetRepository {
                        assets_view.serial_number,
                        assets_view.condition,
                        assets_view.current_value,
-                       assets_view.custodian,
-                       assets_view.disposed
+                       assets_view.custodian
                 FROM assets_view
                 WHERE assets_view.station_id = :stationId
+                  AND assets_view.disposed   = false
                 ORDER BY assets_view.asset_type, assets_view.brand, assets_view.model
                 """, Map.of("stationId", stationId));
     }
