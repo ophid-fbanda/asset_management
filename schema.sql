@@ -586,6 +586,10 @@ CREATE VIEW view_assets AS
     FROM registered_assets
     JOIN asset_registrations
         ON asset_registrations.id      = registered_assets.asset_registration_id
+    -- Asset only enters the view once its registration is fully approved by management
+    JOIN event_approvals reg_approval
+        ON reg_approval.event_register_id = asset_registrations.event_register_id
+       AND reg_approval.approval_type_id  = 50
     JOIN asset_models
         ON asset_models.id             = registered_assets.asset_model_id
     JOIN model_types
