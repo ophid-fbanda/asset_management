@@ -57,18 +57,14 @@ public class AssetsController {
         return ResponseEntity.ok(result.getData());
     }
 
-    @GetMapping("/registrations/{id}/list")
-    public ResponseEntity<?> getRegistrationAssets(@PathVariable int id, HttpSession session) {
+    @GetMapping("/registrations/{id}")
+    public ResponseEntity<?> getRegistration(@PathVariable int id, HttpSession session) {
         if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
-        Result<List<Map<String, Object>>> result = assetRepository.getRegistrationAssets(id);
-        return result.isOk() ? ResponseEntity.ok(result.getData()) : ResponseEntity.badRequest().body(result.getMessage());
-    }
-
-    @GetMapping("/registrations/{id}/details")
-    public ResponseEntity<?> getRegistrationDetails(@PathVariable int id, HttpSession session) {
-        if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
-        Result<Map<String, Object>> result = assetRepository.getRegistrationDetails(id);
-        return result.isOk() ? ResponseEntity.ok(result.getData()) : ResponseEntity.badRequest().body(result.getMessage());
+        Result<Map<String, Object>> details = assetRepository.getRegistrationDetails(id);
+        Result<List<Map<String, Object>>> list = assetRepository.getRegistrationAssets(id);
+        if (!details.isOk()) return ResponseEntity.badRequest().body(details.getMessage());
+        if (!list.isOk()) return ResponseEntity.badRequest().body(list.getMessage());
+        return ResponseEntity.ok(Map.of("details", details.getData(), "list", list.getData()));
     }
 
     @PostMapping(value = "/registration", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

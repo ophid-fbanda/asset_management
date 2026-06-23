@@ -9,15 +9,13 @@ const props = defineProps({
 
 const entity = computed(() => props.collected[0] ?? {})
 
-const listKey     = computed(() => entity.value?.entity_id != null ? `assets/registrations/${entity.value.entity_id}/list`    : null)
-const detailsKey  = computed(() => entity.value?.entity_id != null ? `assets/registrations/${entity.value.entity_id}/details` : null)
-
-const assets  = computed(() => listKey.value    ? (dataFromCache(listKey.value).value    ?? []) : [])
-const details = computed(() => detailsKey.value ? (dataFromCache(detailsKey.value).value ?? {}) : {})
+const dataKey      = computed(() => entity.value?.entity_id != null ? `assets/registrations/${entity.value.entity_id}` : null)
+const registration = computed(() => dataKey.value ? (dataFromCache(dataKey.value).value ?? {}) : {})
+const details      = computed(() => registration.value.details ?? {})
+const assets       = computed(() => registration.value.list    ?? [])
 
 onMounted(() => {
-  if (listKey.value)    dataFetchToCache(listKey.value)
-  if (detailsKey.value) dataFetchToCache(detailsKey.value)
+  if (dataKey.value) dataFetchToCache(dataKey.value)
 })
 </script>
 
