@@ -9,7 +9,7 @@ const props = defineProps({
 
 const entity = computed(() => props.collected[0] ?? {})
 
-const dataKey      = computed(() => entity.value?.entity_id != null ? `assets/registrations/${entity.value.entity_id}` : null)
+const dataKey      = computed(() => entity.value?.entity_id != null ? `assets/registration/${entity.value.entity_id}` : null)
 const registration = computed(() => dataKey.value ? (dataFromCache(dataKey.value).value ?? {}) : {})
 const details      = computed(() => registration.value.details   ?? {})
 const assets       = computed(() => registration.value.list      ?? [])

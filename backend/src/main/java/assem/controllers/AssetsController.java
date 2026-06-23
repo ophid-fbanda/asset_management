@@ -61,7 +61,7 @@ public class AssetsController {
         return ResponseEntity.ok(result.getData());
     }
 
-    @GetMapping("/registrations/{id}")
+    @GetMapping("/registration/{id}")
     public ResponseEntity<?> getRegistration(@PathVariable int id, HttpSession session) {
         if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
         Result<Map<String, Object>> details = assetRepository.getRegistrationDetails(id);
