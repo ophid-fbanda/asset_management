@@ -202,6 +202,7 @@ onMounted(() => {
             option-label="program_name"
             option-value="id"
             placeholder="Select program"
+            filter
             class="w-full"
           />
         </div>
@@ -214,6 +215,7 @@ onMounted(() => {
             option-label="name"
             option-value="id"
             placeholder="Select acquisition type"
+            filter
             class="w-full"
           />
         </div>
@@ -226,6 +228,7 @@ onMounted(() => {
             option-label="name"
             option-value="id"
             placeholder="Select reference type"
+            filter
             class="w-full"
           />
         </div>
@@ -258,6 +261,7 @@ onMounted(() => {
             option-label="supplier_name"
             option-value="supplier_name"
             editable
+            filter
             placeholder="Select or type a supplier"
             class="w-full"
           />
@@ -291,6 +295,7 @@ onMounted(() => {
                 option-label="name"
                 option-value="id"
                 placeholder="Select asset type"
+                filter
                 class="w-full"
                 @change="onAssetTypeChange"
               />
@@ -304,6 +309,7 @@ onMounted(() => {
                 option-label="name"
                 option-value="id"
                 placeholder="Select brand"
+                filter
                 class="w-full"
                 :disabled="!context.asset.assetTypeId"
                 @change="onBrandChange"
@@ -318,6 +324,7 @@ onMounted(() => {
                 option-label="name"
                 option-value="id"
                 placeholder="Select model"
+                filter
                 class="w-full"
                 :disabled="!context.asset.assetBrandId"
               />
@@ -331,6 +338,7 @@ onMounted(() => {
                 option-label="name"
                 option-value="id"
                 placeholder="Select condition"
+                filter
                 class="w-full"
               />
             </div>

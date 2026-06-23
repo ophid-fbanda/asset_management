@@ -63,6 +63,7 @@ onMounted(() => {
           option-label="name"
           option-value="id"
           placeholder="Select placement type"
+          filter
           class="w-full"
         />
       </div>

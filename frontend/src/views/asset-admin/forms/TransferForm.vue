@@ -67,6 +67,7 @@ onMounted(() => {
               option-label="station_name"
               option-value="id"
               placeholder="Select destination"
+              filter
               class="w-full"
             />
           </div>

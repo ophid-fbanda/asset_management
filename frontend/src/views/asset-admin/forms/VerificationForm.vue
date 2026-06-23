@@ -67,6 +67,7 @@ onMounted(() => {
             option-label="name"
             option-value="id"
             placeholder="Select type"
+            filter
             class="w-full"
           />
         </div>
@@ -79,6 +80,7 @@ onMounted(() => {
             option-label="name"
             option-value="id"
             placeholder="Select condition"
+            filter
             class="w-full"
           />
         </div>
