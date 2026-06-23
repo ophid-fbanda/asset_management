@@ -38,6 +38,19 @@ public class AssetsController {
 
     private final ControllerCheck checks = ControllerCheck.instance();
 
+    @GetMapping("/station/{station}")
+    public ResponseEntity<?> getStationAssets(@PathVariable int station, HttpSession session) {
+        ProfileExchange profile = checks.getProfile(session);
+        if (profile == null) return ResponseEntity.status(403).body("Forbidden");
+        if (!profile.hasRole(ASSET_ADMIN_ROLE_TYPE_ID, station)) {
+            session.invalidate();
+            return ResponseEntity.status(403).body("You are not authorized to view this station.");
+        }
+        Result<List<Map<String, Object>>> result = assetRepository.getStationAssets(station);
+        if (!result.isOk()) return ResponseEntity.badRequest().body(result.getMessage());
+        return ResponseEntity.ok(result.getData());
+    }
+
     @GetMapping("/registrations/{station}")
     public ResponseEntity<?> getRegistrations(@PathVariable int station, HttpSession session) {
         ProfileExchange profile = checks.getProfile(session);

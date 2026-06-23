@@ -1,7 +1,9 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
+import { Column, DataTable } from 'primevue'
 import { dataFetchToCache, dataFromCache } from '@/api/datax'
 import { exportToPDF } from '@/api/exportx'
+import { objectHeaders } from '@/api/objectx'
 import logo from '@/assets/logo.png'
 
 const props = defineProps({
@@ -18,6 +20,7 @@ const registration = computed(() => dataKey.value ? (dataFromCache(dataKey.value
 const details      = computed(() => registration.value.details   ?? {})
 const assets       = computed(() => registration.value.list      ?? [])
 const approvals    = computed(() => registration.value.approvals ?? [])
+const assetColumns = computed(() => objectHeaders(assets.value))
 
 const supervisorApproval = computed(() => approvals.value.find((a) => a.approval_type_id === 40 || a.approval_type_id === 41) ?? null)
 const managerApproval    = computed(() => approvals.value.find((a) => a.approval_type_id === 50 || a.approval_type_id === 51) ?? null)
@@ -40,7 +43,7 @@ onMounted(() => {
   <div class="flex flex-col gap-4 w-[297mm]">
 
   <!-- Document -->
-  <div ref="docEl" class="w-[297mm] min-h-[210mm] bg-white shadow-xl text-[#0f172a] text-[11px] overflow-hidden">
+  <div ref="docEl" class="w-[297mm] min-h-[210mm] bg-white text-[#0f172a] text-[11px] overflow-hidden border border-[#e2e8f0]">
 
     <!-- Header -->
     <div class="px-[18mm] pt-[10mm] pb-4 border-b border-[#384884] flex items-center justify-between gap-6">
@@ -72,8 +75,8 @@ onMounted(() => {
           <span class="font-semibold">{{ details.supplier }}</span>
         </div>
         <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Event Date</span>
-          <span class="font-semibold">{{ entity.event_date }}</span>
+          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Reference Date</span>
+          <span class="font-semibold">{{ details.reference_date }}</span>
         </div>
         <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
           <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Program</span>
@@ -83,10 +86,6 @@ onMounted(() => {
           <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Station</span>
           <span class="font-semibold">{{ entity.station_name }}</span>
         </div>
-        <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Reference Type</span>
-          <span class="font-semibold">{{ details.reference_type }}</span>
-        </div>
         <div v-if="details.notes" class="col-span-3 flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
           <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Notes</span>
           <span>{{ details.notes }}</span>
@@ -95,35 +94,20 @@ onMounted(() => {
 
       <!-- Assets table -->
       <div class="mb-10">
-        <div class="flex items-center gap-2 mb-2">
-          <div class="h-3 w-1 bg-[#384884] rounded-full"></div>
-          <span class="text-[9px] font-bold uppercase tracking-widest text-[#384884]">
-            Registered Assets ({{ assets.length }})
-          </span>
-        </div>
-        <table v-if="assets.length" class="w-full border-collapse text-[10px]">
-          <thead>
-            <tr>
-              <th
-                v-for="col in Object.keys(assets[0])"
-                :key="col"
-                class="border border-[#384884] bg-[#f1f4fd] px-2 py-1.5 text-left font-bold uppercase text-[9px] tracking-wide text-[#384884]"
-              >{{ col.replace(/_/g, ' ') }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(asset, i) in assets" :key="i">
-              <td
-                v-for="col in Object.keys(assets[0])"
-                :key="col"
-                class="border border-[#cbd5e1] px-2 py-1"
-              >{{ asset[col] }}</td>
-            </tr>
-          </tbody>
-        </table>
-        <p v-else class="text-[10px] text-[#94a3b8] uppercase tracking-widest py-4 text-center">
-          No assets loaded
-        </p>
+        <DataTable
+          :value="assets"
+          size="small"
+          striped-rows
+          show-gridlines
+          class="text-[10px]"
+        >
+          <Column
+            v-for="col in assetColumns"
+            :key="col.field"
+            :field="col.field"
+            :header="col.header"
+          />
+        </DataTable>
       </div>
 
       <!-- Signature block: horizontal rows, split 50/50 -->
@@ -193,11 +177,11 @@ onMounted(() => {
   </div>
 
   <!-- Reference attachment viewer -->
-  <div v-if="details.reference_attachment" class="w-[297mm] bg-white shadow-xl overflow-hidden">
+  <div v-if="details.reference_attachment" class="w-[297mm] bg-white overflow-hidden border border-[#e2e8f0]">
     <div class="px-4 py-2 border-b border-[#e2e8f0] flex items-center gap-2">
       <i class="pi pi-paperclip text-[#384884] text-sm" />
-      <span class="text-[10px] font-bold uppercase tracking-widest text-[#384884]">Reference Attachment</span>
-      <span class="text-[10px] text-[#64748b] ml-1">{{ details.reference_attachment }}</span>
+      <span class="text-[10px] font-bold uppercase tracking-widest text-[#384884]">{{ details.reference_type ?? 'Attachment' }}:</span>
+      <span class="text-[10px] text-[#64748b]">{{ details.reference_attachment }}</span>
     </div>
     <iframe
       :src="`/api/files/${details.reference_attachment}`"

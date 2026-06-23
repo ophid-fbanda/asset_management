@@ -215,6 +215,24 @@ public class AssetRepository {
                 """, Map.of("id", assetId));
     }
 
+    // All assets currently at a station — either registered there and never
+    // successfully transferred out, or last approved transfer was into it.
+    public Result<List<Map<String, Object>>> getStationAssets(int stationId) {
+        return base.fetch("""
+                SELECT view_station_assets.asset_id,
+                       view_station_assets.asset_number,
+                       view_station_assets.serial_number,
+                       view_station_assets.asset_type,
+                       view_station_assets.brand,
+                       view_station_assets.model,
+                       view_station_assets.condition,
+                       view_station_assets.acquisition_value
+                FROM view_station_assets
+                WHERE view_station_assets.station_id = :stationId
+                ORDER BY view_station_assets.asset_type, view_station_assets.brand, view_station_assets.model
+                """, Map.of("stationId", stationId));
+    }
+
     // Full registration metadata for the document template.
     public Result<Map<String, Object>> getRegistrationDetails(int registrationId) {
         return base.fetchOne("""
