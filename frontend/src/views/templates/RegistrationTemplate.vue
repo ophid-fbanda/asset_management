@@ -23,7 +23,7 @@ onMounted(() => {
   <div class="w-[297mm] min-h-[210mm] bg-white shadow-xl text-[#0f172a] text-[11px] overflow-hidden">
 
     <!-- Header -->
-    <div class="px-[18mm] pt-[10mm] pb-4 border-b-2 border-[#384884] flex items-center justify-between gap-6">
+    <div class="px-[18mm] pt-[10mm] pb-4 border-b border-[#384884] flex items-center justify-between gap-6">
       <img :src="logo" alt="Logo" class="h-12 w-auto object-contain" />
       <div class="flex flex-col items-center text-center">
         <span class="text-[13px] font-black uppercase tracking-tight text-[#384884]">Asset Registration Record</span>
