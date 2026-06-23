@@ -363,7 +363,7 @@ CREATE VIEW events_view AS
                 || stations.station_name
                 || ' from supplier: '
                 || suppliers.supplier_name
-                || ' through '
+                || ' supplied through '
                 || acquisition_types.name AS details
         FROM asset_registrations
         JOIN staff_profiles    ON staff_profiles.id    = asset_registrations.event_admin_id
@@ -387,7 +387,6 @@ CREATE VIEW events_view AS
                 || (SELECT COUNT(*) FROM asset_transfer_items WHERE asset_transfer_items.asset_transfer_id = asset_transfers.id)::TEXT
                 || ' item(s) to '
                 || receiving_station.station_name
-                || CASE WHEN asset_transfers.notes IS NOT NULL THEN ' for ' || asset_transfers.notes ELSE '' END
         FROM asset_transfers
         JOIN staff_profiles                          ON staff_profiles.id   = asset_transfers.event_admin_id
         JOIN stations AS receiving_station           ON receiving_station.id = asset_transfers.receiving_station_id
@@ -404,7 +403,7 @@ CREATE VIEW events_view AS
             asset_issuances.stamp,
             'Issuance',
             staff_profiles.full_name
-                || ' is issuing '
+                || ' is requesting to issue '
                 || (SELECT COUNT(*) FROM asset_issuance_items WHERE asset_issuance_items.asset_issuance_id = asset_issuances.id)::TEXT
                 || ' asset(s) to '
                 || receiving_staff.full_name
@@ -424,15 +423,20 @@ CREATE VIEW events_view AS
             asset_verifications.stamp,
             'Verification',
             staff_profiles.full_name
-                || ' is requesting to verify asset '
+                || ' is requesting to update the condition of '
+                || asset_types.name
+                || ' '
                 || COALESCE(registered_assets.asset_number, registered_assets.serial_number)
-                || ' as '
+                || ' to '
                 || condition_types.name
-                || ' via '
+                || ' verified as '
                 || verification_types.name
         FROM asset_verifications
         JOIN staff_profiles     ON staff_profiles.id     = asset_verifications.event_admin_id
         JOIN registered_assets  ON registered_assets.id  = asset_verifications.registered_asset_id
+        JOIN asset_models       ON asset_models.id        = registered_assets.asset_model_id
+        JOIN asset_brands       ON asset_brands.id        = asset_models.asset_brand_id
+        JOIN asset_types        ON asset_types.id         = asset_brands.asset_type_id
         JOIN condition_types    ON condition_types.id     = asset_verifications.verified_condition_type_id
         JOIN verification_types ON verification_types.id  = asset_verifications.verification_type_id
 
@@ -448,15 +452,20 @@ CREATE VIEW events_view AS
             asset_evaluations.stamp,
             'Evaluation',
             staff_profiles.full_name
-                || ' is requesting '
-                || evaluation_types.name
-                || ' evaluation of asset '
+                || ' is requesting to update the value of '
+                || asset_types.name
+                || ' '
                 || COALESCE(registered_assets.asset_number, registered_assets.serial_number)
-                || ' at '
+                || ' to '
                 || asset_evaluations.evaluated_value::TEXT
+                || ' evaluated as '
+                || evaluation_types.name
         FROM asset_evaluations
         JOIN staff_profiles    ON staff_profiles.id    = asset_evaluations.event_admin_id
         JOIN registered_assets ON registered_assets.id = asset_evaluations.registered_asset_id
+        JOIN asset_models      ON asset_models.id       = registered_assets.asset_model_id
+        JOIN asset_brands      ON asset_brands.id       = asset_models.asset_brand_id
+        JOIN asset_types       ON asset_types.id        = asset_brands.asset_type_id
         JOIN evaluation_types  ON evaluation_types.id  = asset_evaluations.evaluation_type_id
 
         UNION ALL
@@ -473,11 +482,16 @@ CREATE VIEW events_view AS
             staff_profiles.full_name
                 || ' is reporting a '
                 || incident_types.name
-                || ' incident on asset '
+                || ' incident of '
+                || asset_types.name
+                || ' '
                 || COALESCE(registered_assets.asset_number, registered_assets.serial_number)
         FROM asset_incidents
         JOIN staff_profiles    ON staff_profiles.id    = asset_incidents.event_admin_id
         JOIN registered_assets ON registered_assets.id = asset_incidents.registered_asset_id
+        JOIN asset_models      ON asset_models.id       = registered_assets.asset_model_id
+        JOIN asset_brands      ON asset_brands.id       = asset_models.asset_brand_id
+        JOIN asset_types       ON asset_types.id        = asset_brands.asset_type_id
         JOIN incident_types    ON incident_types.id    = asset_incidents.incident_type_id
 
         UNION ALL
@@ -512,13 +526,18 @@ CREATE VIEW events_view AS
             asset_placements.stamp,
             'Placement',
             staff_profiles.full_name
-                || ' is requesting '
-                || placement_types.name
-                || ' placement of asset '
+                || ' is requesting to change the placement of '
+                || asset_types.name
+                || ' '
                 || COALESCE(registered_assets.asset_number, registered_assets.serial_number)
+                || ' to '
+                || placement_types.name
         FROM asset_placements
         JOIN staff_profiles    ON staff_profiles.id    = asset_placements.event_admin_id
         JOIN registered_assets ON registered_assets.id = asset_placements.registered_asset_id
+        JOIN asset_models      ON asset_models.id       = registered_assets.asset_model_id
+        JOIN asset_brands      ON asset_brands.id       = asset_models.asset_brand_id
+        JOIN asset_types       ON asset_types.id        = asset_brands.asset_type_id
         JOIN placement_types   ON placement_types.id   = asset_placements.placement_type_id
 
         UNION ALL
@@ -533,13 +552,18 @@ CREATE VIEW events_view AS
             asset_disposals.stamp,
             'Disposal',
             staff_profiles.full_name
-                || ' is requesting '
-                || disposal_types.name
-                || ' disposal of asset '
+                || ' is requesting to dispose of '
+                || asset_types.name
+                || ' '
                 || COALESCE(registered_assets.asset_number, registered_assets.serial_number)
+                || ' through '
+                || disposal_types.name
         FROM asset_disposals
         JOIN staff_profiles    ON staff_profiles.id    = asset_disposals.event_admin_id
         JOIN registered_assets ON registered_assets.id = asset_disposals.registered_asset_id
+        JOIN asset_models      ON asset_models.id       = registered_assets.asset_model_id
+        JOIN asset_brands      ON asset_brands.id       = asset_models.asset_brand_id
+        JOIN asset_types       ON asset_types.id        = asset_brands.asset_type_id
         JOIN disposal_types    ON disposal_types.id    = asset_disposals.disposal_type_id
     ) AS events
     JOIN stations ON stations.id = events.station_id
