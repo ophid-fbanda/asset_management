@@ -42,12 +42,11 @@ onMounted(() => {
         <span class="text-[13px] font-black uppercase tracking-tight text-[#384884]">Asset Registration Record</span>
         <span class="text-[9px] uppercase tracking-widest text-[#64748b] mt-0.5">Assets Management System</span>
       </div>
-      <div class="border border-[#384884] px-4 py-2 text-right min-w-[7rem]">
-        <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884] block">Doc Ref</span>
-        <span class="text-sm font-mono font-black text-[#0f172a]">REF-{{ entity.entity_id }}-{{ entity.event_id }}</span>
+      <div class="border border-[#384884] px-4 py-2 flex flex-col items-center text-center min-w-[9rem]">
+        <span class="text-sm font-mono font-black text-[#0f172a]">DOC-REF: EN{{ entity.entity_id }}EV{{ entity.event_id }}</span>
         <span
           v-if="entity.latest_approval"
-          class="text-[8px] font-bold uppercase tracking-wide block mt-0.5"
+          class="text-[8px] font-bold uppercase tracking-wide mt-0.5"
           :style="{ color: latestApprovalColor }"
         >{{ entity.latest_approval }}</span>
       </div>
