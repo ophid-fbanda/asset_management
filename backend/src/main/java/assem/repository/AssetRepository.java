@@ -219,18 +219,19 @@ public class AssetRepository {
     // successfully transferred out, or last approved transfer was into it.
     public Result<List<Map<String, Object>>> getStationAssets(int stationId) {
         return base.fetch("""
-                SELECT view_assets.asset_id,
-                       view_assets.asset_type,
-                       view_assets.brand,
-                       view_assets.model,
-                       view_assets.asset_number,
-                       view_assets.serial_number,
-                       view_assets.condition,
-                       view_assets.current_value,
-                       view_assets.custodian
-                FROM view_assets
-                WHERE view_assets.station_id = :stationId
-                ORDER BY view_assets.asset_type, view_assets.brand, view_assets.model
+                SELECT assets_view.asset_id,
+                       assets_view.asset_type,
+                       assets_view.brand,
+                       assets_view.model,
+                       assets_view.asset_number,
+                       assets_view.serial_number,
+                       assets_view.condition,
+                       assets_view.current_value,
+                       assets_view.custodian,
+                       assets_view.disposed
+                FROM assets_view
+                WHERE assets_view.station_id = :stationId
+                ORDER BY assets_view.asset_type, assets_view.brand, assets_view.model
                 """, Map.of("stationId", stationId));
     }
 

@@ -562,8 +562,8 @@ CREATE VIEW events_view AS
 -- Each attribute COALESCEs the latest fully-approved (management = 50) event
 -- result with the value recorded at registration time.
 
-DROP VIEW IF EXISTS view_assets;
-CREATE VIEW view_assets AS
+DROP VIEW IF EXISTS assets_view;
+CREATE VIEW assets_view AS
     SELECT
         registered_assets.id                                                        AS asset_id,
         asset_types.name                                                            AS asset_type,
