@@ -64,6 +64,13 @@ public class AssetsController {
         return result.isOk() ? ResponseEntity.ok(result.getData()) : ResponseEntity.badRequest().body(result.getMessage());
     }
 
+    @GetMapping("/registrations/{id}/details")
+    public ResponseEntity<?> getRegistrationDetails(@PathVariable int id, HttpSession session) {
+        if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
+        Result<Map<String, Object>> result = assetRepository.getRegistrationDetails(id);
+        return result.isOk() ? ResponseEntity.ok(result.getData()) : ResponseEntity.badRequest().body(result.getMessage());
+    }
+
     @PostMapping(value = "/registration", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> createRegistration(
             @Valid @ModelAttribute Registration registration,

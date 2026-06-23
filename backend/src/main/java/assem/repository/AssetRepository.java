@@ -215,6 +215,26 @@ public class AssetRepository {
                 """, Map.of("id", assetId));
     }
 
+    // Full registration metadata for the document template.
+    public Result<Map<String, Object>> getRegistrationDetails(int registrationId) {
+        return base.fetchOne("""
+                SELECT
+                    asset_registrations.reference_attachment,
+                    to_char(asset_registrations.reference_date, 'DD/MM/YYYY') AS reference_date,
+                    asset_registrations.notes,
+                    reference_types.name   AS reference_type,
+                    programs.program_name  AS program,
+                    suppliers.supplier_name AS supplier,
+                    acquisition_types.name AS acquisition_type
+                FROM asset_registrations
+                JOIN reference_types   ON reference_types.id   = asset_registrations.reference_type_id
+                JOIN programs          ON programs.id           = asset_registrations.program_id
+                JOIN suppliers         ON suppliers.id          = asset_registrations.supplier_id
+                JOIN acquisition_types ON acquisition_types.id  = asset_registrations.acquisition_type_id
+                WHERE asset_registrations.id = :registrationId
+                """, Map.of("registrationId", registrationId));
+    }
+
     // Compensating cleanup: children first (FK), then the parent row.
     private void revert(int registrationId) {
         Map<String, Object> key = Map.of("id", registrationId);
