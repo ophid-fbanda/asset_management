@@ -1,13 +1,17 @@
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { dataFetchToCache, dataFromCache } from '@/api/datax'
+import { exportToPDF } from '@/api/exportx'
 import logo from '@/assets/logo.png'
 
 const props = defineProps({
   collected: { type: Array, required: true },
 })
 
-const entity = computed(() => props.collected[0] ?? {})
+const entity  = computed(() => props.collected[0] ?? {})
+const docEl   = ref(null)
+
+const savePdf = () => exportToPDF(docEl.value, `REG-EN${entity.value?.entity_id}EV${entity.value?.event_id}`, 'landscape', 'a4')
 
 const dataKey      = computed(() => entity.value?.entity_id != null ? `assets/registration/${entity.value.entity_id}` : null)
 const registration = computed(() => dataKey.value ? (dataFromCache(dataKey.value).value ?? {}) : {})
@@ -33,7 +37,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-[297mm] min-h-[210mm] bg-white shadow-xl text-[#0f172a] text-[11px] overflow-hidden">
+  <div class="flex flex-col gap-4 w-[297mm]">
+
+  <!-- Document -->
+  <div ref="docEl" class="w-[297mm] min-h-[210mm] bg-white shadow-xl text-[#0f172a] text-[11px] overflow-hidden">
 
     <!-- Header -->
     <div class="px-[18mm] pt-[10mm] pb-4 border-b border-[#384884] flex items-center justify-between gap-6">
@@ -57,12 +64,12 @@ onMounted(() => {
       <!-- Meta grid -->
       <div class="grid grid-cols-3 gap-x-8 gap-y-3 mb-8">
         <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Station</span>
-          <span class="font-semibold">{{ entity.station_name }}</span>
+          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Acquisition Type</span>
+          <span class="font-semibold">{{ details.acquisition_type }}</span>
         </div>
         <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Registered By</span>
-          <span class="font-semibold">{{ entity.admin_name }}</span>
+          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Supplier</span>
+          <span class="font-semibold">{{ details.supplier }}</span>
         </div>
         <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
           <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Event Date</span>
@@ -73,31 +80,12 @@ onMounted(() => {
           <span class="font-semibold">{{ details.program }}</span>
         </div>
         <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Supplier</span>
-          <span class="font-semibold">{{ details.supplier }}</span>
+          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Station</span>
+          <span class="font-semibold">{{ entity.station_name }}</span>
         </div>
         <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Acquisition Type</span>
-          <span class="font-semibold">{{ details.acquisition_type }}</span>
-        </div>
-        <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Reference Type</span>
-          <span class="font-semibold">{{ details.reference_type }}</span>
-        </div>
-        <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Reference Date</span>
-          <span class="font-semibold">{{ details.reference_date }}</span>
-        </div>
-        <div v-if="details.reference_attachment" class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Attachment</span>
-          <a
-            :href="`/uploads/${details.reference_attachment}`"
-            target="_blank"
-            class="inline-flex items-center gap-1 text-[#384884] font-semibold underline underline-offset-2"
-          >
-            <i class="pi pi-paperclip text-[9px]" />
-            <span>{{ details.reference_attachment }}</span>
-          </a>
+          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Registered By</span>
+          <span class="font-semibold">{{ entity.admin_name }}</span>
         </div>
         <div v-if="details.notes" class="col-span-3 flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
           <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Notes</span>
@@ -184,5 +172,33 @@ onMounted(() => {
       </div>
 
     </div>
+  </div>
+
+  <!-- PDF export button -->
+  <div class="flex justify-end">
+    <button
+      type="button"
+      class="flex cursor-pointer items-center gap-2 rounded-sm border border-[#384884] bg-[#e8eefa] px-3 py-1.5 text-xs font-medium text-[#384884] transition hover:bg-[#384884] hover:text-white"
+      @click="savePdf"
+    >
+      <i class="pi pi-file-pdf text-sm" />
+      <span>Export to PDF</span>
+    </button>
+  </div>
+
+  <!-- Reference attachment viewer -->
+  <div v-if="details.reference_attachment" class="w-[297mm] bg-white shadow-xl overflow-hidden">
+    <div class="px-4 py-2 border-b border-[#e2e8f0] flex items-center gap-2">
+      <i class="pi pi-paperclip text-[#384884] text-sm" />
+      <span class="text-[10px] font-bold uppercase tracking-widest text-[#384884]">Reference Attachment</span>
+      <span class="text-[10px] text-[#64748b] ml-1">{{ details.reference_attachment }}</span>
+    </div>
+    <iframe
+      :src="`/api/files/${details.reference_attachment}`"
+      class="w-full h-[400px] border-0"
+      title="Reference Attachment"
+    />
+  </div>
+
   </div>
 </template>
