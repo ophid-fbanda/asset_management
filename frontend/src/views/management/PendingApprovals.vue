@@ -22,7 +22,7 @@ const context = reactive({
   external: null,
   collector: [],
   options: [
-    { id: 'regTemplate', name: 'Registration', table: 1, target: 0, choices: [50, 51] },
+    { id: 'regTemplate', name: 'Registration', table: 1, target: 40, choices: [50, 51] },
   ],
 })
 

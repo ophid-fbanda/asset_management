@@ -84,8 +84,8 @@ onMounted(() => {
           <span class="font-semibold">{{ entity.station_name }}</span>
         </div>
         <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Registered By</span>
-          <span class="font-semibold">{{ entity.admin_name }}</span>
+          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Reference Type</span>
+          <span class="font-semibold">{{ details.reference_type }}</span>
         </div>
         <div v-if="details.notes" class="col-span-3 flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
           <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Notes</span>
@@ -129,36 +129,44 @@ onMounted(() => {
       <!-- Signature block: horizontal rows, split 50/50 -->
       <div class="border-t border-[#e2e8f0] pt-6 flex flex-col">
 
-        <!-- Row 1: status label + timestamp -->
-        <div class="flex gap-16 pb-2">
-          <div class="flex-1 flex items-center justify-between">
+        <!-- Row 1: role labels only -->
+        <div class="flex gap-10 pb-1">
+          <div class="flex-1">
+            <span class="text-[8px] font-bold uppercase tracking-widest text-[#64748b]">Submitted By</span>
+          </div>
+          <div class="flex-1">
             <span
               class="text-[8px] font-bold uppercase tracking-widest"
               :style="{ color: supervisorApproval ? approvalColor(supervisorApproval.approval_type_id) : '#384884' }"
             >{{ supervisorApproval ? supervisorApproval.approval : 'Supervisor — Name, Signature &amp; Date' }}</span>
-            <span v-if="supervisorApproval" class="text-[8px] text-[#64748b]">{{ supervisorApproval.stamp }}</span>
           </div>
-          <div class="flex-1 flex items-center justify-between">
+          <div class="flex-1">
             <span
               class="text-[8px] font-bold uppercase tracking-widest"
               :style="{ color: managerApproval ? approvalColor(managerApproval.approval_type_id) : '#384884' }"
             >{{ managerApproval ? managerApproval.approval : 'Manager — Name, Signature &amp; Date' }}</span>
-            <span v-if="managerApproval" class="text-[8px] text-[#64748b]">{{ managerApproval.stamp }}</span>
           </div>
         </div>
 
-        <!-- Row 2: signature lines — gap-16 creates a visible break so they read as two separate lines -->
-        <div class="flex gap-16 pt-6 pb-1">
-          <div class="flex-1 border-b" :style="{ borderColor: supervisorApproval ? approvalColor(supervisorApproval.approval_type_id) : '#94a3b8' }">
+        <!-- Row 2: name left, timestamp right, on the signature line -->
+        <div class="flex gap-10 pt-2 pb-1">
+          <div class="flex-1 border-b border-[#94a3b8] flex items-end justify-between">
+            <span class="font-semibold text-[11px]">{{ entity.admin_name }}</span>
+            <span class="text-[8px] text-[#64748b] pb-0.5">{{ entity.captured }}</span>
+          </div>
+          <div class="flex-1 border-b flex items-end justify-between" :style="{ borderColor: supervisorApproval ? approvalColor(supervisorApproval.approval_type_id) : '#94a3b8' }">
             <span class="font-semibold text-[11px]">{{ supervisorApproval ? supervisorApproval.approved_by : '' }}</span>
+            <span v-if="supervisorApproval" class="text-[8px] text-[#64748b] pb-0.5">{{ supervisorApproval.stamp }}</span>
           </div>
-          <div class="flex-1 border-b" :style="{ borderColor: managerApproval ? approvalColor(managerApproval.approval_type_id) : '#94a3b8' }">
+          <div class="flex-1 border-b flex items-end justify-between" :style="{ borderColor: managerApproval ? approvalColor(managerApproval.approval_type_id) : '#94a3b8' }">
             <span class="font-semibold text-[11px]">{{ managerApproval ? managerApproval.approved_by : '' }}</span>
+            <span v-if="managerApproval" class="text-[8px] text-[#64748b] pb-0.5">{{ managerApproval.stamp }}</span>
           </div>
         </div>
 
-        <!-- Row 3: notes -->
-        <div v-if="supervisorApproval?.notes || managerApproval?.notes" class="flex gap-16 pt-1">
+        <!-- Row 3: notes (only when at least one side has notes) -->
+        <div v-if="supervisorApproval?.notes || managerApproval?.notes" class="flex gap-10 pt-1">
+          <div class="flex-1"></div>
           <div class="flex-1">
             <p v-if="supervisorApproval?.notes" class="text-[9px] text-[#64748b] italic">{{ supervisorApproval.notes }}</p>
           </div>

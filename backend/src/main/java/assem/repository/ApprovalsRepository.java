@@ -64,12 +64,13 @@ public class ApprovalsRepository {
                 SELECT events_view.event_type,
                        events_view.entity_id,
                        events_view.event_id,
-                       to_char(events_view.event_date, 'DD/MM/YYYY')          AS event_date,
+                       events_view.latest_approval_type_id,
+                       to_char(events_view.event_date, 'DD/MM/YYYY')            AS event_date,
+                       to_char(events_view.stamp, 'DD/MM/YYYY HH24:MI')         AS captured,
                        events_view.station_name,
                        events_view.admin_name,
-                       events_view.latest_approval,
-                       events_view.latest_approver_name,
-                       to_char(events_view.latest_approval_stamp, 'DD/MM/YYYY') AS approval_date
+                       events_view.details,
+                       events_view.latest_approval
                 FROM events_view
                 WHERE events_view.station_id = :stationId
                   AND events_view.latest_approval_type_id = :approvalTypeId
