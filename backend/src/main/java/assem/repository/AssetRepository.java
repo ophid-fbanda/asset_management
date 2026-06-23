@@ -2,6 +2,8 @@ package assem.repository;
 
 import assem.exchange.assets.Asset;
 import assem.exchange.assets.Registration;
+import assem.exchange.assets.TransferExchange;
+import assem.exchange.assets.TransferItemExchange;
 import assem.exchange.commons.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -256,10 +258,78 @@ public class AssetRepository {
                 """, Map.of("registrationId", registrationId));
     }
 
-    // Compensating cleanup: children first (FK), then the parent row.
+    // Persists the transfer: creates an event_register entry, inserts the parent
+    // asset_transfers row, then loops over each item inserting into asset_transfer_items.
+    // On any failure the items and parent are deleted before returning the error.
+    public Result<Boolean> createTransfer(TransferExchange dto) {
+        Integer eventId = base.createEventId();
+        if (eventId == null) {
+            return Result.error("Could not start the transfer.");
+        }
+        dto.setEventId(eventId);
+
+        Result<Map<String, Object>> transfer = base.fetchOne("""
+                INSERT INTO asset_transfers (
+                    receiving_station_id,
+                    notes,
+                    event_register_id,
+                    event_station_id,
+                    event_admin_id
+                ) VALUES (
+                    :receivingStationId,
+                    :notes,
+                    :eventId,
+                    :eventStationId,
+                    :eventAdminId
+                )
+                RETURNING id
+                """, dto);
+        if (!transfer.isOk() || transfer.getData() == null) {
+            return Result.error("Could not save the transfer.");
+        }
+        int transferId = ((Number) transfer.getData().get("id")).intValue();
+
+        Result<Boolean> items = createTransferItems(transferId, dto.getItems());
+        if (!items.isOk()) {
+            revertTransfer(transferId);
+            return items;
+        }
+
+        return Result.ok(true);
+    }
+
+    // Inserts each transfer item linked to the parent transfer id.
+    private Result<Boolean> createTransferItems(int transferId, List<TransferItemExchange> items) {
+        for (TransferItemExchange item : items) {
+            item.setAssetTransferId(transferId);
+
+            Result<Boolean> inserted = base.execute("""
+                    INSERT INTO asset_transfer_items (
+                        asset_transfer_id,
+                        registered_asset_id
+                    ) VALUES (
+                        :assetTransferId,
+                        :registeredAssetId
+                    )
+                    """, item);
+            if (!inserted.isOk()) {
+                return Result.error("Could not save one of the transfer items.");
+            }
+        }
+        return Result.ok(true);
+    }
+
+    // Compensating cleanup for registration: children first (FK), then the parent row.
     private void revert(int registrationId) {
         Map<String, Object> key = Map.of("id", registrationId);
         base.execute("DELETE FROM registered_assets WHERE asset_registration_id = :id", key);
         base.execute("DELETE FROM asset_registrations WHERE id = :id", key);
+    }
+
+    // Compensating cleanup for transfer: items first (FK), then the parent row.
+    private void revertTransfer(int transferId) {
+        Map<String, Object> key = Map.of("id", transferId);
+        base.execute("DELETE FROM asset_transfer_items WHERE asset_transfer_id = :id", key);
+        base.execute("DELETE FROM asset_transfers WHERE id = :id", key);
     }
 }

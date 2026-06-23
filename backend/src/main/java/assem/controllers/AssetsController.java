@@ -1,6 +1,7 @@
 package assem.controllers;
 
 import assem.exchange.assets.Registration;
+import assem.exchange.assets.TransferExchange;
 import assem.exchange.commons.Result;
 import assem.exchange.profiles.ProfileExchange;
 import assem.repository.ApprovalsRepository;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -85,6 +87,32 @@ public class AssetsController {
         Result<List<Map<String, Object>>> approvals = approvalsRepository.getEventApprovals(eventRegisterId);
         if (!approvals.isOk()) return ResponseEntity.badRequest().body(approvals.getMessage());
         return ResponseEntity.ok(Map.of("details", details.getData(), "list", list.getData(), "approvals", approvals.getData()));
+    }
+
+    @PostMapping("/transfer")
+    public ResponseEntity<?> createTransfer(
+            @Valid @RequestBody TransferExchange transfer,
+            BindingResult bindingResult,
+            HttpSession session
+    ) {
+        if (checks.hasErrors(bindingResult)) {
+            return ResponseEntity.badRequest().body(checks.getBindingErrors(bindingResult));
+        }
+
+        ProfileExchange profile = checks.getProfile(session);
+        if (profile == null) return ResponseEntity.status(401).body("Unauthorized");
+
+        if (!profile.hasRole(ASSET_ADMIN_ROLE_TYPE_ID, transfer.getEventStationId())) {
+            session.invalidate();
+            return ResponseEntity.status(403).body("You are not authorized to transfer assets from this station.");
+        }
+
+        transfer.setEventAdminId(profile.getProfileId());
+
+        Result<Boolean> result = assetRepository.createTransfer(transfer);
+        if (!result.isOk()) return ResponseEntity.badRequest().body(result.getMessage());
+
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping(value = "/registration", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
