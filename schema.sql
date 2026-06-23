@@ -557,54 +557,101 @@ CREATE VIEW events_view AS
 
 
 -- UTILITY TABLES 
--- STATION ASSETS VIEW
--- An asset "belongs" to a station if it was registered there and has never been
--- successfully transferred out, OR if its most recent successfully approved
--- transfer (management approval_type_id = 50) was INTO that station.
+-- ASSETS VIEW
+-- Canonical current state of every registered asset.
+-- Each attribute COALESCEs the latest fully-approved (management = 50) event
+-- result with the value recorded at registration time.
 
-DROP VIEW IF EXISTS view_station_assets;
-CREATE VIEW view_station_assets AS
+DROP VIEW IF EXISTS view_assets;
+CREATE VIEW view_assets AS
     SELECT
         registered_assets.id                                                        AS asset_id,
-        registered_assets.asset_number,
-        registered_assets.serial_number,
         asset_types.name                                                            AS asset_type,
         asset_brands.name                                                           AS brand,
         asset_models.name                                                           AS model,
-        condition_types.name                                                        AS condition,
-        registered_assets.acquisition_value,
-        COALESCE(last_transfer.receiving_station_id,
+        registered_assets.asset_number,
+        registered_assets.serial_number,
+        COALESCE(latest_condition.name,
+                 reg_condition.name)                                                AS condition,
+        COALESCE(latest_value.evaluated_value,
+                 registered_assets.acquisition_value)                              AS current_value,
+        latest_custodian.full_name                                                  AS custodian,
+        COALESCE(latest_location.receiving_station_id,
                  asset_registrations.event_station_id)                             AS station_id,
-        COALESCE(last_transfer.station_name,
+        COALESCE(latest_location.station_name,
                  reg_station.station_name)                                         AS station_name
     FROM registered_assets
     JOIN asset_registrations
-        ON asset_registrations.id        = registered_assets.asset_registration_id
+        ON asset_registrations.id      = registered_assets.asset_registration_id
     JOIN asset_models
-        ON asset_models.id               = registered_assets.asset_model_id
+        ON asset_models.id             = registered_assets.asset_model_id
     JOIN asset_brands
-        ON asset_brands.id               = asset_models.asset_brand_id
+        ON asset_brands.id             = asset_models.asset_brand_id
     JOIN asset_types
-        ON asset_types.id                = asset_brands.asset_type_id
-    JOIN condition_types
-        ON condition_types.id            = registered_assets.condition_type_id
+        ON asset_types.id              = asset_brands.asset_type_id
+    JOIN condition_types reg_condition
+        ON reg_condition.id            = registered_assets.condition_type_id
     JOIN stations reg_station
-        ON reg_station.id                = asset_registrations.event_station_id
+        ON reg_station.id              = asset_registrations.event_station_id
+
+    -- Current location: latest management-approved transfer destination
     LEFT JOIN LATERAL (
         SELECT asset_transfers.receiving_station_id,
                stations.station_name
         FROM asset_transfer_items
         JOIN asset_transfers
-            ON asset_transfers.id            = asset_transfer_items.asset_transfer_id
+            ON asset_transfers.id                = asset_transfer_items.asset_transfer_id
         JOIN event_approvals
             ON event_approvals.event_register_id = asset_transfers.event_register_id
            AND event_approvals.approval_type_id  = 50
         JOIN stations
-            ON stations.id                   = asset_transfers.receiving_station_id
+            ON stations.id                       = asset_transfers.receiving_station_id
         WHERE asset_transfer_items.registered_asset_id = registered_assets.id
         ORDER BY asset_transfers.stamp DESC
         LIMIT 1
-    ) last_transfer ON true;
+    ) latest_location ON true
+
+    -- Current condition: latest management-approved verification result
+    LEFT JOIN LATERAL (
+        SELECT condition_types.name
+        FROM asset_verifications
+        JOIN event_approvals
+            ON event_approvals.event_register_id = asset_verifications.event_register_id
+           AND event_approvals.approval_type_id  = 50
+        JOIN condition_types
+            ON condition_types.id                = asset_verifications.verified_condition_type_id
+        WHERE asset_verifications.registered_asset_id = registered_assets.id
+        ORDER BY asset_verifications.stamp DESC
+        LIMIT 1
+    ) latest_condition ON true
+
+    -- Current value: latest management-approved evaluation
+    LEFT JOIN LATERAL (
+        SELECT asset_evaluations.evaluated_value
+        FROM asset_evaluations
+        JOIN event_approvals
+            ON event_approvals.event_register_id = asset_evaluations.event_register_id
+           AND event_approvals.approval_type_id  = 50
+        WHERE asset_evaluations.registered_asset_id = registered_assets.id
+        ORDER BY asset_evaluations.stamp DESC
+        LIMIT 1
+    ) latest_value ON true
+
+    -- Current custodian: latest management-approved issuance recipient
+    LEFT JOIN LATERAL (
+        SELECT staff_profiles.full_name
+        FROM asset_issuance_items
+        JOIN asset_issuances
+            ON asset_issuances.id                = asset_issuance_items.asset_issuance_id
+        JOIN event_approvals
+            ON event_approvals.event_register_id = asset_issuances.event_register_id
+           AND event_approvals.approval_type_id  = 50
+        JOIN staff_profiles
+            ON staff_profiles.id                 = asset_issuances.receiving_staff_id
+        WHERE asset_issuance_items.registered_asset_id = registered_assets.id
+        ORDER BY asset_issuances.stamp DESC
+        LIMIT 1
+    ) latest_custodian ON true;
 
 
 -- updates 
