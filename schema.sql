@@ -564,13 +564,6 @@ CREATE VIEW events_view AS
 
 DROP VIEW IF EXISTS view_assets;
 CREATE VIEW view_assets AS
-    -- Single root CTE: all event_register_ids fully approved by management.
-    -- Every gate in this view joins here instead of repeating the approval check.
-    WITH approved AS (
-        SELECT event_approvals.event_register_id
-        FROM event_approvals
-        WHERE event_approvals.approval_type_id = 50
-    )
     SELECT
         registered_assets.id                                                        AS asset_id,
         asset_types.name                                                            AS asset_type,
@@ -592,78 +585,83 @@ CREATE VIEW view_assets AS
                  reg_station.station_name)                                         AS station_name
     FROM registered_assets
     JOIN asset_registrations
-        ON asset_registrations.id           = registered_assets.asset_registration_id
-    -- Root gate: asset only enters the view when its registration is approved
-    JOIN approved
-        ON approved.event_register_id       = asset_registrations.event_register_id
+        ON asset_registrations.id      = registered_assets.asset_registration_id
+    -- Asset only enters the view once its registration is fully approved by management
+    JOIN event_approvals reg_approval
+        ON reg_approval.event_register_id = asset_registrations.event_register_id
+       AND reg_approval.approval_type_id  = 50
     JOIN asset_models
-        ON asset_models.id                  = registered_assets.asset_model_id
+        ON asset_models.id             = registered_assets.asset_model_id
     JOIN model_types
-        ON model_types.id                   = asset_models.model_type_id
+        ON model_types.id              = asset_models.model_type_id
     JOIN asset_brands
-        ON asset_brands.id                  = asset_models.asset_brand_id
+        ON asset_brands.id             = asset_models.asset_brand_id
     JOIN brand_types
-        ON brand_types.id                   = asset_brands.brand_type_id
+        ON brand_types.id              = asset_brands.brand_type_id
     JOIN asset_types
-        ON asset_types.id                   = asset_brands.asset_type_id
+        ON asset_types.id              = asset_brands.asset_type_id
     JOIN condition_types reg_condition
-        ON reg_condition.id                 = registered_assets.condition_type_id
+        ON reg_condition.id            = registered_assets.condition_type_id
     JOIN stations reg_station
-        ON reg_station.id                   = asset_registrations.event_station_id
+        ON reg_station.id              = asset_registrations.event_station_id
     JOIN staff_profiles reg_admin
-        ON reg_admin.id                     = asset_registrations.event_admin_id
+        ON reg_admin.id                = asset_registrations.event_admin_id
 
-    -- Current location: latest approved transfer destination
+    -- Current location: latest management-approved transfer destination
     LEFT JOIN LATERAL (
         SELECT asset_transfers.receiving_station_id,
                stations.station_name
         FROM asset_transfer_items
         JOIN asset_transfers
-            ON asset_transfers.id               = asset_transfer_items.asset_transfer_id
-        JOIN approved
-            ON approved.event_register_id       = asset_transfers.event_register_id
+            ON asset_transfers.id                = asset_transfer_items.asset_transfer_id
+        JOIN event_approvals
+            ON event_approvals.event_register_id = asset_transfers.event_register_id
+           AND event_approvals.approval_type_id  = 50
         JOIN stations
-            ON stations.id                      = asset_transfers.receiving_station_id
+            ON stations.id                       = asset_transfers.receiving_station_id
         WHERE asset_transfer_items.registered_asset_id = registered_assets.id
         ORDER BY asset_transfers.stamp DESC
         LIMIT 1
     ) latest_location ON true
 
-    -- Current condition: latest approved verification result
+    -- Current condition: latest management-approved verification result
     LEFT JOIN LATERAL (
         SELECT condition_types.name
         FROM asset_verifications
-        JOIN approved
-            ON approved.event_register_id       = asset_verifications.event_register_id
+        JOIN event_approvals
+            ON event_approvals.event_register_id = asset_verifications.event_register_id
+           AND event_approvals.approval_type_id  = 50
         JOIN condition_types
-            ON condition_types.id               = asset_verifications.verified_condition_type_id
+            ON condition_types.id                = asset_verifications.verified_condition_type_id
         WHERE asset_verifications.registered_asset_id = registered_assets.id
         ORDER BY asset_verifications.stamp DESC
         LIMIT 1
     ) latest_condition ON true
 
-    -- Current value: latest approved evaluation
+    -- Current value: latest management-approved evaluation
     LEFT JOIN LATERAL (
         SELECT asset_evaluations.evaluated_value
         FROM asset_evaluations
-        JOIN approved
-            ON approved.event_register_id       = asset_evaluations.event_register_id
+        JOIN event_approvals
+            ON event_approvals.event_register_id = asset_evaluations.event_register_id
+           AND event_approvals.approval_type_id  = 50
         WHERE asset_evaluations.registered_asset_id = registered_assets.id
         ORDER BY asset_evaluations.stamp DESC
         LIMIT 1
     ) latest_value ON true
 
-    -- Current custodian: latest approved issuance recipient
+    -- Current custodian: latest management-approved issuance recipient
     LEFT JOIN LATERAL (
-        SELECT staff_profiles.id        AS staff_id,
+        SELECT staff_profiles.id   AS staff_id,
                staff_profiles.full_name
         FROM asset_issuance_items
         JOIN asset_issuances
-            ON asset_issuances.id               = asset_issuance_items.asset_issuance_id
-        JOIN approved
-            ON approved.event_register_id       = asset_issuances.event_register_id
+            ON asset_issuances.id                = asset_issuance_items.asset_issuance_id
+        JOIN event_approvals
+            ON event_approvals.event_register_id = asset_issuances.event_register_id
+           AND event_approvals.approval_type_id  = 50
         JOIN staff_profiles
-            ON staff_profiles.id                = asset_issuances.receiving_staff_id
+            ON staff_profiles.id                 = asset_issuances.receiving_staff_id
         WHERE asset_issuance_items.registered_asset_id = registered_assets.id
         ORDER BY asset_issuances.stamp DESC
         LIMIT 1
