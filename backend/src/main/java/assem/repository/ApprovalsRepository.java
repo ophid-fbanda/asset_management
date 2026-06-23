@@ -35,21 +35,25 @@ public class ApprovalsRepository {
                 """, Map.of("stationId", stationId));
     }
 
-    // Events at the station approved by supervisory (type 40) — history for role 40.
+    // Events at the station approved by supervisory (type 40) — history for role 40, current year only.
     public Result<List<Map<String, Object>>> supervisoryHistory(int stationId) {
         return base.fetch("""
                 SELECT events_view.event_type,
                        events_view.entity_id,
                        events_view.event_id,
-                       to_char(events_view.event_date, 'DD/MM/YYYY')          AS event_date,
-                       events_view.station_name,
-                       events_view.admin_name,
+                       events_view.latest_approval_type_id,
                        events_view.latest_approval,
                        events_view.latest_approver_name,
-                       to_char(events_view.latest_approval_stamp, 'DD/MM/YYYY') AS approval_date
+                       to_char(events_view.latest_approval_stamp, 'DD/MM/YYYY HH24:MI') AS approval_date,
+                       to_char(events_view.event_date, 'DD/MM/YYYY')                    AS event_date,
+                       to_char(events_view.stamp, 'DD/MM/YYYY HH24:MI')                 AS captured,
+                       events_view.station_name,
+                       events_view.admin_name,
+                       events_view.details
                 FROM events_view
                 WHERE events_view.station_id = :stationId
                   AND events_view.latest_approval_type_id = :approvalTypeId
+                  AND EXTRACT(YEAR FROM events_view.latest_approval_stamp) = EXTRACT(YEAR FROM CURRENT_DATE)
                 ORDER BY events_view.latest_approval_stamp DESC
                 """, Map.of("stationId", stationId, "approvalTypeId", SUPERVISORY_APPROVAL_TYPE_ID));
     }
@@ -73,21 +77,25 @@ public class ApprovalsRepository {
                 """, Map.of("stationId", stationId, "approvalTypeId", SUPERVISORY_APPROVAL_TYPE_ID));
     }
 
-    // Events at the station fully approved by management (type 50) — history for role 50.
+    // Events at the station fully approved by management (type 50) — history for role 50, current year only.
     public Result<List<Map<String, Object>>> managementHistory(int stationId) {
         return base.fetch("""
                 SELECT events_view.event_type,
                        events_view.entity_id,
                        events_view.event_id,
-                       to_char(events_view.event_date, 'DD/MM/YYYY')          AS event_date,
-                       events_view.station_name,
-                       events_view.admin_name,
+                       events_view.latest_approval_type_id,
                        events_view.latest_approval,
                        events_view.latest_approver_name,
-                       to_char(events_view.latest_approval_stamp, 'DD/MM/YYYY') AS approval_date
+                       to_char(events_view.latest_approval_stamp, 'DD/MM/YYYY HH24:MI') AS approval_date,
+                       to_char(events_view.event_date, 'DD/MM/YYYY')                    AS event_date,
+                       to_char(events_view.stamp, 'DD/MM/YYYY HH24:MI')                 AS captured,
+                       events_view.station_name,
+                       events_view.admin_name,
+                       events_view.details
                 FROM events_view
                 WHERE events_view.station_id = :stationId
                   AND events_view.latest_approval_type_id = :approvalTypeId
+                  AND EXTRACT(YEAR FROM events_view.latest_approval_stamp) = EXTRACT(YEAR FROM CURRENT_DATE)
                 ORDER BY events_view.latest_approval_stamp DESC
                 """, Map.of("stationId", stationId, "approvalTypeId", MANAGEMENT_APPROVAL_TYPE_ID));
     }
