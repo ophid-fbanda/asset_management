@@ -119,9 +119,10 @@ public class ApprovalsRepository {
     public Result<List<Map<String, Object>>> getEventApprovals(int eventId) {
         return base.fetch("""
                 SELECT
-                    approval_types.name                               AS approval,
-                    staff_profiles.full_name                          AS approved_by,
-                    event_approvals.approval_notes                    AS notes,
+                    event_approvals.approval_type_id,
+                    approval_types.name                                  AS approval,
+                    staff_profiles.full_name                             AS approved_by,
+                    event_approvals.approval_notes                       AS notes,
                     to_char(event_approvals.stamp, 'DD/MM/YYYY HH24:MI') AS stamp
                 FROM event_approvals
                 JOIN approval_types  ON approval_types.id  = event_approvals.approval_type_id

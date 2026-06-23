@@ -11,8 +11,21 @@ const entity = computed(() => props.collected[0] ?? {})
 
 const dataKey      = computed(() => entity.value?.entity_id != null ? `assets/registrations/${entity.value.entity_id}` : null)
 const registration = computed(() => dataKey.value ? (dataFromCache(dataKey.value).value ?? {}) : {})
-const details      = computed(() => registration.value.details ?? {})
-const assets       = computed(() => registration.value.list    ?? [])
+const details      = computed(() => registration.value.details   ?? {})
+const assets       = computed(() => registration.value.list      ?? [])
+const approvals    = computed(() => registration.value.approvals ?? [])
+
+const supervisorApproval = computed(() => approvals.value.find((a) => a.approval_type_id === 40 || a.approval_type_id === 41) ?? null)
+const managerApproval    = computed(() => approvals.value.find((a) => a.approval_type_id === 50 || a.approval_type_id === 51) ?? null)
+
+// Even type IDs = approved (blue), odd = rejected (red)
+const approvalColor = (typeId) => typeId % 2 === 0 ? '#384884' : '#ef4444'
+
+const latestApprovalColor = computed(() => {
+  const id = entity.value?.latest_approval_type_id ?? 0
+  if (id === 0) return '#f59e0b'
+  return id % 2 === 0 ? '#22c55e' : '#ef4444'
+})
 
 onMounted(() => {
   if (dataKey.value) dataFetchToCache(dataKey.value)
@@ -29,9 +42,14 @@ onMounted(() => {
         <span class="text-[13px] font-black uppercase tracking-tight text-[#384884]">Asset Registration Record</span>
         <span class="text-[9px] uppercase tracking-widest text-[#64748b] mt-0.5">Assets Management System</span>
       </div>
-      <div class="border border-[#384884] px-4 py-2 text-right">
+      <div class="border border-[#384884] px-4 py-2 text-right min-w-[7rem]">
         <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884] block">Doc Ref</span>
-        <span class="text-sm font-mono font-black text-[#0f172a]">RG-{{ entity.entity_id }}</span>
+        <span class="text-sm font-mono font-black text-[#0f172a]">REF-{{ entity.entity_id }}-{{ entity.event_id }}</span>
+        <span
+          v-if="entity.latest_approval"
+          class="text-[8px] font-bold uppercase tracking-wide block mt-0.5"
+          :style="{ color: latestApprovalColor }"
+        >{{ entity.latest_approval }}</span>
       </div>
     </div>
 
@@ -89,7 +107,7 @@ onMounted(() => {
       </div>
 
       <!-- Assets table -->
-      <div class="mb-8">
+      <div class="mb-10">
         <div class="flex items-center gap-2 mb-2">
           <div class="h-3 w-1 bg-[#384884] rounded-full"></div>
           <span class="text-[9px] font-bold uppercase tracking-widest text-[#384884]">
@@ -122,15 +140,48 @@ onMounted(() => {
       </div>
 
       <!-- Signature block -->
-      <div class="mt-10 pt-4 border-t-2 border-[#384884] grid grid-cols-2 gap-12">
-        <div class="flex flex-col gap-8">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Supervisor — Name, Signature &amp; Date</span>
-          <div class="border-b border-[#0f172a]"></div>
+      <div class="border-t border-[#e2e8f0] pt-6 grid grid-cols-2 gap-12">
+
+        <!-- Supervisor -->
+        <div>
+          <template v-if="supervisorApproval">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[8px] font-bold uppercase tracking-widest" :style="{ color: approvalColor(supervisorApproval.approval_type_id) }">
+                {{ supervisorApproval.approval }}
+              </span>
+              <span class="text-[8px] text-[#64748b]">{{ supervisorApproval.stamp }}</span>
+            </div>
+            <div class="border-b pb-1 mb-2" :style="{ borderColor: approvalColor(supervisorApproval.approval_type_id) }">
+              <span class="font-semibold">{{ supervisorApproval.approved_by }}</span>
+            </div>
+            <p v-if="supervisorApproval.notes" class="text-[9px] text-[#64748b] italic">{{ supervisorApproval.notes }}</p>
+          </template>
+          <template v-else>
+            <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Supervisor — Name, Signature &amp; Date</span>
+            <div class="border-b border-[#0f172a] mt-10"></div>
+          </template>
         </div>
-        <div class="flex flex-col gap-8">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Manager — Name, Signature &amp; Date</span>
-          <div class="border-b border-[#0f172a]"></div>
+
+        <!-- Manager -->
+        <div>
+          <template v-if="managerApproval">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[8px] font-bold uppercase tracking-widest" :style="{ color: approvalColor(managerApproval.approval_type_id) }">
+                {{ managerApproval.approval }}
+              </span>
+              <span class="text-[8px] text-[#64748b]">{{ managerApproval.stamp }}</span>
+            </div>
+            <div class="border-b pb-1 mb-2" :style="{ borderColor: approvalColor(managerApproval.approval_type_id) }">
+              <span class="font-semibold">{{ managerApproval.approved_by }}</span>
+            </div>
+            <p v-if="managerApproval.notes" class="text-[9px] text-[#64748b] italic">{{ managerApproval.notes }}</p>
+          </template>
+          <template v-else>
+            <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Manager — Name, Signature &amp; Date</span>
+            <div class="border-b border-[#0f172a] mt-10"></div>
+          </template>
         </div>
+
       </div>
 
     </div>

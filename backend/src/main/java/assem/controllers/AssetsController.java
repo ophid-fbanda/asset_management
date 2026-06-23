@@ -3,6 +3,7 @@ package assem.controllers;
 import assem.exchange.assets.Registration;
 import assem.exchange.commons.Result;
 import assem.exchange.profiles.ProfileExchange;
+import assem.repository.ApprovalsRepository;
 import assem.repository.AssetRepository;
 import assem.utils.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,9 @@ public class AssetsController {
 
     @Autowired
     private AssetRepository assetRepository;
+
+    @Autowired
+    private ApprovalsRepository approvalsRepository;
 
     private final ControllerCheck checks = ControllerCheck.instance();
 
@@ -61,10 +65,13 @@ public class AssetsController {
     public ResponseEntity<?> getRegistration(@PathVariable int id, HttpSession session) {
         if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
         Result<Map<String, Object>> details = assetRepository.getRegistrationDetails(id);
-        Result<List<Map<String, Object>>> list = assetRepository.getRegistrationAssets(id);
         if (!details.isOk()) return ResponseEntity.badRequest().body(details.getMessage());
+        Result<List<Map<String, Object>>> list = assetRepository.getRegistrationAssets(id);
         if (!list.isOk()) return ResponseEntity.badRequest().body(list.getMessage());
-        return ResponseEntity.ok(Map.of("details", details.getData(), "list", list.getData()));
+        int eventRegisterId = ((Number) details.getData().get("event_register_id")).intValue();
+        Result<List<Map<String, Object>>> approvals = approvalsRepository.getEventApprovals(eventRegisterId);
+        if (!approvals.isOk()) return ResponseEntity.badRequest().body(approvals.getMessage());
+        return ResponseEntity.ok(Map.of("details", details.getData(), "list", list.getData(), "approvals", approvals.getData()));
     }
 
     @PostMapping(value = "/registration", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

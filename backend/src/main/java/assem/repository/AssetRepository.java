@@ -219,6 +219,7 @@ public class AssetRepository {
     public Result<Map<String, Object>> getRegistrationDetails(int registrationId) {
         return base.fetchOne("""
                 SELECT
+                    asset_registrations.event_register_id,
                     asset_registrations.reference_attachment,
                     to_char(asset_registrations.reference_date, 'DD/MM/YYYY') AS reference_date,
                     asset_registrations.notes,
