@@ -1,9 +1,10 @@
 <script setup>
-import { computed, watch, onMounted } from 'vue'
-import { Column, DataTable } from 'primevue'
-import { arraySearch, objectHeaders } from '@/api/objectx'
+import { computed, reactive, watch, onMounted } from 'vue'
+import { Button, Column, DataTable, Tag } from 'primevue'
+import { arraySearch, objectHeaders, objectReset, objectSet } from '@/api/objectx'
 import { exportToExcel } from '@/api/exportx'
 import { dataFetchToCache, dataFromCache, dataSearchModel, dataClearSearch } from '@/api/datax'
+import FormRouter from '@/commons/FormRouter.vue'
 
 const station = dataFromCache('role/20')
 const search  = dataSearchModel()
@@ -15,7 +16,44 @@ const columns     = computed(() => objectHeaders(dataRecords.value ?? []))
 
 const filteredRecords = computed(() => arraySearch(dataRecords.value ?? [], search.value))
 
+const context = reactive({
+  dialog: null,
+  external: null,
+  collector: [],
+  options: [
+    { id: 'assetTemplate', name: 'Asset', table: 1 },
+  ],
+})
+
+const selectionMode = computed(() => Math.max(0, ...context.options.map((o) => o.table ?? 0)))
+
+const collect = () => objectSet(context, 'dialog', true)
+
+const toggleCollect = (row) => {
+  const index = context.collector.findIndex((r) => r.asset_id === row.asset_id)
+  if (index === -1) {
+    context.collector.push(row)
+    if (selectionMode.value === 1) collect()
+  } else {
+    context.collector.splice(index, 1)
+  }
+}
+
+const closeRouter = () => {
+  objectReset(context, ['options'])
+  context.collector = []
+}
+
 const exportExcel = () => exportToExcel(filteredRecords.value, 'station-assets', 'Station Assets')
+
+const conditionSeverity = (condition) => {
+  if (!condition) return 'secondary'
+  const c = condition.toLowerCase()
+  if (c.includes('good') || c.includes('excellent') || c.includes('new')) return 'success'
+  if (c.includes('fair') || c.includes('moderate')) return 'warn'
+  if (c.includes('poor') || c.includes('bad') || c.includes('damage')) return 'danger'
+  return 'secondary'
+}
 
 watch(dataKey, dataRefresh, { immediate: true })
 
@@ -57,11 +95,53 @@ onMounted(() => {
       class="flex min-h-0 flex-1 flex-col text-sm"
     >
       <Column
+        v-if="selectionMode"
+        :header-style='{ width: "2rem" }'
+        :exportable="false"
+      >
+        <template #body="{ data }">
+          <Button
+            icon="pi pi-folder"
+            severity="info"
+            size="small"
+            text
+            @click="toggleCollect(data)"
+          />
+        </template>
+      </Column>
+
+      <Column
         v-for="col in columns"
         :key="col.field"
         :field="col.field"
         :header="col.header"
-      />
+      >
+        <template #body="{ data }">
+          <Tag
+            v-if="col.field === 'disposed'"
+            :value="data.disposed ? 'Disposed' : 'Active'"
+            :severity="data.disposed ? 'danger' : 'success'"
+          />
+          <Tag
+            v-else-if="col.field === 'condition'"
+            :value="data.condition"
+            :severity="conditionSeverity(data.condition)"
+          />
+          <span
+            v-else-if="col.field === 'current_value'"
+            class="font-semibold text-[#384884]"
+          >{{ data.current_value }}</span>
+          <span v-else>{{ data[col.field] }}</span>
+        </template>
+      </Column>
     </DataTable>
+
+    <FormRouter
+      v-if="context.dialog"
+      :options="context.options"
+      :external="context.external"
+      :collected="context.collector"
+      @close="closeRouter"
+    />
   </div>
 </template>
