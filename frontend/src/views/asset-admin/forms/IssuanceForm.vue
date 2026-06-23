@@ -50,7 +50,7 @@ onMounted(() => {
     <div class="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto pr-2">
 
       <!-- Form fields -->
-      <section class="flex w-full sm:w-1/2 flex-col gap-4 self-center rounded-md border border-[#c5cce3] bg-white p-4">
+      <section class="flex w-full sm:w-1/2 flex-col gap-4 self-start rounded-md border border-[#c5cce3] bg-white p-4">
         <h3 class="text-sm font-semibold uppercase tracking-wide text-[#384884]">Issuance Details</h3>
 
         <div class="flex flex-col gap-4">

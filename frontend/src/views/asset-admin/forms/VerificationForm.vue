@@ -52,7 +52,7 @@ onMounted(() => {
   <div class="flex min-h-0 flex-1 flex-col gap-3">
     <h2 class="text-base font-semibold text-[#384884]">Verify Asset</h2>
 
-    <section class="flex w-full sm:w-1/2 flex-col gap-4 self-center rounded-md border border-[#c5cce3] bg-white p-4">
+    <section class="flex w-full sm:w-1/2 flex-col gap-4 self-start rounded-md border border-[#c5cce3] bg-white p-4">
       <h3 class="text-sm font-semibold uppercase tracking-wide text-[#384884]">
         {{ asset.asset_type }} — {{ asset.brand }} {{ asset.model }}
         <span class="ml-2 text-xs font-normal text-surface-500">{{ asset.asset_number ?? asset.serial_number }}</span>
