@@ -90,3 +90,41 @@ JOIN staff_profiles AS staff_profiles2 ON staff_profiles2.id = staff_profiles.ma
 ### Query Identifiers
 
 Every query exposes two identifiers: `entity_id` for the primary record being listed, and `event_id` for its related `event_register` entry. These give the frontend uniform keys for row actions and approvals, and because both end in `_id` they are naturally excluded from generated table headers.
+
+---
+
+## Backend Conventions
+
+### Exchange DTOs
+
+Exchange DTOs live under `exchange/` and are named `<Domain>Exchange` (parent) and `<Domain>ItemExchange` (child rows), e.g. `TransferExchange` / `TransferItemExchange`.
+
+**Custom setters for all non-string fields.**  
+Every field that is not a `String` must suppress the Lombok setter (`@Setter(AccessLevel.NONE)`) and provide a hand-written setter that accepts a `String` and parses it. This is because form POST payloads arrive as raw strings — even when `dataSend` is used — so Spring cannot coerce them automatically.
+
+```java
+@Setter(AccessLevel.NONE)
+Integer receivingStationId;
+
+public void setReceivingStationId(String value) {
+    try { this.receivingStationId = Integer.parseInt(value); }
+    catch (Exception e) { this.receivingStationId = null; }
+}
+```
+
+**Exceptions — server-side internals** do not need custom setters because they are never bound from the request:
+
+- `eventId` (inherited from `ExchangeBase`) — set server-side from the session or a DB sequence.
+- `eventAdminId` (inherited from `ExchangeBase`) — set server-side from the session profile.
+- Any field documented as *"Set server-side …"* in its own comment.
+
+**Nested object lists** (e.g. `List<TransferItemExchange>`) arrive as a JSON string. Suppress the Lombok setter and parse with `TypeConvertor`:
+
+```java
+@Setter(AccessLevel.NONE)
+List<TransferItemExchange> items;
+
+public void setItems(String value) {
+    this.items = TypeConvertor.instance().readJson(value, new TypeReference<List<TransferItemExchange>>() {});
+}
+```
