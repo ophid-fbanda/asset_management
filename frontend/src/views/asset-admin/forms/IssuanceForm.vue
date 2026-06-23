@@ -1,7 +1,7 @@
 <script setup>
-import { computed, onMounted, reactive } from 'vue'
-import { Column, DataTable, Select, Textarea } from 'primevue'
-import { objectHeaders, objectComplete, objectResetSet } from '@/api/objectx'
+import { onMounted, reactive } from 'vue'
+import { Select, Textarea } from 'primevue'
+import { objectComplete, objectResetSet } from '@/api/objectx'
 import { dataFetchToCache, dataFromCache, dataSend } from '@/api/datax'
 import Feedback from '@/commons/Feedback.vue'
 
@@ -18,8 +18,6 @@ const form = reactive({
 })
 
 const ui = reactive({ busy: null, error: null, success: null })
-
-const assetColumns = computed(() => objectHeaders(props.collected))
 
 const submitForm = async () => {
   if (!objectComplete(form)) {
@@ -88,15 +86,6 @@ onMounted(() => {
         </div>
       </section>
 
-      <!-- Selected assets -->
-      <section class="flex flex-col gap-3 rounded-md border border-[#c5cce3] bg-white p-4">
-        <h3 class="text-sm font-semibold uppercase tracking-wide text-[#384884]">
-          Assets to Issue ({{ collected.length }})
-        </h3>
-        <DataTable :value="collected" size="small" striped-rows show-gridlines class="text-sm">
-          <Column v-for="col in assetColumns" :key="col.field" :field="col.field" :header="col.header" />
-        </DataTable>
-      </section>
     </div>
 
     <div class="flex h-14 shrink-0 items-center border-t border-[#c5cce3] px-3">

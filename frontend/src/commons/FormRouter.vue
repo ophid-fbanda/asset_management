@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onMounted, reactive } from 'vue'
-import { Dialog, Select, Textarea, useToast } from 'primevue'
-import { objectSet } from '@/api/objectx'
+import { Column, DataTable, Dialog, Select, Textarea, useToast } from 'primevue'
+import { objectHeaders, objectSet } from '@/api/objectx'
 import { dataFetchToCache, dataFromCache, dataSend } from '@/api/datax'
 import RegistrationForm from '@/views/asset-admin/forms/RegistrationForm.vue'
 import TransferForm from '@/views/asset-admin/forms/TransferForm.vue'
@@ -40,6 +40,9 @@ const visibleOptions = computed(() => {
   if (count <= 1) return props.options
   return props.options.filter((o) => (o.table ?? 1) >= 2)
 })
+
+// Columns for the always-visible collected items table
+const collectedColumns = computed(() => objectHeaders(props.collected ?? []))
 
 // The currently selected option object
 const selectedOption = computed(() => props.options.find((o) => o.id === context.formId) ?? null)
@@ -175,14 +178,32 @@ onMounted(() => {
       </aside>
 
       <aside class="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
-        <div class="flex min-h-0 flex-1 flex-col items-center overflow-auto bg-slate-100 p-6">
-          <RegistrationForm     v-if="context.formId === 'regForm'"          :collected="collected" />
-          <TransferForm         v-else-if="context.formId === 'transferForm'"    :collected="collected" />
-          <IssuanceForm         v-else-if="context.formId === 'issuanceForm'"    :collected="collected" />
-          <VerificationForm     v-else-if="context.formId === 'verificationForm'" :collected="collected" />
-          <EvaluationForm       v-else-if="context.formId === 'evaluationForm'"  :collected="collected" />
-          <PlacementForm        v-else-if="context.formId === 'placementForm'"   :collected="collected" />
-          <RegistrationTemplate v-else-if="context.formId === 'regTemplate'"    :collected="collected" />
+        <div class="flex min-h-0 flex-1 flex-col overflow-auto bg-slate-100 p-6 gap-4">
+          <!-- Selected form / template -->
+          <div v-if="context.formId">
+            <RegistrationForm     v-if="context.formId === 'regForm'"           :collected="collected" />
+            <TransferForm         v-else-if="context.formId === 'transferForm'"     :collected="collected" />
+            <IssuanceForm         v-else-if="context.formId === 'issuanceForm'"     :collected="collected" />
+            <VerificationForm     v-else-if="context.formId === 'verificationForm'" :collected="collected" />
+            <EvaluationForm       v-else-if="context.formId === 'evaluationForm'"   :collected="collected" />
+            <PlacementForm        v-else-if="context.formId === 'placementForm'"    :collected="collected" />
+            <RegistrationTemplate v-else-if="context.formId === 'regTemplate'"     :collected="collected" />
+          </div>
+
+          <!-- Always-visible collected items table -->
+          <div v-if="collected.length" class="flex flex-col gap-2 rounded-md border border-[#c5cce3] bg-white p-4">
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-[#384884]">
+              Collected ({{ collected.length }})
+            </h3>
+            <DataTable :value="collected" size="small" striped-rows show-gridlines class="text-sm">
+              <Column
+                v-for="col in collectedColumns"
+                :key="col.field"
+                :field="col.field"
+                :header="col.header"
+              />
+            </DataTable>
+          </div>
         </div>
 
         <div v-if="showApprovalFooter" class="shrink-0 border-t border-slate-200 bg-white px-6 py-4 flex items-end gap-4">
