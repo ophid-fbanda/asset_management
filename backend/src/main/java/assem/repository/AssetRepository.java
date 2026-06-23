@@ -338,7 +338,9 @@ public class AssetRepository {
     // should block a new event of the same type when the result is true.
     // -------------------------------------------------------------------------
 
-    private static final List<Integer> MANAGEMENT_FINAL = List.of(50, 51);
+    // Approval type IDs that close an event — the asset is free to be used again.
+    // 41 = Supervisory Rejected, 50 = Management Approved, 51 = Management Rejected.
+    // Only 40 (Supervisory Approved, awaiting management) keeps the asset locked.
 
     // Shared EXISTS runner for the five pending-check queries below.
     private Result<Boolean> hasPendingEvent(String sql, List<Integer> assetIds) {
@@ -362,7 +364,7 @@ public class AssetRepository {
                         LIMIT 1
                     ) AS t1 ON TRUE
                     WHERE asset_transfer_items.registered_asset_id IN (:assetIds)
-                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (50, 51))
+                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (41, 50, 51))
                 )
                 """, assetIds);
     }
@@ -380,7 +382,7 @@ public class AssetRepository {
                         LIMIT 1
                     ) AS t1 ON TRUE
                     WHERE asset_issuance_items.registered_asset_id IN (:assetIds)
-                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (50, 51))
+                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (41, 50, 51))
                 )
                 """, assetIds);
     }
@@ -397,7 +399,7 @@ public class AssetRepository {
                         LIMIT 1
                     ) AS t1 ON TRUE
                     WHERE asset_verifications.registered_asset_id IN (:assetIds)
-                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (50, 51))
+                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (41, 50, 51))
                 )
                 """, assetIds);
     }
@@ -414,7 +416,7 @@ public class AssetRepository {
                         LIMIT 1
                     ) AS t1 ON TRUE
                     WHERE asset_evaluations.registered_asset_id IN (:assetIds)
-                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (50, 51))
+                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (41, 50, 51))
                 )
                 """, assetIds);
     }
@@ -431,7 +433,7 @@ public class AssetRepository {
                         LIMIT 1
                     ) AS t1 ON TRUE
                     WHERE asset_placements.registered_asset_id IN (:assetIds)
-                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (50, 51))
+                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (41, 50, 51))
                 )
                 """, assetIds);
     }
@@ -448,7 +450,7 @@ public class AssetRepository {
                         LIMIT 1
                     ) AS t1 ON TRUE
                     WHERE asset_disposals.registered_asset_id IN (:assetIds)
-                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (50, 51))
+                    AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (41, 50, 51))
                 )
                 """, assetIds);
     }
