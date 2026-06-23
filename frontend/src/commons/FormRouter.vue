@@ -1,59 +1,70 @@
 <script setup>
 import { computed, onMounted, reactive } from 'vue'
-import { Dialog } from 'primevue'
-import { objectSet } from '@/api/objectx'
+import { Dialog, Select, Textarea } from 'primevue'
+import { objectSet, objectReset } from '@/api/objectx'
+import { dataFetchToCache, dataFromCache, dataSend } from '@/api/datax'
 import RegistrationForm from '@/views/asset-admin/forms/RegistrationForm.vue'
 import RegistrationTemplate from '@/views/templates/RegistrationTemplate.vue'
 
 const props = defineProps({
-  header: {
-    type: String,
-    default: 'Form',
-  },
-  options: {
-    type: Array,
-    default: () => [],
-  },
-  external: {
-    type: String,
-    default: null,
-  },
-  collected: {
-    type: Array,
-    default: () => [],
-  },
+  header: { type: String, default: 'Form' },
+  options: { type: Array, default: () => [] },
+  external: { type: String, default: null },
+  collected: { type: Array, default: () => [] },
 })
 
 const emit = defineEmits(['close'])
 
-const ui = reactive({
-  leftToggled: null,
-})
-
-const context = reactive({
-  formId: null,
-})
+const ui = reactive({ leftToggled: null, busy: null, error: null, success: null })
+const context = reactive({ formId: null })
+const form = reactive({ approvalTypeId: null, notes: '' })
 
 const leftCollapse = computed(
-  () =>
-    ui.leftToggled ??
-    (!props.options?.length || props.options.length <= 1),
+  () => ui.leftToggled ?? (!props.options?.length || props.options.length <= 1),
+)
+const showMenu = computed(() => !props.external && (props.options?.length ?? 0) > 0)
+const menuOpen = computed(() => !leftCollapse.value && showMenu.value)
+const toggleLeft = () => { ui.leftToggled = !leftCollapse.value }
+const selectForm = (id) => objectSet(context, 'formId', id)
+
+// The currently selected option object
+const selectedOption = computed(() => props.options.find((o) => o.id === context.formId) ?? null)
+
+// The entity driving the document (first collected row)
+const entity = computed(() => props.collected[0] ?? null)
+
+// Resolve approval type choices from meta, filtered to the option's choice IDs
+const allApprovalTypes = computed(() => dataFromCache('meta/approval_types').value ?? [])
+const approvalChoices = computed(() => {
+  const ids = selectedOption.value?.choices ?? []
+  return allApprovalTypes.value.filter((t) => ids.includes(t.id))
+})
+
+// Show the approval footer only when the entity's current approval state matches the option target
+const showApprovalFooter = computed(() =>
+  selectedOption.value?.target != null &&
+  entity.value?.latest_approval_type_id === selectedOption.value.target
 )
 
-// An external form takes over: mount it alone, hide the options menu.
-const showMenu = computed(() => !props.external && (props.options?.length ?? 0) > 0)
-
-const menuOpen = computed(() => !leftCollapse.value && showMenu.value)
-
-const toggleLeft = () => {
-  ui.leftToggled = !leftCollapse.value
-}
-
-const selectForm = (id) => {
-  objectSet(context, 'formId', id)
+const submitApproval = async () => {
+  objectSet(ui, 'busy', true)
+  const result = await dataSend('approvals/approve', {
+    eventId: entity.value?.event_id,
+    approvalTypeId: form.approvalTypeId,
+    notes: form.notes,
+  })
+  if (result.status === 200) {
+    objectReset(form)
+    objectSet(ui, 'success', 'Approval submitted.')
+    emit('close')
+  } else {
+    objectSet(ui, 'error', result.data)
+  }
+  objectSet(ui, 'busy', null)
 }
 
 onMounted(() => {
+  dataFetchToCache('meta/approval_types')
   if (props.external) {
     selectForm(props.external)
   } else if (props.options?.length === 1) {
@@ -153,9 +164,51 @@ onMounted(() => {
         </div>
       </aside>
 
-      <aside class="flex min-h-0 min-w-0 flex-1 flex-col overflow-auto bg-slate-100 p-6 items-center">
-        <RegistrationForm v-if="context.formId === 'regForm'" :collected="collected" />
-        <RegistrationTemplate v-else-if="context.formId === 'regTemplate'" :collected="collected" />
+      <aside class="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
+        <!-- Document area -->
+        <div class="flex min-h-0 flex-1 flex-col items-center overflow-auto bg-slate-100 p-6">
+          <RegistrationForm v-if="context.formId === 'regForm'" :collected="collected" />
+          <RegistrationTemplate v-else-if="context.formId === 'regTemplate'" :collected="collected" />
+        </div>
+
+        <!-- Approval footer -->
+        <div
+          v-if="showApprovalFooter"
+          class="shrink-0 border-t border-slate-200 bg-white px-6 py-4 flex items-end gap-4"
+        >
+          <div class="flex flex-col gap-1">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Decision</span>
+            <Select
+              v-model="form.approvalTypeId"
+              :options="approvalChoices"
+              option-label="name"
+              option-value="id"
+              placeholder="Select decision"
+              size="small"
+              class="w-52"
+            />
+          </div>
+          <div class="flex flex-1 flex-col gap-1">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Notes <span class="text-red-500">*</span></span>
+            <Textarea
+              v-model="form.notes"
+              rows="1"
+              auto-resize
+              placeholder="Official justification (required)"
+              class="!text-sm"
+            />
+          </div>
+          <button
+            type="button"
+            :disabled="!form.approvalTypeId || !form.notes || ui.busy"
+            class="flex shrink-0 cursor-pointer items-center gap-2 rounded-sm border border-[#384884] bg-[#384884] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#5b6aa1] disabled:cursor-not-allowed disabled:opacity-40"
+            @click="submitApproval"
+          >
+            <i class="pi pi-check text-sm" />
+            <span>{{ ui.busy ? 'Submitting…' : 'Submit' }}</span>
+          </button>
+          <span v-if="ui.error" class="text-xs text-red-500">{{ ui.error }}</span>
+        </div>
       </aside>
     </div>
   </Dialog>
