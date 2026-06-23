@@ -1,5 +1,5 @@
 <script setup>
-import { computed, watch } from 'vue'
+import { computed, onMounted } from 'vue'
 import { dataFetchToCache, dataFromCache } from '@/api/datax'
 
 const props = defineProps({
@@ -15,7 +15,9 @@ const dataKey = computed(() => {
 
 const assets = computed(() => dataKey.value ? (dataFromCache(dataKey.value).value ?? []) : [])
 
-watch(dataKey, (key) => { if (key) dataFetchToCache(key) }, { immediate: true })
+onMounted(() => {
+  if (dataKey.value) dataFetchToCache(dataKey.value)
+})
 </script>
 
 <template>

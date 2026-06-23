@@ -1,7 +1,7 @@
 package assem.controllers;
 
 import assem.exchange.commons.Result;
-import assem.repository.ManagementRepository;
+import assem.repository.ApprovalsRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class ApprovalsController {
 
     @Autowired
-    private ManagementRepository managementRepository;
+    private ApprovalsRepository managementRepository;
 
     private final ControllerCheck checks = ControllerCheck.instance();
 

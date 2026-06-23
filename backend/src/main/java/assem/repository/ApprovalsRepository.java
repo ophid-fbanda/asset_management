@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class ManagementRepository {
+public class ApprovalsRepository {
 
     @Autowired
     private BaseRepo base;
