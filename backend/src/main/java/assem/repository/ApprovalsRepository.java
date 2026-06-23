@@ -22,7 +22,8 @@ public class ApprovalsRepository {
                 SELECT events_view.event_type,
                        events_view.entity_id,
                        events_view.event_id,
-                       to_char(events_view.event_date, 'DD/MM/YYYY') AS event_date,
+                       to_char(events_view.event_date, 'DD/MM/YYYY')      AS event_date,
+                       to_char(events_view.stamp, 'DD/MM/YYYY HH24:MI')   AS captured,
                        events_view.station_name,
                        events_view.admin_name,
                        events_view.details
