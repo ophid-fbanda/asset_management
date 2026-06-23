@@ -33,6 +33,14 @@ const menuOpen = computed(() => !leftCollapse.value && showMenu.value)
 const toggleLeft = () => { ui.leftToggled = !leftCollapse.value }
 const selectForm = (id) => objectSet(context, 'formId', id)
 
+// Options visible in the menu: if more than 1 item is collected, only show multi-asset
+// options (table >= 2). Single-asset options (table: 1) don't make sense for a batch.
+const visibleOptions = computed(() => {
+  const count = props.collected?.length ?? 0
+  if (count <= 1) return props.options
+  return props.options.filter((o) => (o.table ?? 1) >= 2)
+})
+
 // The currently selected option object
 const selectedOption = computed(() => props.options.find((o) => o.id === context.formId) ?? null)
 
@@ -69,8 +77,8 @@ onMounted(() => {
   dataFetchToCache('meta/approval_types')
   if (props.external) {
     selectForm(props.external)
-  } else if (props.options?.length === 1) {
-    selectForm(props.options[0].id)
+  } else if (visibleOptions.value?.length === 1) {
+    selectForm(visibleOptions.value[0].id)
   }
 })
 </script>
@@ -140,7 +148,7 @@ onMounted(() => {
 
         <div v-if="menuOpen" class="flex min-h-0 flex-1 flex-col gap-1 overflow-auto px-2 pt-4">
           <button
-            v-for="option in options"
+            v-for="option in visibleOptions"
             :key="option.id"
             type="button"
             class="group flex w-full cursor-pointer items-center gap-2.5 rounded-md border px-3 py-2.5 text-left text-sm font-medium transition-colors"
