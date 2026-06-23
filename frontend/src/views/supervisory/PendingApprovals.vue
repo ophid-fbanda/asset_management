@@ -43,6 +43,7 @@ const toggleCollect = (row) => {
 const closeRouter = () => {
   objectReset(context, ['options'])
   context.collector = []
+  dataRefresh()
 }
 
 const exportExcel = () => {
