@@ -27,7 +27,7 @@ public class ApprovalsRepository {
                        events_view.admin_name
                 FROM events_view
                 WHERE events_view.station_id = :stationId
-                  AND events_view.latest_approval IS NULL
+                  AND events_view.latest_approval_type_id = 0
                 ORDER BY events_view.stamp DESC
                 """, Map.of("stationId", stationId));
     }
