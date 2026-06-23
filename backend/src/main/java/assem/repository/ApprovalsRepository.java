@@ -89,6 +89,23 @@ public class ApprovalsRepository {
                 """, Map.of("stationId", stationId, "approvalTypeId", MANAGEMENT_APPROVAL_TYPE_ID));
     }
 
+    // Insert (or update on conflict) an approval record for an event.
+    public Result<Boolean> insertApproval(int eventId, int approvalTypeId, String notes, int adminId) {
+        return base.execute("""
+                INSERT INTO event_approvals (event_register_id, approval_type_id, approval_notes, event_admin_id)
+                VALUES (:eventId, :approvalTypeId, :notes, :adminId)
+                ON CONFLICT (event_register_id, approval_type_id) DO UPDATE
+                  SET approval_notes = EXCLUDED.approval_notes,
+                      event_admin_id = EXCLUDED.event_admin_id,
+                      stamp          = CURRENT_TIMESTAMP
+                """, Map.of(
+                "eventId", eventId,
+                "approvalTypeId", approvalTypeId,
+                "notes", notes == null ? "" : notes,
+                "adminId", adminId
+        ));
+    }
+
     // All approval records for a single event, ordered oldest to newest.
     public Result<List<Map<String, Object>>> getEventApprovals(int eventId) {
         return base.fetch("""

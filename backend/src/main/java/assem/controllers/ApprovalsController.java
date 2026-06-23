@@ -1,14 +1,12 @@
 package assem.controllers;
 
 import assem.exchange.commons.Result;
+import assem.exchange.profiles.ProfileExchange;
 import assem.repository.ApprovalsRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -55,5 +53,16 @@ public class ApprovalsController {
         if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
         Result<List<Map<String, Object>>> result = approvalsRepository.getEventApprovals(eventId);
         return result.isOk() ? ResponseEntity.ok(result.getData()) : ResponseEntity.badRequest().body(result.getMessage());
+    }
+
+    @PostMapping("/approve")
+    public ResponseEntity<?> approve(@RequestBody Map<String, Object> body, HttpSession session) {
+        if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
+        ProfileExchange profile = checks.getProfile(session);
+        int eventId = ((Number) body.get("eventId")).intValue();
+        int approvalTypeId = ((Number) body.get("approvalTypeId")).intValue();
+        String notes = (String) body.getOrDefault("notes", "");
+        Result<Boolean> result = approvalsRepository.insertApproval(eventId, approvalTypeId, notes, profile.getProfileId());
+        return result.isOk() ? ResponseEntity.ok(true) : ResponseEntity.badRequest().body(result.getMessage());
     }
 }
