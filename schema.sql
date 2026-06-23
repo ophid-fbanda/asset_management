@@ -575,6 +575,8 @@ CREATE VIEW view_assets AS
                  reg_condition.name)                                                AS condition,
         COALESCE(latest_value.evaluated_value,
                  registered_assets.acquisition_value)                              AS current_value,
+        COALESCE(latest_custodian.staff_id,
+                 asset_registrations.event_admin_id)                               AS custodian_id,
         COALESCE(latest_custodian.full_name,
                  reg_admin.full_name)                                               AS custodian,
         COALESCE(latest_location.receiving_station_id,
@@ -646,7 +648,8 @@ CREATE VIEW view_assets AS
 
     -- Current custodian: latest management-approved issuance recipient
     LEFT JOIN LATERAL (
-        SELECT staff_profiles.full_name
+        SELECT staff_profiles.id   AS staff_id,
+               staff_profiles.full_name
         FROM asset_issuance_items
         JOIN asset_issuances
             ON asset_issuances.id                = asset_issuance_items.asset_issuance_id
