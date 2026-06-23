@@ -342,12 +342,6 @@ public class AssetRepository {
     // 41 = Supervisory Rejected, 50 = Management Approved, 51 = Management Rejected.
     // Only 40 (Supervisory Approved, awaiting management) keeps the asset locked.
 
-    // Shared runner: returns the first blocking asset row (asset_number, serial_number)
-    // or null when none of the supplied IDs are locked. Stops at the first hit via LIMIT 1.
-    private Result<Map<String, Object>> pendingAsset(String sql, List<Integer> assetIds) {
-        return base.fetchOne(sql, Map.of("assetIds", assetIds));
-    }
-
     // Builds a human-readable reference from a pending-check result row.
     // Prefers asset_number; falls back to serial_number.
     public static String pendingRef(Map<String, Object> row) {
@@ -358,7 +352,7 @@ public class AssetRepository {
     }
 
     public Result<Map<String, Object>> hasPendingTransfer(List<Integer> assetIds) {
-        return pendingAsset("""
+        return base.fetchOne("""
                 SELECT registered_assets.asset_number, registered_assets.serial_number
                 FROM asset_transfer_items
                 JOIN asset_transfers    ON asset_transfers.id    = asset_transfer_items.asset_transfer_id
@@ -377,7 +371,7 @@ public class AssetRepository {
     }
 
     public Result<Map<String, Object>> hasPendingIssuance(List<Integer> assetIds) {
-        return pendingAsset("""
+        return base.fetchOne("""
                 SELECT registered_assets.asset_number, registered_assets.serial_number
                 FROM asset_issuance_items
                 JOIN asset_issuances    ON asset_issuances.id    = asset_issuance_items.asset_issuance_id
@@ -396,7 +390,7 @@ public class AssetRepository {
     }
 
     public Result<Map<String, Object>> hasPendingVerification(List<Integer> assetIds) {
-        return pendingAsset("""
+        return base.fetchOne("""
                 SELECT registered_assets.asset_number, registered_assets.serial_number
                 FROM asset_verifications
                 JOIN registered_assets  ON registered_assets.id  = asset_verifications.registered_asset_id
@@ -414,7 +408,7 @@ public class AssetRepository {
     }
 
     public Result<Map<String, Object>> hasPendingEvaluation(List<Integer> assetIds) {
-        return pendingAsset("""
+        return base.fetchOne("""
                 SELECT registered_assets.asset_number, registered_assets.serial_number
                 FROM asset_evaluations
                 JOIN registered_assets  ON registered_assets.id  = asset_evaluations.registered_asset_id
@@ -432,7 +426,7 @@ public class AssetRepository {
     }
 
     public Result<Map<String, Object>> hasPendingPlacement(List<Integer> assetIds) {
-        return pendingAsset("""
+        return base.fetchOne("""
                 SELECT registered_assets.asset_number, registered_assets.serial_number
                 FROM asset_placements
                 JOIN registered_assets  ON registered_assets.id  = asset_placements.registered_asset_id
@@ -450,7 +444,7 @@ public class AssetRepository {
     }
 
     public Result<Map<String, Object>> hasPendingDisposal(List<Integer> assetIds) {
-        return pendingAsset("""
+        return base.fetchOne("""
                 SELECT registered_assets.asset_number, registered_assets.serial_number
                 FROM asset_disposals
                 JOIN registered_assets  ON registered_assets.id  = asset_disposals.registered_asset_id
