@@ -22,16 +22,16 @@ onMounted(() => {
 <template>
   <div class="w-[297mm] min-h-[210mm] bg-white shadow-xl text-[#0f172a] text-[11px] overflow-hidden">
 
-    <!-- Coloured header band -->
-    <div class="bg-[#384884] px-[18mm] py-5 flex items-center justify-between gap-6">
+    <!-- Header -->
+    <div class="px-[18mm] pt-[10mm] pb-4 border-b-2 border-[#384884] flex items-center justify-between gap-6">
       <img :src="logo" alt="Logo" class="h-12 w-auto object-contain" />
-      <div class="flex flex-col items-center text-center text-white">
-        <span class="text-[11px] font-bold uppercase tracking-[0.18em] opacity-75">Asset Registration Record</span>
-        <span class="text-[9px] uppercase tracking-widest opacity-50 mt-0.5">Assets Management System</span>
+      <div class="flex flex-col items-center text-center">
+        <span class="text-[13px] font-black uppercase tracking-tight text-[#384884]">Asset Registration Record</span>
+        <span class="text-[9px] uppercase tracking-widest text-[#64748b] mt-0.5">Assets Management System</span>
       </div>
-      <div class="bg-white/10 border border-white/20 rounded px-4 py-2 text-right text-white">
-        <span class="text-[8px] font-bold uppercase tracking-widest opacity-60 block">Doc Ref</span>
-        <span class="text-base font-mono font-black">RG-{{ entity.entity_id }}</span>
+      <div class="border border-[#384884] px-4 py-2 text-right">
+        <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884] block">Doc Ref</span>
+        <span class="text-sm font-mono font-black text-[#0f172a]">RG-{{ entity.entity_id }}</span>
       </div>
     </div>
 
@@ -98,24 +98,20 @@ onMounted(() => {
         </div>
         <table v-if="assets.length" class="w-full border-collapse text-[10px]">
           <thead>
-            <tr class="bg-[#384884] text-white">
+            <tr>
               <th
                 v-for="col in Object.keys(assets[0])"
                 :key="col"
-                class="px-2 py-1.5 text-left font-bold uppercase text-[9px] tracking-wide"
+                class="border border-[#384884] bg-[#f1f4fd] px-2 py-1.5 text-left font-bold uppercase text-[9px] tracking-wide text-[#384884]"
               >{{ col.replace(/_/g, ' ') }}</th>
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="(asset, i) in assets"
-              :key="i"
-              :class="i % 2 === 0 ? 'bg-white' : 'bg-[#f1f4fd]'"
-            >
+            <tr v-for="(asset, i) in assets" :key="i">
               <td
                 v-for="col in Object.keys(assets[0])"
                 :key="col"
-                class="border-b border-[#e2e8f0] px-2 py-1"
+                class="border border-[#cbd5e1] px-2 py-1"
               >{{ asset[col] }}</td>
             </tr>
           </tbody>
