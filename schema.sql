@@ -582,7 +582,15 @@ CREATE VIEW view_assets AS
         COALESCE(latest_location.receiving_station_id,
                  asset_registrations.event_station_id)                             AS station_id,
         COALESCE(latest_location.station_name,
-                 reg_station.station_name)                                         AS station_name
+                 reg_station.station_name)                                         AS station_name,
+        EXISTS (
+            SELECT 1
+            FROM asset_disposals
+            JOIN event_approvals
+                ON event_approvals.event_register_id = asset_disposals.event_register_id
+               AND event_approvals.approval_type_id  = 50
+            WHERE asset_disposals.registered_asset_id = registered_assets.id
+        )                                                                           AS disposed
     FROM registered_assets
     JOIN asset_registrations
         ON asset_registrations.id      = registered_assets.asset_registration_id
