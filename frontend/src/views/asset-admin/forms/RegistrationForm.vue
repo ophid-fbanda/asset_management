@@ -10,7 +10,7 @@ import {
   objectResetSet,
 } from '@/api/objectx'
 import { dataFetchToCache, dataFromCache, dataUnique, dataUpload } from '@/api/datax'
-import Feedback from '@/commons/Feedback.vue'
+import FeedBack from '@/commons/FeedBack.vue'
 
 defineProps({
   collected: {
@@ -436,7 +436,7 @@ onMounted(() => {
 
     <div class="flex h-14 shrink-0 items-center border-t border-[#c5cce3] px-3">
       <div class="w-full">
-        <Feedback :ui="ui" />
+        <FeedBack :ui="ui" />
       </div>
     </div>
   </div>

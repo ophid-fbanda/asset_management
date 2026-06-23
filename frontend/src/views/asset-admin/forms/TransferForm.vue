@@ -3,7 +3,7 @@ import { computed, onMounted, reactive } from 'vue'
 import { Select, Textarea } from 'primevue'
 import { objectComplete, objectResetSet } from '@/api/objectx'
 import { dataFetchToCache, dataFromCache, dataSend } from '@/api/datax'
-import Feedback from '@/commons/Feedback.vue'
+import FeedBack from '@/commons/FeedBack.vue'
 
 const props = defineProps({
   collected: { type: Array, default: () => [] },
@@ -94,7 +94,7 @@ onMounted(() => {
     </div>
 
     <div class="flex h-14 shrink-0 items-center border-t border-[#c5cce3] px-3">
-      <Feedback :ui="ui" />
+      <FeedBack :ui="ui" />
     </div>
   </div>
 </template>
