@@ -21,16 +21,12 @@ const props = defineProps({
 const emit = defineEmits(['close'])
 
 const toast = useToast()
-const ui = reactive({ leftToggled: null, busy: null, error: null })
+const ui = reactive({ busy: null, error: null })
 const context = reactive({ formId: null })
 const form = reactive({ eventId: null, approvalTypeId: null, notes: '' })
 
-const leftCollapse = computed(
-  () => ui.leftToggled ?? (!props.options?.length || props.options.length <= 1),
-)
 const showMenu = computed(() => !props.external && (props.options?.length ?? 0) > 0)
-const menuOpen = computed(() => !leftCollapse.value && showMenu.value)
-const toggleLeft = () => { ui.leftToggled = !leftCollapse.value }
+const menuOpen = computed(() => showMenu.value)
 const selectForm = (id) => objectSet(context, 'formId', id)
 
 // Options visible in the menu: if more than 1 item is collected, only show multi-asset
@@ -126,30 +122,10 @@ onMounted(() => {
       class="flex h-[min(85vh,42rem)] min-h-[32rem] w-full bg-slate-50 [.p-dialog-maximized_&]:h-[calc(100dvh-2.5rem)] [.p-dialog-maximized_&]:min-h-0"
     >
       <aside
-        class="flex min-w-0 flex-col overflow-hidden border-r border-slate-200 bg-white transition-all duration-200 ease-in-out"
-        :class="leftCollapse ? 'w-0 flex-[0_0_0] border-r-0 opacity-0' : 'flex-1 opacity-100'"
-      >
-        <div class="min-h-0 flex-1 overflow-auto p-4 sm:p-5">
-          <slot name="left" />
-        </div>
-      </aside>
-
-      <aside
         class="flex shrink-0 flex-col border-r border-slate-200 bg-slate-100 py-3 transition-all duration-200 ease-in-out"
         :class="menuOpen ? 'w-44' : 'w-12'"
       >
-        <div class="flex justify-start px-2" :class="menuOpen && 'border-b border-[#c5cce3] pb-3'">
-          <button
-            type="button"
-            class="flex size-8 cursor-pointer items-center justify-center rounded-md border border-slate-300 bg-white text-slate-600 transition hover:border-slate-400 hover:bg-slate-200 hover:text-slate-800"
-            :aria-label="leftCollapse ? 'Expand left panel' : 'Collapse left panel'"
-            @click="toggleLeft"
-          >
-            <i class="pi text-sm" :class="leftCollapse ? 'pi-angle-right' : 'pi-angle-left'" />
-          </button>
-        </div>
-
-        <div v-if="menuOpen" class="flex min-h-0 flex-1 flex-col gap-1 overflow-auto px-2 pt-4">
+        <div v-if="menuOpen" class="flex min-h-0 flex-1 flex-col gap-1 overflow-auto px-2 pt-3">
           <button
             v-for="option in visibleOptions"
             :key="option.id"
