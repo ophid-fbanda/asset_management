@@ -217,7 +217,7 @@ public class AssetRepository {
                 """, Map.of("id", assetId));
     }
 
-    // All assets currently at a station — either registered there and never
+    // All assets currently at a station ? either registered there and never
     // successfully transferred out, or last approved transfer was into it.
     public Result<List<Map<String, Object>>> getStationAssets(int stationId) {
         return base.fetch("""
@@ -266,12 +266,9 @@ public class AssetRepository {
                 .map(TransferItemExchange::getRegisteredAssetId)
                 .toList();
 
-        Result<Map<String, Object>> pending = hasPendingTransfer(assetIds);
+        Result<String> pending = hasPendingTransfer(assetIds);
         if (!pending.isOk()) return Result.error("Could not check for pending transfers.");
-        if (pending.getData() != null) {
-            Object ref = pending.getData().getOrDefault("asset_number", pending.getData().get("serial_number"));
-            return Result.error(ref + " already has a pending transfer.");
-        }
+        if (pending.getData() != null) return Result.error(pending.getData() + " already has a pending transfer.");
 
         Integer eventId = base.createEventId();
         if (eventId == null) {
@@ -330,128 +327,95 @@ public class AssetRepository {
         return Result.ok(true);
     }
 
+
     // -------------------------------------------------------------------------
     // Pending event guards
     //
-    // Each method returns true when one or more of the supplied asset IDs are
-    // already locked inside an in-flight event of that type (i.e. no management
-    // decision — approval_type_id 50/51 — has been recorded yet). Callers
-    // should block a new event of the same type when the result is true.
+    // hasPendingTransfer / hasPendingIssuance use pendingBatch (asset is in an
+    // items table that joins to a parent for event_register_id).
+    // The remaining four use pendingDirect (registered_asset_id and
+    // event_register_id live on the same event table row).
+    // Both helpers return null (asset free) or a "Brand Type (ref)" string for
+    // the first locked asset found. LIMIT 1 stops the scan immediately.
+    // Closed states 41/50/51 free the asset; only 40 keeps it locked.
+    // Table names are internal constants ? string interpolation is safe.
     // -------------------------------------------------------------------------
 
-    // Approval type IDs that close an event — the asset is free to be used again.
-    // 41 = Supervisory Rejected, 50 = Management Approved, 51 = Management Rejected.
-    // Only 40 (Supervisory Approved, awaiting management) keeps the asset locked.
-
-
-    public Result<Map<String, Object>> hasPendingTransfer(List<Integer> assetIds) {
-        return base.fetchOne("""
-                SELECT registered_assets.asset_number, registered_assets.serial_number
-                FROM asset_transfer_items
-                JOIN asset_transfers    ON asset_transfers.id    = asset_transfer_items.asset_transfer_id
-                JOIN registered_assets  ON registered_assets.id  = asset_transfer_items.registered_asset_id
+    private Result<String> pendingDirect(String table, List<Integer> assetIds) {
+        String sql = """
+                SELECT brand_types.name || ' ' || asset_types.name || ' ('
+                       || COALESCE(registered_assets.asset_number, registered_assets.serial_number) || ')' AS ref
+                FROM %1$s
+                JOIN registered_assets ON registered_assets.id = %1$s.registered_asset_id
+                JOIN asset_models ON asset_models.id = registered_assets.asset_model_id
+                JOIN asset_brands ON asset_brands.id = asset_models.asset_brand_id
+                JOIN asset_types  ON asset_types.id  = asset_brands.asset_type_id
+                JOIN brand_types  ON brand_types.id  = asset_brands.brand_type_id
                 LEFT JOIN LATERAL (
                     SELECT event_approvals.approval_type_id
                     FROM event_approvals
-                    WHERE event_approvals.event_register_id = asset_transfers.event_register_id
+                    WHERE event_approvals.event_register_id = %1$s.event_register_id
                     ORDER BY event_approvals.stamp DESC
                     LIMIT 1
                 ) AS t1 ON TRUE
-                WHERE asset_transfer_items.registered_asset_id IN (:assetIds)
+                WHERE %1$s.registered_asset_id IN (:assetIds)
                 AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (41, 50, 51))
                 LIMIT 1
-                """, assetIds);
+                """.formatted(table);
+        Result<Map<String, Object>> row = base.fetchOne(sql, Map.of("assetIds", assetIds));
+        if (!row.isOk()) return Result.error(row.getMessage());
+        return Result.ok(row.getData() != null ? row.getData().get("ref").toString() : null);
     }
 
-    public Result<Map<String, Object>> hasPendingIssuance(List<Integer> assetIds) {
-        return base.fetchOne("""
-                SELECT registered_assets.asset_number, registered_assets.serial_number
-                FROM asset_issuance_items
-                JOIN asset_issuances    ON asset_issuances.id    = asset_issuance_items.asset_issuance_id
-                JOIN registered_assets  ON registered_assets.id  = asset_issuance_items.registered_asset_id
+    private Result<String> pendingBatch(String itemsTable, String parentTable, String parentFk, List<Integer> assetIds) {
+        String sql = """
+                SELECT brand_types.name || ' ' || asset_types.name || ' ('
+                       || COALESCE(registered_assets.asset_number, registered_assets.serial_number) || ')' AS ref
+                FROM %1$s
+                JOIN %2$s ON %2$s.id = %1$s.%3$s
+                JOIN registered_assets ON registered_assets.id = %1$s.registered_asset_id
+                JOIN asset_models ON asset_models.id = registered_assets.asset_model_id
+                JOIN asset_brands ON asset_brands.id = asset_models.asset_brand_id
+                JOIN asset_types  ON asset_types.id  = asset_brands.asset_type_id
+                JOIN brand_types  ON brand_types.id  = asset_brands.brand_type_id
                 LEFT JOIN LATERAL (
                     SELECT event_approvals.approval_type_id
                     FROM event_approvals
-                    WHERE event_approvals.event_register_id = asset_issuances.event_register_id
+                    WHERE event_approvals.event_register_id = %2$s.event_register_id
                     ORDER BY event_approvals.stamp DESC
                     LIMIT 1
                 ) AS t1 ON TRUE
-                WHERE asset_issuance_items.registered_asset_id IN (:assetIds)
+                WHERE %1$s.registered_asset_id IN (:assetIds)
                 AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (41, 50, 51))
                 LIMIT 1
-                """, assetIds);
+                """.formatted(itemsTable, parentTable, parentFk);
+        Result<Map<String, Object>> row = base.fetchOne(sql, Map.of("assetIds", assetIds));
+        if (!row.isOk()) return Result.error(row.getMessage());
+        return Result.ok(row.getData() != null ? row.getData().get("ref").toString() : null);
     }
 
-    public Result<Map<String, Object>> hasPendingVerification(List<Integer> assetIds) {
-        return base.fetchOne("""
-                SELECT registered_assets.asset_number, registered_assets.serial_number
-                FROM asset_verifications
-                JOIN registered_assets  ON registered_assets.id  = asset_verifications.registered_asset_id
-                LEFT JOIN LATERAL (
-                    SELECT event_approvals.approval_type_id
-                    FROM event_approvals
-                    WHERE event_approvals.event_register_id = asset_verifications.event_register_id
-                    ORDER BY event_approvals.stamp DESC
-                    LIMIT 1
-                ) AS t1 ON TRUE
-                WHERE asset_verifications.registered_asset_id IN (:assetIds)
-                AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (41, 50, 51))
-                LIMIT 1
-                """, assetIds);
+    public Result<String> hasPendingTransfer(List<Integer> assetIds) {
+        return pendingBatch("asset_transfer_items", "asset_transfers", "asset_transfer_id", assetIds);
     }
 
-    public Result<Map<String, Object>> hasPendingEvaluation(List<Integer> assetIds) {
-        return base.fetchOne("""
-                SELECT registered_assets.asset_number, registered_assets.serial_number
-                FROM asset_evaluations
-                JOIN registered_assets  ON registered_assets.id  = asset_evaluations.registered_asset_id
-                LEFT JOIN LATERAL (
-                    SELECT event_approvals.approval_type_id
-                    FROM event_approvals
-                    WHERE event_approvals.event_register_id = asset_evaluations.event_register_id
-                    ORDER BY event_approvals.stamp DESC
-                    LIMIT 1
-                ) AS t1 ON TRUE
-                WHERE asset_evaluations.registered_asset_id IN (:assetIds)
-                AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (41, 50, 51))
-                LIMIT 1
-                """, assetIds);
+    public Result<String> hasPendingIssuance(List<Integer> assetIds) {
+        return pendingBatch("asset_issuance_items", "asset_issuances", "asset_issuance_id", assetIds);
     }
 
-    public Result<Map<String, Object>> hasPendingPlacement(List<Integer> assetIds) {
-        return base.fetchOne("""
-                SELECT registered_assets.asset_number, registered_assets.serial_number
-                FROM asset_placements
-                JOIN registered_assets  ON registered_assets.id  = asset_placements.registered_asset_id
-                LEFT JOIN LATERAL (
-                    SELECT event_approvals.approval_type_id
-                    FROM event_approvals
-                    WHERE event_approvals.event_register_id = asset_placements.event_register_id
-                    ORDER BY event_approvals.stamp DESC
-                    LIMIT 1
-                ) AS t1 ON TRUE
-                WHERE asset_placements.registered_asset_id IN (:assetIds)
-                AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (41, 50, 51))
-                LIMIT 1
-                """, assetIds);
+    public Result<String> hasPendingVerification(List<Integer> assetIds) {
+        return pendingDirect("asset_verifications", assetIds);
     }
 
-    public Result<Map<String, Object>> hasPendingDisposal(List<Integer> assetIds) {
-        return base.fetchOne("""
-                SELECT registered_assets.asset_number, registered_assets.serial_number
-                FROM asset_disposals
-                JOIN registered_assets  ON registered_assets.id  = asset_disposals.registered_asset_id
-                LEFT JOIN LATERAL (
-                    SELECT event_approvals.approval_type_id
-                    FROM event_approvals
-                    WHERE event_approvals.event_register_id = asset_disposals.event_register_id
-                    ORDER BY event_approvals.stamp DESC
-                    LIMIT 1
-                ) AS t1 ON TRUE
-                WHERE asset_disposals.registered_asset_id IN (:assetIds)
-                AND (t1.approval_type_id IS NULL OR t1.approval_type_id NOT IN (41, 50, 51))
-                LIMIT 1
-                """, assetIds);
+    public Result<String> hasPendingEvaluation(List<Integer> assetIds) {
+        return pendingDirect("asset_evaluations", assetIds);
+    }
+
+    public Result<String> hasPendingPlacement(List<Integer> assetIds) {
+        return pendingDirect("asset_placements", assetIds);
+    }
+
+    public Result<String> hasPendingDisposal(List<Integer> assetIds) {
+        return pendingDirect("asset_disposals", assetIds);
     }
 
     // Compensating cleanup for registration: children first (FK), then the parent row.
