@@ -429,7 +429,7 @@ CREATE VIEW events_view AS
                 || COALESCE(registered_assets.asset_number, registered_assets.serial_number)
                 || ' to '
                 || condition_types.name
-                || ' verified as '
+                || ' verified during '
                 || verification_types.name
         FROM asset_verifications
         JOIN staff_profiles     ON staff_profiles.id     = asset_verifications.event_admin_id
@@ -482,7 +482,7 @@ CREATE VIEW events_view AS
             staff_profiles.full_name
                 || ' is reporting a '
                 || incident_types.name
-                || ' incident of '
+                || ' incident involving '
                 || asset_types.name
                 || ' '
                 || COALESCE(registered_assets.asset_number, registered_assets.serial_number)
