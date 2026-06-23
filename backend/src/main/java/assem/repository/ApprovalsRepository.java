@@ -24,8 +24,33 @@ public class ApprovalsRepository {
                        events_view.event_id,
                        to_char(events_view.event_date, 'DD/MM/YYYY') AS event_date,
                        events_view.station_name,
-                       events_view.admin_name
+                       events_view.admin_name,
+                       CASE events_view.event_type
+                         WHEN 'Registration' THEN
+                           events_view.admin_name
+                             || ' is requesting to register '
+                             || asset_counts.cnt
+                             || ' asset(s) under '
+                             || events_view.station_name
+                             || ' from supplier: '
+                             || suppliers.supplier_name
+                             || ' through '
+                             || acquisition_types.name
+                         ELSE NULL
+                       END AS details
                 FROM events_view
+                LEFT JOIN asset_registrations
+                       ON asset_registrations.id = events_view.entity_id
+                      AND events_view.event_type = 'Registration'
+                LEFT JOIN suppliers
+                       ON suppliers.id = asset_registrations.supplier_id
+                LEFT JOIN acquisition_types
+                       ON acquisition_types.id = asset_registrations.acquisition_type_id
+                LEFT JOIN LATERAL (
+                    SELECT COUNT(*) AS cnt
+                    FROM registered_assets
+                    WHERE registered_assets.asset_registration_id = asset_registrations.id
+                ) asset_counts ON true
                 WHERE events_view.station_id = :stationId
                   AND events_view.latest_approval_type_id = 0
                 ORDER BY events_view.stamp DESC

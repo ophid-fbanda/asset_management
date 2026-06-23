@@ -165,17 +165,12 @@ onMounted(() => {
       </aside>
 
       <aside class="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
-        <!-- Document area -->
         <div class="flex min-h-0 flex-1 flex-col items-center overflow-auto bg-slate-100 p-6">
           <RegistrationForm v-if="context.formId === 'regForm'" :collected="collected" />
           <RegistrationTemplate v-else-if="context.formId === 'regTemplate'" :collected="collected" />
         </div>
 
-        <!-- Approval footer -->
-        <div
-          v-if="showApprovalFooter"
-          class="shrink-0 border-t border-slate-200 bg-white px-6 py-4 flex items-end gap-4"
-        >
+        <div v-if="showApprovalFooter" class="shrink-0 border-t border-slate-200 bg-white px-6 py-4 flex items-end gap-4">
           <div class="flex flex-col gap-1">
             <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Decision</span>
             <Select
