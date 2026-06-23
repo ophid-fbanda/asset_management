@@ -37,7 +37,8 @@ public class ApprovalsRepository {
                 """, Map.of("stationId", stationId));
     }
 
-    // Events at the station approved by supervisory (type 40) — history for role 40, current year only.
+    // Events at the station that passed through supervisory — history for role 40, current year only.
+    // Includes management-approved/rejected events (50, 51) because they necessarily passed through 40 first.
     public Result<List<Map<String, Object>>> supervisoryHistory(int stationId) {
         return base.fetch("""
                 SELECT events_view.event_type,
@@ -52,10 +53,16 @@ public class ApprovalsRepository {
                        events_view.latest_approval
                 FROM events_view
                 WHERE events_view.station_id = :stationId
-                  AND events_view.latest_approval_type_id IN (:approvalTypeId, :rejectionTypeId)
+                  AND events_view.latest_approval_type_id IN (:supApproval, :supRejection, :mgtApproval, :mgtRejection)
                   AND EXTRACT(YEAR FROM events_view.latest_approval_stamp) = EXTRACT(YEAR FROM CURRENT_DATE)
                 ORDER BY events_view.latest_approval_stamp DESC
-                """, Map.of("stationId", stationId, "approvalTypeId", SUPERVISORY_APPROVAL_TYPE_ID, "rejectionTypeId", SUPERVISORY_REJECTION_TYPE_ID));
+                """, Map.of(
+                "stationId",    stationId,
+                "supApproval",  SUPERVISORY_APPROVAL_TYPE_ID,
+                "supRejection", SUPERVISORY_REJECTION_TYPE_ID,
+                "mgtApproval",  MANAGEMENT_APPROVAL_TYPE_ID,
+                "mgtRejection", MANAGEMENT_REJECTION_TYPE_ID
+        ));
     }
 
     // Events at the station approved by supervisory, awaiting management — visible to role 50.
