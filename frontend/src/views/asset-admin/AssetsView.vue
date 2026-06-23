@@ -21,7 +21,12 @@ const context = reactive({
   external: null,
   collector: [],
   options: [
-    { id: 'assetTemplate', name: 'Asset', table: 1 },
+    { id: 'transferForm',    name: 'Transfer',     table: 2 },
+    { id: 'issuanceForm',    name: 'Issuance',     table: 2 },
+    { id: 'verificationForm', name: 'Verification', table: 1 },
+    { id: 'evaluationForm',  name: 'Evaluation',   table: 1 },
+    { id: 'placementForm',   name: 'Placement',    table: 1 },
+    { id: 'assetProfile',    name: 'Profile',      table: 1 },
   ],
 })
 
@@ -71,6 +76,16 @@ onMounted(() => {
       </div>
       <div class="flex items-center gap-2">
         <button
+          v-if="selectionMode === 2"
+          type="button"
+          :disabled="!context.collector.length"
+          class="flex cursor-pointer items-center gap-2 rounded-sm border border-amber-500 bg-amber-500 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-amber-600 hover:border-amber-600 disabled:cursor-not-allowed disabled:opacity-40"
+          @click="collect"
+        >
+          <i class="pi pi-check-square text-sm" />
+          <span>Collect ({{ context.collector.length }})</span>
+        </button>
+        <button
           type="button"
           class="flex cursor-pointer items-center gap-2 rounded-sm border border-[#384884] bg-[#e8eefa] px-3 py-1.5 text-xs font-medium text-[#384884] transition hover:bg-[#384884] hover:text-white"
           @click="exportExcel"
@@ -101,7 +116,16 @@ onMounted(() => {
       >
         <template #body="{ data }">
           <Button
+            v-if="selectionMode === 1"
             icon="pi pi-folder"
+            severity="info"
+            size="small"
+            text
+            @click="toggleCollect(data)"
+          />
+          <Button
+            v-else
+            :icon="context.collector.some((r) => r.asset_id === data.asset_id) ? 'pi pi-check-square' : 'pi pi-stop'"
             severity="info"
             size="small"
             text
@@ -115,6 +139,7 @@ onMounted(() => {
         :key="col.field"
         :field="col.field"
         :header="col.header"
+        sortable
       >
         <template #body="{ data }">
           <Tag
