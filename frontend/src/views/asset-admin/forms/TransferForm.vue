@@ -26,7 +26,7 @@ const form = reactive({
 const ui = reactive({ busy: null, error: null, success: null })
 
 const submitForm = async () => {
-  form.items = JSON.stringify(props.collected.map((a) => ({ registeredAssetId: a.asset_id })))
+  form.items = props.collected.map((a) => ({ registeredAssetId: a.asset_id }))
   if (!objectComplete(form)) {
     objectResetSet(ui, 'error', 'Complete the form')
     return

@@ -99,32 +99,41 @@ Every query exposes two identifiers: `entity_id` for the primary record being li
 
 Exchange DTOs live under `exchange/` and are named `<Domain>Exchange` (parent) and `<Domain>ItemExchange` (child rows), e.g. `TransferExchange` / `TransferItemExchange`.
 
-**Custom setters for all non-string fields.**  
-Every field that is not a `String` must suppress the Lombok setter (`@Setter(AccessLevel.NONE)`) and provide a hand-written setter that accepts a `String` and parses it. This is because form POST payloads arrive as raw strings — even when `dataSend` is used — so Spring cannot coerce them automatically.
+**Two binding strategies — choose based on the endpoint:**
+
+| Strategy | When | Spring annotation | Frontend sender |
+|---|---|---|---|
+| `@ModelAttribute` (multipart) | Form has a file upload | `consumes = MULTIPART_FORM_DATA_VALUE` | `dataUpload` |
+| `@RequestBody` (JSON) | No file upload | default | `dataSend` |
+
+**`@ModelAttribute` DTOs — custom String setters required.**  
+Multipart payloads arrive as raw strings. Every non-`String` field must suppress the Lombok setter and provide a hand-written one that parses the string value:
 
 ```java
 @Setter(AccessLevel.NONE)
-Integer receivingStationId;
+Integer programId;
 
-public void setReceivingStationId(String value) {
-    try { this.receivingStationId = Integer.parseInt(value); }
-    catch (Exception e) { this.receivingStationId = null; }
+public void setProgramId(String value) {
+    try { this.programId = Integer.parseInt(value); }
+    catch (Exception e) { this.programId = null; }
 }
 ```
 
-**Exceptions — server-side internals** do not need custom setters because they are never bound from the request:
-
-- `eventId` (inherited from `ExchangeBase`) — set server-side from the session or a DB sequence.
-- `eventAdminId` (inherited from `ExchangeBase`) — set server-side from the session profile.
-- Any field documented as *"Set server-side …"* in its own comment.
-
-**Nested object lists** (e.g. `List<TransferItemExchange>`) arrive as a JSON string. Suppress the Lombok setter and parse with `TypeConvertor`:
+Nested object lists arrive stringified (`JSON.stringify` on the client). Parse them with `TypeConvertor`:
 
 ```java
 @Setter(AccessLevel.NONE)
-List<TransferItemExchange> items;
+List<AssetExchange> assets;
 
-public void setItems(String value) {
-    this.items = TypeConvertor.instance().readJson(value, new TypeReference<List<TransferItemExchange>>() {});
+public void setAssets(String value) {
+    this.assets = TypeConvertor.instance().readJson(value, new TypeReference<List<AssetExchange>>() {});
 }
 ```
+
+**`@RequestBody` DTOs — standard Lombok setters.**  
+Jackson deserialises JSON natively. No custom setters or `@Setter(AccessLevel.NONE)` are needed; Lombok `@Data` is sufficient. The client sends the object graph as-is (no `JSON.stringify` on nested arrays).
+
+**Server-side internals** never need setters of either kind — they are set in the controller after binding:
+
+- `eventId` (from `ExchangeBase`) — created via `base.createEventId()`.
+- `eventAdminId` (from `ExchangeBase`) — copied from the session profile.
