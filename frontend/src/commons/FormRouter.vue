@@ -1,6 +1,6 @@
 <script setup>
 import { computed, onMounted, reactive } from 'vue'
-import { Dialog, Select, Textarea } from 'primevue'
+import { Dialog, Select, Textarea, useToast } from 'primevue'
 import { objectSet, objectReset } from '@/api/objectx'
 import { dataFetchToCache, dataFromCache, dataSend } from '@/api/datax'
 import RegistrationForm from '@/views/asset-admin/forms/RegistrationForm.vue'
@@ -15,7 +15,8 @@ const props = defineProps({
 
 const emit = defineEmits(['close'])
 
-const ui = reactive({ leftToggled: null, busy: null, error: null, submitted: false })
+const toast = useToast()
+const ui = reactive({ leftToggled: null, busy: null, error: null })
 const context = reactive({ formId: null })
 const form = reactive({ approvalTypeId: null, notes: '' })
 
@@ -42,7 +43,6 @@ const approvalChoices = computed(() => {
 
 // Show the approval footer only when the entity's current approval state matches the option target
 const showApprovalFooter = computed(() =>
-  !ui.submitted &&
   selectedOption.value?.target != null &&
   entity.value?.latest_approval_type_id === selectedOption.value.target
 )
@@ -55,8 +55,8 @@ const submitApproval = async () => {
     notes: form.notes,
   })
   if (result.status === 200) {
-    objectReset(form)
-    objectSet(ui, 'submitted', true)
+    toast.add({ severity: 'success', summary: 'Approved', detail: 'Approval submitted successfully.', life: 4000 })
+    emit('close')
   } else {
     objectSet(ui, 'error', result.data)
   }
