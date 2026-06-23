@@ -567,8 +567,8 @@ CREATE VIEW view_assets AS
     SELECT
         registered_assets.id                                                        AS asset_id,
         asset_types.name                                                            AS asset_type,
-        asset_brands.name                                                           AS brand,
-        asset_models.name                                                           AS model,
+        brand_types.name                                                            AS brand,
+        model_types.name                                                            AS model,
         registered_assets.asset_number,
         registered_assets.serial_number,
         COALESCE(latest_condition.name,
@@ -585,8 +585,12 @@ CREATE VIEW view_assets AS
         ON asset_registrations.id      = registered_assets.asset_registration_id
     JOIN asset_models
         ON asset_models.id             = registered_assets.asset_model_id
+    JOIN model_types
+        ON model_types.id              = asset_models.model_type_id
     JOIN asset_brands
         ON asset_brands.id             = asset_models.asset_brand_id
+    JOIN brand_types
+        ON brand_types.id              = asset_brands.brand_type_id
     JOIN asset_types
         ON asset_types.id              = asset_brands.asset_type_id
     JOIN condition_types reg_condition
