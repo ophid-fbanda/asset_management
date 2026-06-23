@@ -575,7 +575,8 @@ CREATE VIEW view_assets AS
                  reg_condition.name)                                                AS condition,
         COALESCE(latest_value.evaluated_value,
                  registered_assets.acquisition_value)                              AS current_value,
-        latest_custodian.full_name                                                  AS custodian,
+        COALESCE(latest_custodian.full_name,
+                 reg_admin.full_name)                                               AS custodian,
         COALESCE(latest_location.receiving_station_id,
                  asset_registrations.event_station_id)                             AS station_id,
         COALESCE(latest_location.station_name,
@@ -597,6 +598,8 @@ CREATE VIEW view_assets AS
         ON reg_condition.id            = registered_assets.condition_type_id
     JOIN stations reg_station
         ON reg_station.id              = asset_registrations.event_station_id
+    JOIN staff_profiles reg_admin
+        ON reg_admin.id                = asset_registrations.event_admin_id
 
     -- Current location: latest management-approved transfer destination
     LEFT JOIN LATERAL (
