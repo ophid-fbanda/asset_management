@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, reactive } from 'vue'
+import { computed, onMounted, reactive, watch } from 'vue'
 import { Dialog, Select, Textarea, useToast } from 'primevue'
 import { objectSet, objectReset } from '@/api/objectx'
 import { dataFetchToCache, dataFromCache, dataSend } from '@/api/datax'
@@ -18,7 +18,7 @@ const emit = defineEmits(['close'])
 const toast = useToast()
 const ui = reactive({ leftToggled: null, busy: null, error: null })
 const context = reactive({ formId: null })
-const form = reactive({ approvalTypeId: null, notes: '' })
+const form = reactive({ eventId: null, approvalTypeId: null, notes: '' })
 
 const leftCollapse = computed(
   () => ui.leftToggled ?? (!props.options?.length || props.options.length <= 1),
@@ -33,6 +33,8 @@ const selectedOption = computed(() => props.options.find((o) => o.id === context
 
 // The entity driving the document (first collected row)
 const entity = computed(() => props.collected[0] ?? null)
+
+watch(entity, (e) => { form.eventId = e?.event_id ?? null }, { immediate: true })
 
 // Resolve approval type choices from meta, filtered to the option's choice IDs
 const allApprovalTypes = computed(() => dataFromCache('meta/approval_types').value ?? [])
@@ -49,11 +51,7 @@ const showApprovalFooter = computed(() =>
 
 const submitApproval = async () => {
   objectSet(ui, 'busy', true)
-  const result = await dataSend('approvals/approve', {
-    eventId: entity.value?.event_id,
-    approvalTypeId: form.approvalTypeId,
-    notes: form.notes,
-  })
+  const result = await dataSend('approvals/approve', form)
   if (result.status === 200) {
     toast.add({ severity: 'success', summary: 'Approved', detail: 'Approval submitted successfully.', life: 4000 })
     emit('close')
