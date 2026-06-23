@@ -15,7 +15,7 @@ const props = defineProps({
 
 const emit = defineEmits(['close'])
 
-const ui = reactive({ leftToggled: null, busy: null, error: null, success: null })
+const ui = reactive({ leftToggled: null, busy: null, error: null, submitted: false })
 const context = reactive({ formId: null })
 const form = reactive({ approvalTypeId: null, notes: '' })
 
@@ -42,6 +42,7 @@ const approvalChoices = computed(() => {
 
 // Show the approval footer only when the entity's current approval state matches the option target
 const showApprovalFooter = computed(() =>
+  !ui.submitted &&
   selectedOption.value?.target != null &&
   entity.value?.latest_approval_type_id === selectedOption.value.target
 )
@@ -55,8 +56,7 @@ const submitApproval = async () => {
   })
   if (result.status === 200) {
     objectReset(form)
-    objectSet(ui, 'success', 'Approval submitted.')
-    emit('close')
+    objectSet(ui, 'submitted', true)
   } else {
     objectSet(ui, 'error', result.data)
   }
