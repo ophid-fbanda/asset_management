@@ -1,21 +1,25 @@
 package assem.exchange.assets;
 
 import assem.exchange.ExchangeBase;
+import assem.utils.TypeConvertor;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Setter;
+import tools.jackson.core.type.TypeReference;
 
 import java.util.List;
 
 // DTO for asset_transfers (the parent) plus its asset_transfer_items children.
 // receivingStationId is the destination; eventStationId is the origin station
-// (admin's station). items map one-to-one to asset_transfer_items rows.
-// eventAdminId and event_register_id are resolved server-side.
+// (admin's station). items arrive as a JSON string from the client and are
+// parsed via TypeConvertor. eventAdminId and event_register_id are set server-side.
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class Transfer extends ExchangeBase {
+public class TransferExchange extends ExchangeBase {
 
     @NotNull(message = "Destination station is required.")
     Integer receivingStationId;
@@ -25,7 +29,12 @@ public class Transfer extends ExchangeBase {
 
     @NotEmpty(message = "At least one asset must be selected.")
     @Valid
-    List<TransferItem> items;
+    @Setter(AccessLevel.NONE)
+    List<TransferItemExchange> items;
 
     String notes;
+
+    public void setItems(String value) {
+        this.items = TypeConvertor.instance().readJson(value, new TypeReference<List<TransferItemExchange>>() {});
+    }
 }
