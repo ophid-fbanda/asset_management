@@ -13,8 +13,10 @@ public class ApprovalsRepository {
     @Autowired
     private BaseRepo base;
 
-    private static final int SUPERVISORY_APPROVAL_TYPE_ID = 40;
-    private static final int MANAGEMENT_APPROVAL_TYPE_ID  = 50;
+    private static final int SUPERVISORY_APPROVAL_TYPE_ID  = 40;
+    private static final int SUPERVISORY_REJECTION_TYPE_ID = 41;
+    private static final int MANAGEMENT_APPROVAL_TYPE_ID   = 50;
+    private static final int MANAGEMENT_REJECTION_TYPE_ID  = 51;
 
     // Events at the station with no approval yet — visible to role 40 (supervisory).
     public Result<List<Map<String, Object>>> supervisoryPending(int stationId) {
@@ -50,10 +52,10 @@ public class ApprovalsRepository {
                        events_view.details
                 FROM events_view
                 WHERE events_view.station_id = :stationId
-                  AND events_view.latest_approval_type_id = :approvalTypeId
+                  AND events_view.latest_approval_type_id IN (:approvalTypeId, :rejectionTypeId)
                   AND EXTRACT(YEAR FROM events_view.latest_approval_stamp) = EXTRACT(YEAR FROM CURRENT_DATE)
                 ORDER BY events_view.latest_approval_stamp DESC
-                """, Map.of("stationId", stationId, "approvalTypeId", SUPERVISORY_APPROVAL_TYPE_ID));
+                """, Map.of("stationId", stationId, "approvalTypeId", SUPERVISORY_APPROVAL_TYPE_ID, "rejectionTypeId", SUPERVISORY_REJECTION_TYPE_ID));
     }
 
     // Events at the station approved by supervisory, awaiting management — visible to role 50.
@@ -90,10 +92,10 @@ public class ApprovalsRepository {
                        events_view.details
                 FROM events_view
                 WHERE events_view.station_id = :stationId
-                  AND events_view.latest_approval_type_id = :approvalTypeId
+                  AND events_view.latest_approval_type_id IN (:approvalTypeId, :rejectionTypeId)
                   AND EXTRACT(YEAR FROM events_view.latest_approval_stamp) = EXTRACT(YEAR FROM CURRENT_DATE)
                 ORDER BY events_view.latest_approval_stamp DESC
-                """, Map.of("stationId", stationId, "approvalTypeId", MANAGEMENT_APPROVAL_TYPE_ID));
+                """, Map.of("stationId", stationId, "approvalTypeId", MANAGEMENT_APPROVAL_TYPE_ID, "rejectionTypeId", MANAGEMENT_REJECTION_TYPE_ID));
     }
 
     // Insert (or update on conflict) an approval record for an event.
