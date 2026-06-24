@@ -13,7 +13,7 @@ const station = dataFromCache('role/40')
 const dataKey = computed(() => `approvals/supervisory/pending/${station.value}`)
 const dataRecords = computed(() => dataFromCache(dataKey.value).value)
 const dataRefresh = () => dataRefreshCache(dataKey.value)
-const columns = computed(() => objectHeaders(dataRecords.value ?? []))
+const columns = computed(() => objectHeaders(dataRecords.value ?? [], ['latest_approval']))
 
 const filteredRecords = computed(() => arraySearch(dataRecords.value ?? [], search.value))
 
@@ -138,18 +138,16 @@ onMounted(() => {
         :header="col.header"
       >
         <template #body="{ data }">
-          <Tag
-            v-if="col.field === 'latest_approval'"
-            :value="data.latest_approval"
-            :severity="colorPalette(data.latest_approval_type_id)"
-          />
           <span
-            v-else-if="col.field === 'quantity'"
+            v-if="col.field === 'quantity'"
             class="font-semibold text-[#384884]"
-          >
-            {{ data.quantity }}
-          </span>
+          >{{ data.quantity }}</span>
           <span v-else>{{ data[col.field] }}</span>
+        </template>
+      </Column>
+      <Column header="Status">
+        <template #body="{ data }">
+          <Tag :value="data.latest_approval" :severity="colorPalette(data.latest_approval_type_id)" />
         </template>
       </Column>
     </DataTable>
