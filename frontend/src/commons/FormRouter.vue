@@ -164,7 +164,8 @@ onMounted(() => {
             <VerificationForm     v-else-if="context.formId === 'verificationForm'" :collected="collected" />
             <EvaluationForm       v-else-if="context.formId === 'evaluationForm'"   :collected="collected" />
             <PlacementForm        v-else-if="context.formId === 'placementForm'"    :collected="collected" />
-            <RegistrationTemplate v-else-if="context.formId === 'regTemplate'"     :collected="collected" />
+            <RegistrationTemplate v-else-if="context.formId === 'regTemplate'"      :collected="collected" />
+            <TransferTemplate     v-else-if="context.formId === 'transferTemplate'" :collected="collected" />
           </div>
 
           <!-- Always-visible collected items table -->
