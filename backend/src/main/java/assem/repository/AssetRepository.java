@@ -258,6 +258,47 @@ public class AssetRepository {
                 """, Map.of("registrationId", registrationId));
     }
 
+    // Transfer metadata for the document template.
+    public Result<Map<String, Object>> getTransferDetails(int transferId) {
+        return base.fetchOne("""
+                SELECT
+                    asset_transfers.event_register_id,
+                    asset_transfers.notes,
+                    to_char(asset_transfers.stamp, 'DD/MM/YYYY') AS transfer_date,
+                    from_station.station_name                     AS from_station,
+                    to_station.station_name                       AS to_station,
+                    staff_profiles.full_name                      AS submitted_by
+                FROM asset_transfers
+                JOIN stations AS from_station ON from_station.id = asset_transfers.event_station_id
+                JOIN stations AS to_station   ON to_station.id   = asset_transfers.receiving_station_id
+                JOIN staff_profiles           ON staff_profiles.id = asset_transfers.event_admin_id
+                WHERE asset_transfers.id = :transferId
+                """, Map.of("transferId", transferId));
+    }
+
+    // Assets included in a single transfer, shaped for the template table.
+    public Result<List<Map<String, Object>>> getTransferAssets(int transferId) {
+        return base.fetch("""
+                SELECT
+                    registered_assets.asset_number,
+                    registered_assets.serial_number,
+                    asset_types.name     AS asset_type,
+                    brand_types.name     AS brand,
+                    model_types.name     AS model,
+                    condition_types.name AS condition
+                FROM asset_transfer_items
+                JOIN registered_assets  ON registered_assets.id  = asset_transfer_items.registered_asset_id
+                JOIN asset_models       ON asset_models.id        = registered_assets.asset_model_id
+                JOIN asset_brands       ON asset_brands.id        = asset_models.asset_brand_id
+                JOIN asset_types        ON asset_types.id         = asset_brands.asset_type_id
+                JOIN brand_types        ON brand_types.id         = asset_brands.brand_type_id
+                JOIN model_types        ON model_types.id         = asset_models.model_type_id
+                JOIN condition_types    ON condition_types.id     = registered_assets.condition_type_id
+                WHERE asset_transfer_items.asset_transfer_id = :transferId
+                ORDER BY registered_assets.id
+                """, Map.of("transferId", transferId));
+    }
+
     // Persists the transfer: creates an event_register entry, inserts the parent
     // asset_transfers row, then loops over each item inserting into asset_transfer_items.
     // On any failure the items and parent are deleted before returning the error.

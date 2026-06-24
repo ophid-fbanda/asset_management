@@ -89,6 +89,19 @@ public class AssetsController {
         return ResponseEntity.ok(Map.of("details", details.getData(), "list", list.getData(), "approvals", approvals.getData()));
     }
 
+    @GetMapping("/transfer/{id}")
+    public ResponseEntity<?> getTransfer(@PathVariable int id, HttpSession session) {
+        if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
+        Result<Map<String, Object>> details = assetRepository.getTransferDetails(id);
+        if (!details.isOk()) return ResponseEntity.badRequest().body(details.getMessage());
+        Result<List<Map<String, Object>>> list = assetRepository.getTransferAssets(id);
+        if (!list.isOk()) return ResponseEntity.badRequest().body(list.getMessage());
+        int eventRegisterId = ((Number) details.getData().get("event_register_id")).intValue();
+        Result<List<Map<String, Object>>> approvals = approvalsRepository.getEventApprovals(eventRegisterId);
+        if (!approvals.isOk()) return ResponseEntity.badRequest().body(approvals.getMessage());
+        return ResponseEntity.ok(Map.of("details", details.getData(), "list", list.getData(), "approvals", approvals.getData()));
+    }
+
     @PostMapping("/transfer")
     public ResponseEntity<?> createTransfer(
             @Valid @RequestBody TransferExchange transfer,

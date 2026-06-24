@@ -10,6 +10,7 @@ import VerificationForm from '@/views/asset-admin/forms/VerificationForm.vue'
 import EvaluationForm from '@/views/asset-admin/forms/EvaluationForm.vue'
 import PlacementForm from '@/views/asset-admin/forms/PlacementForm.vue'
 import RegistrationTemplate from '@/views/templates/RegistrationTemplate.vue'
+import TransferTemplate from '@/views/templates/TransferTemplate.vue'
 
 const props = defineProps({
   header: { type: String, default: 'Form' },
