@@ -27,7 +27,7 @@ const TEMPLATE_MAP = {
 const context = reactive({
   dialog:    null,
   collector: [],
-  options:   [],
+  options:   [{ id: null, name: null, table: 1, target: 0, choices: [40, 41] }],
 })
 
 const selectionMode = computed(() => Math.max(0, ...context.options.map((o) => o.table ?? 0)))
@@ -38,8 +38,8 @@ const toggleCollect = (row) => {
   const index = context.collector.findIndex((r) => r.entity_id === row.entity_id)
   if (index === -1) {
     context.collector.push(row)
-    const templateId = TEMPLATE_MAP[row.event_type] ?? 'regTemplate'
-    context.options = [{ id: templateId, name: row.event_type, table: 1, target: 0, choices: [40, 41] }]
+    context.options[0].id   = TEMPLATE_MAP[row.event_type] ?? 'regTemplate'
+    context.options[0].name = row.event_type
     if (selectionMode.value === 1) collect()
   } else {
     context.collector.splice(index, 1)
@@ -47,9 +47,10 @@ const toggleCollect = (row) => {
 }
 
 const closeRouter = () => {
-  objectReset(context, ['collector', 'options'])
-  context.collector = []
-  context.options   = []
+  objectReset(context, ['collector'])
+  context.collector       = []
+  context.options[0].id   = null
+  context.options[0].name = null
   dataRefresh()
 }
 
