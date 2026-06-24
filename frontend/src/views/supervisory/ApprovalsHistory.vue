@@ -17,16 +17,18 @@ const columns = computed(() => objectHeaders(dataRecords.value ?? []))
 
 const filteredRecords = computed(() => arraySearch(dataRecords.value ?? [], search.value))
 
+const TEMPLATE_MAP = {
+  Registration: 'regTemplate',
+  Transfer:     'transferTemplate',
+}
+
 const context = reactive({
-  dialog: null,
-  external: null,
+  dialog:    null,
   collector: [],
-  options: [
-    { id: 'regTemplate', name: 'Registration', table: 1 },
-  ],
+  options:   [],
 })
 
-const selectionMode = computed(() => Math.max(0, ...context.options.map((option) => option.table ?? 0)))
+const selectionMode = computed(() => Math.max(0, ...context.options.map((o) => o.table ?? 0)))
 
 const collect = () => objectSet(context, 'dialog', true)
 
@@ -34,6 +36,8 @@ const toggleCollect = (row) => {
   const index = context.collector.findIndex((r) => r.entity_id === row.entity_id)
   if (index === -1) {
     context.collector.push(row)
+    const templateId = TEMPLATE_MAP[row.event_type] ?? 'regTemplate'
+    context.options = [{ id: templateId, name: row.event_type, table: 1 }]
     if (selectionMode.value === 1) collect()
   } else {
     context.collector.splice(index, 1)
@@ -41,8 +45,9 @@ const toggleCollect = (row) => {
 }
 
 const closeRouter = () => {
-  objectReset(context, ['options'])
+  objectReset(context, ['collector', 'options'])
   context.collector = []
+  context.options   = []
 }
 
 const exportExcel = () => {
