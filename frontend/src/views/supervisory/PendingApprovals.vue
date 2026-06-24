@@ -47,7 +47,7 @@ const toggleCollect = (row) => {
 }
 
 const closeRouter = () => {
-  objectReset(context, ['collector'])
+  objectReset(context, ['collector', 'options'])
   context.collector       = []
   context.options[0].id   = null
   context.options[0].name = null
