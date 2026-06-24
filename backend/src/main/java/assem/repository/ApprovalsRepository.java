@@ -25,6 +25,7 @@ public class ApprovalsRepository {
                        events_view.entity_id,
                        events_view.event_id,
                        events_view.latest_approval_type_id,
+                       events_view.latest_approval,
                        to_char(events_view.event_date, 'DD/MM/YYYY')      AS event_date,
                        to_char(events_view.stamp, 'DD/MM/YYYY HH24:MI')   AS captured,
                        events_view.station_name,
