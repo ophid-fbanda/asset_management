@@ -156,7 +156,6 @@ onMounted(() => {
     <FormRouter
       v-if="context.dialog"
       :options="context.options"
-      :external="context.external"
       :collected="context.collector"
       @close="closeRouter"
     />
