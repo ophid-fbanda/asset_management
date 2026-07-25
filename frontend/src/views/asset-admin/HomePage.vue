@@ -1,10 +1,11 @@
 <script setup>
-import { computed, onMounted, reactive } from 'vue'
+import { computed, reactive, watch } from 'vue'
 import { Select } from 'primevue'
 import { arrayFilter, objectFirstId, objectSet } from '@/api/objectx'
 import { dataToCache, dataFromProfile } from '@/api/datax'
 import RegistrationsView from '@/views/asset-admin/RegistrationsView.vue'
 import AssetsView from '@/views/asset-admin/AssetsView.vue'
+import IncomingView from '@/views/asset-admin/IncomingView.vue'
 import RequisitionsView from '@/views/asset-admin/RequisitionsView.vue'
 import IncidentsView from '@/views/asset-admin/IncidentsView.vue'
 import ChangesView from '@/views/asset-admin/ChangesView.vue'
@@ -16,6 +17,7 @@ const ADMIN_ROLE_TYPE_ID = 20
 const menuItems = [
   { id: 'registrations', label: 'Registrations', icon: 'pi-file-plus' },
   { id: 'assets', label: 'Assets', icon: 'pi-box' },
+  { id: 'incoming', label: 'Incoming', icon: 'pi-download' },
   { id: 'requisitions', label: 'Requisitions', icon: 'pi-inbox' },
   { id: 'incidents', label: 'Incidents', icon: 'pi-exclamation-triangle' },
   { id: 'changes', label: 'Changes', icon: 'pi-calendar' },
@@ -24,6 +26,7 @@ const menuItems = [
 const sectionViews = {
   registrations: RegistrationsView,
   assets: AssetsView,
+  incoming: IncomingView,
   requisitions: RequisitionsView,
   incidents: IncidentsView,
   changes: ChangesView,
@@ -50,10 +53,16 @@ const onStationChange = () => {
   dataToCache(`role/${ADMIN_ROLE_TYPE_ID}`, ui.stationId)
 }
 
-onMounted(() => {
-  ui.stationId = objectFirstId(stationOptions.value)
-  if (ui.stationId) onStationChange()
-})
+// Set station during setup (not onMounted) so child views never fetch role/20 as undefined.
+watch(
+  stationOptions,
+  (opts) => {
+    if (ui.stationId != null || !opts?.length) return
+    ui.stationId = objectFirstId(opts)
+    if (ui.stationId) onStationChange()
+  },
+  { immediate: true },
+)
 
 
 const menuBtnClass = (id) => [

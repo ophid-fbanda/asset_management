@@ -1,20 +1,23 @@
 <script setup>
 import { computed, reactive, watch, onMounted } from 'vue'
-import { Button, Column, DataTable, Tag } from 'primevue'
+import { Button, Column, DataTable } from 'primevue'
 import { arraySearch, objectHeaders, objectReset, objectSet } from '@/api/objectx'
 import { exportToExcel } from '@/api/exportx'
 import { dataFetchToCache, dataFromCache, dataSearchModel, dataClearSearch } from '@/api/datax'
-import { colorPalette } from '@/api/colorx'
 import FormRouter from '@/commons/FormRouter.vue'
+import StatusDot from '@/commons/StatusDot.vue'
 
 // Station the admin selected in the top bar, cached under the asset-admin role id.
 const station = dataFromCache('role/20')
 const search = dataSearchModel()
 
 // Live registrations list for that station, cached per-station (load-once).
-const dataKey = computed(() => `assets/registrations/${station.value}`)
-const dataRecords = computed(() => dataFromCache(dataKey.value).value)
-const dataRefresh = () => dataFetchToCache(dataKey.value)
+const dataKey = computed(() => (station.value != null ? `assets/registrations/${station.value}` : null))
+const dataRecords = computed(() => (dataKey.value ? dataFromCache(dataKey.value).value : null))
+const dataRefresh = () => {
+  if (!dataKey.value) return
+  dataFetchToCache(dataKey.value)
+}
 const columns = computed(() => objectHeaders(dataRecords.value ?? []))
 
 // Rows narrowed by the shared top-bar search term (full-text across values).
@@ -33,6 +36,11 @@ const context = reactive({
 // 2 = checkbox multi-select, 1 = single click, 0 = read-only.
 const selectionMode = computed(() => Math.max(0, ...context.options.map((option) => option.table ?? 0)))
 
+const onRowClick = (event) => {
+  if (selectionMode.value === 1) toggleCollect(event.data)
+}
+
+
 // Open the router dialog with the collected ids riding along the options.
 const collect = () => objectSet(context, 'dialog', true)
 
@@ -43,11 +51,11 @@ const newRegistration = () => {
   objectSet(context, 'dialog', true)
 }
 
-// Toggle one id in/out of the collector. In single mode, adding fires Collect.
-const toggleCollectId = (id) => {
-  const index = context.collector.indexOf(id)
+// Toggle one row in/out of the collector. In single mode, adding fires Collect.
+const toggleCollect = (row) => {
+  const index = context.collector.findIndex((r) => r.entity_id === row.entity_id)
   if (index === -1) {
-    context.collector.push(id)
+    context.collector.push(row)
     if (selectionMode.value === 1) collect()
   } else {
     context.collector.splice(index, 1)
@@ -72,13 +80,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex min-h-0 flex-1 flex-col gap-3">
-    <div class="flex items-center justify-between gap-3">
+  <div class="assem-table-shell">
+    <div class="assem-table-toolbar">
       <div class="flex items-baseline gap-3">
-        <h2 class="text-base font-semibold text-[#384884]">Registrations</h2>
-        <span class="text-xs text-surface-500">{{ filteredRecords.length }} records</span>
+        <h2>Registrations</h2>
+        <span class="assem-table-meta">{{ filteredRecords.length }} records</span>
       </div>
-      <div class="flex items-center gap-2">
+      <div class="assem-table-actions">
         <button
           v-if="selectionMode === 2"
           type="button"
@@ -113,35 +121,27 @@ onMounted(() => {
       data-key="entity_id"
       size="small"
       striped-rows
-      show-gridlines
       scrollable
       scroll-height="flex"
       paginator
       :rows="10"
       :rows-per-page-options="[10, 25, 50]"
-      class="flex min-h-0 flex-1 flex-col text-sm"
+      :row-class="() => (selectionMode === 1 ? 'cursor-pointer' : undefined)"
+      @row-click="onRowClick"
+      class="assem-table flex min-h-0 flex-1 flex-col text-sm"
     >
       <Column
-        v-if="selectionMode"
+        v-if="selectionMode === 2"
         :header-style='{ width: "2rem" }'
         :exportable="false"
       >
         <template #body="{ data }">
           <Button
-            v-if="selectionMode === 1"
-            icon="pi pi-folder"
+            :icon="context.collector.some((r) => r.entity_id === data.entity_id) ? 'pi pi-check-square' : 'pi pi-stop'"
             severity="info"
             size="small"
             text
-            @click="toggleCollectId(data.entity_id)"
-          />
-          <Button
-            v-else
-            :icon="context.collector.includes(data.entity_id) ? 'pi pi-check-square' : 'pi pi-stop'"
-            severity="info"
-            size="small"
-            text
-            @click="toggleCollectId(data.entity_id)"
+            @click="toggleCollect(data)"
           />
         </template>
       </Column>
@@ -150,12 +150,13 @@ onMounted(() => {
         :key="col.field"
         :field="col.field"
         :header="col.header"
+        sortable
       >
         <template #body="{ data }">
-          <Tag
+          <StatusDot
             v-if="col.field === 'status'"
-            :value="data.status"
-            :severity="colorPalette(data.status_id)"
+            :label="data.status"
+            :tone="data.status_id"
           />
           <span
             v-else-if="col.field === 'quantity'"

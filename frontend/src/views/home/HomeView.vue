@@ -1,5 +1,6 @@
 <script setup>
 import { IconField, InputIcon, InputText } from 'primevue'
+import { RouterLink } from 'vue-router'
 import logoUrl from '@/assets/logo.png'
 import AppMenu from '@/views/home/AppMenu.vue'
 import { dataSearchModel, dataFromProfile, dataSignOut } from '@/api/datax'
@@ -71,19 +72,19 @@ const searchQuery = dataSearchModel()
               <div class="border-b border-surface-200 px-3 py-2">
                 <p class="truncate text-sm font-medium text-surface-800">{{ profile.name }}</p>
               </div>
-              <a
-                href="#"
+              <RouterLink
+                to="/account"
                 class="mt-1 flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm leading-5 text-surface-700 no-underline transition hover:bg-surface-100 hover:text-surface-900"
                 role="menuitem"
               >
                 <i class="pi pi-id-card" />
                 <span>My Account</span>
-              </a>
+              </RouterLink>
               <button
                 type="button"
                 class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg border-0 bg-transparent px-3 py-2.5 text-sm leading-5 text-surface-700 transition hover:bg-red-50 hover:text-red-600"
                 role="menuitem"
-                @click="dataSignOut('/api/auth/logout')"
+                @click="dataSignOut('auth/logout')"
               >
                 <i class="pi pi-sign-out" />
                 <span>Logout</span>

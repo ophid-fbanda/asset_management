@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, reactive } from 'vue'
+import { computed, reactive, watch } from 'vue'
 import { Select } from 'primevue'
 import { arrayFilter, objectFirstId, objectSet } from '@/api/objectx'
 import { dataToCache, dataFromProfile } from '@/api/datax'
@@ -33,10 +33,16 @@ const onStationChange = () => {
   dataToCache(`role/${ROLE_TYPE_ID}`, ui.stationId)
 }
 
-onMounted(() => {
-  ui.stationId = objectFirstId(stationOptions.value)
-  if (ui.stationId) onStationChange()
-})
+// Set station during setup so Pending/History never fetch role/40 as undefined.
+watch(
+  stationOptions,
+  (opts) => {
+    if (ui.stationId != null || !opts?.length) return
+    ui.stationId = objectFirstId(opts)
+    if (ui.stationId) onStationChange()
+  },
+  { immediate: true },
+)
 
 const menuBtnClass = (id) => [
   'inline-flex shrink-0 items-center justify-center gap-1.5 rounded-md border px-3 py-2 text-xs font-semibold uppercase tracking-wide whitespace-nowrap transition-colors',

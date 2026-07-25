@@ -25,4 +25,12 @@ public class AuthService {
         return Result.ok(profileResult.getData());
     }
 
+    public Result<Boolean> changePassword(int profileId, String currentPassword, String newPassword) {
+        return authRepository.changePassword(profileId, currentPassword, newPassword);
+    }
+
+    public Result<ProfileExchange> updateContact(int profileId, String email, String phone) {
+        return authRepository.updateContact(profileId, email, phone);
+    }
+
 }

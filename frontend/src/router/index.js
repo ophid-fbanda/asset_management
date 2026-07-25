@@ -6,12 +6,16 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/views/home/HomeView.vue'),
+      component: () => import('@/views/home/HomePage.vue'),
+    },
+    {
+      path: '/account',
+      name: 'account',
+      component: () => import('@/views/account/AccountView.vue'),
     },
     {
       path: '/my-assets',
-      name: 'my-assets',
-      component: () => import('../my-assets/HomePage.vue'),
+      redirect: '/',
     },
     {
       path: '/reports',

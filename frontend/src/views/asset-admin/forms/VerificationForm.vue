@@ -1,7 +1,7 @@
 <script setup>
-import { onMounted, reactive } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import { Select, Textarea } from 'primevue'
-import { objectComplete, objectResetSet } from '@/api/objectx'
+import { objectComplete, objectReset, objectResetSet } from '@/api/objectx'
 import { dataFetchToCache, dataFromCache, dataSend } from '@/api/datax'
 import FeedBack from '@/commons/FeedBack.vue'
 
@@ -13,29 +13,29 @@ const eventStation      = dataFromCache('role/20')
 const verificationTypes = dataFromCache('meta/verification_types')
 const conditionTypes    = dataFromCache('meta/condition_types')
 
-const asset = props.collected[0] ?? {}
+const asset = computed(() => props.collected[0] ?? {})
 
 const form = reactive({
-  verificationTypeId:     null,
+  verificationTypeId:      null,
   verifiedConditionTypeId: null,
-  eventNotes: null,
+  eventNotes:              null,
 })
 
 const ui = reactive({ busy: null, error: null, success: null })
 
 const submitForm = async () => {
-  if (!objectComplete(form)) {
-    objectResetSet(ui, 'error', 'Please complete all required fields.')
+  if (!objectComplete(form, ['eventNotes'])) {
+    objectResetSet(ui, 'error', 'Complete the form.')
     return
   }
   objectResetSet(ui, 'busy', true)
-  const payload = {
+  const response = await dataSend('assets/verification', {
     ...form,
-    assetId: asset.asset_id,
-    eventStationId: eventStation.value,
-  }
-  const response = await dataSend('assets/verification', payload)
+    registeredAssetId: asset.value.asset_id,
+    eventStationId:    eventStation.value,
+  })
   if (response.status === 200) {
+    objectReset(form)
     objectResetSet(ui, 'success', 'Verification submitted successfully.')
   } else {
     objectResetSet(ui, 'error', response.data)
@@ -57,6 +57,7 @@ onMounted(() => {
         {{ asset.asset_type }} — {{ asset.brand }} {{ asset.model }}
         <span class="ml-2 text-xs font-normal text-surface-500">{{ asset.asset_number ?? asset.serial_number }}</span>
       </h3>
+
 
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div class="flex flex-col gap-1.5">

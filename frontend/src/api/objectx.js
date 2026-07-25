@@ -65,7 +65,7 @@ export const emptyObjectKey = (obj, except = []) => firstEmptyKey(obj, except)
 //     DERIVE TABLE COLUMNS FROM ROW SHAPE        //
 //================================================//
 // Builds { field, header } columns from the first row, hiding id/*_id and any
-// `except` keys. header is the field upper-cased with underscores as spaces.
+// `except` keys. header is title-cased with underscores as spaces.
 export const objectHeaders = (arr = [], except = []) => {
   if (!Array.isArray(arr)) return []
   if (!arr.length) return []
@@ -74,7 +74,9 @@ export const objectHeaders = (arr = [], except = []) => {
     .filter((k) => !except.includes(k) && k !== 'id' && !k.endsWith('_id'))
     .map((k) => ({
       field: k,
-      header: k.replace(/_/g, ' ').toUpperCase(),
+      header: k
+        .replace(/_/g, ' ')
+        .replace(/\b\w/g, (c) => c.toUpperCase()),
     }))
 }
 

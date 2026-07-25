@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, reactive } from 'vue'
 import { Select, Textarea } from 'primevue'
-import { objectComplete, objectResetSet } from '@/api/objectx'
+import { objectComplete, objectReset, objectResetSet } from '@/api/objectx'
 import { dataFetchToCache, dataFromCache, dataSend } from '@/api/datax'
 import FeedBack from '@/commons/FeedBack.vue'
 
@@ -9,29 +9,32 @@ const props = defineProps({
   collected: { type: Array, default: () => [] },
 })
 
-const eventStation  = dataFromCache('role/20')
-const staffProfiles = dataFromCache('meta/staff_profiles')
+const eventStation   = dataFromCache('role/20')
+const staffProfiles  = dataFromCache('meta/staff_profiles')
+const issuanceTypes  = dataFromCache('meta/issuance_types')
 
 const form = reactive({
   receivingStaffId: null,
+  issuanceTypeId:   null,
   notes: null,
+  items: null,
 })
 
 const ui = reactive({ busy: null, error: null, success: null })
 
 const submitForm = async () => {
+  form.items = props.collected.map((a) => ({ registeredAssetId: a.asset_id }))
   if (!objectComplete(form)) {
-    objectResetSet(ui, 'error', 'Please complete all required fields.')
+    objectResetSet(ui, 'error', 'Complete the form.')
     return
   }
   objectResetSet(ui, 'busy', true)
-  const payload = {
+  const response = await dataSend('assets/issuance', {
     ...form,
     eventStationId: eventStation.value,
-    assetIds: props.collected.map((a) => a.asset_id),
-  }
-  const response = await dataSend('assets/issuance', payload)
+  })
   if (response.status === 200) {
+    objectReset(form)
     objectResetSet(ui, 'success', 'Issuance submitted successfully.')
   } else {
     objectResetSet(ui, 'error', response.data)
@@ -40,6 +43,7 @@ const submitForm = async () => {
 
 onMounted(() => {
   dataFetchToCache('meta/staff_profiles')
+  dataFetchToCache('meta/issuance_types')
 })
 </script>
 
@@ -62,6 +66,19 @@ onMounted(() => {
               option-label="full_name"
               option-value="id"
               placeholder="Select staff member"
+              filter
+              class="w-full"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-medium text-[#384884]">Issuance Type</label>
+            <Select
+              v-model="form.issuanceTypeId"
+              :options="issuanceTypes"
+              option-label="name"
+              option-value="id"
+              placeholder="Select issuance type"
               filter
               class="w-full"
             />

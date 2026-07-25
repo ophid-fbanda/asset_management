@@ -1,8 +1,11 @@
 package assem.exchange.profiles;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.util.Map;
+
 @Data
+@NoArgsConstructor
 public class ProfileRole{
     private int instanceId;
     private int roleTypeId;

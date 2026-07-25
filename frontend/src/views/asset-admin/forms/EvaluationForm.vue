@@ -1,7 +1,7 @@
 <script setup>
-import { onMounted, reactive } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import { InputNumber, Select, Textarea } from 'primevue'
-import { objectComplete, objectResetSet } from '@/api/objectx'
+import { objectComplete, objectReset, objectResetSet } from '@/api/objectx'
 import { dataFetchToCache, dataFromCache, dataSend } from '@/api/datax'
 import FeedBack from '@/commons/FeedBack.vue'
 
@@ -12,7 +12,7 @@ const props = defineProps({
 const eventStation    = dataFromCache('role/20')
 const evaluationTypes = dataFromCache('meta/evaluation_types')
 
-const asset = props.collected[0] ?? {}
+const asset = computed(() => props.collected[0] ?? {})
 
 const form = reactive({
   evaluationTypeId: null,
@@ -23,18 +23,18 @@ const form = reactive({
 const ui = reactive({ busy: null, error: null, success: null })
 
 const submitForm = async () => {
-  if (!objectComplete(form)) {
-    objectResetSet(ui, 'error', 'Please complete all required fields.')
+  if (!objectComplete(form, ['eventNotes'])) {
+    objectResetSet(ui, 'error', 'Complete the form.')
     return
   }
   objectResetSet(ui, 'busy', true)
-  const payload = {
+  const response = await dataSend('assets/evaluation', {
     ...form,
-    assetId: asset.asset_id,
-    eventStationId: eventStation.value,
-  }
-  const response = await dataSend('assets/evaluation', payload)
+    registeredAssetId: asset.value.asset_id,
+    eventStationId:    eventStation.value,
+  })
   if (response.status === 200) {
+    objectReset(form)
     objectResetSet(ui, 'success', 'Evaluation submitted successfully.')
   } else {
     objectResetSet(ui, 'error', response.data)
@@ -56,36 +56,39 @@ onMounted(() => {
         <span class="ml-2 text-xs font-normal text-surface-500">{{ asset.asset_number ?? asset.serial_number }}</span>
       </h3>
 
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div class="flex flex-col gap-1.5">
-          <label class="text-sm font-medium text-[#384884]">Evaluation Type</label>
-          <Select
-            v-model="form.evaluationTypeId"
-            :options="evaluationTypes"
-            option-label="name"
-            option-value="id"
-            placeholder="Select type"
-            filter
-            class="w-full"
-          />
+      <div class="flex flex-col gap-4">
+        <div class="flex gap-4">
+          <div class="flex flex-1 flex-col gap-1.5">
+            <label class="text-sm font-medium text-[#384884]">Evaluation Type</label>
+            <Select
+              v-model="form.evaluationTypeId"
+              :options="evaluationTypes"
+              option-label="name"
+              option-value="id"
+              placeholder="Select type"
+              filter
+              class="w-full"
+            />
+          </div>
+
+          <div class="flex flex-1 flex-col gap-1.5">
+            <label class="text-sm font-medium text-[#384884]">Evaluated Value</label>
+            <InputNumber
+              v-model="form.evaluatedValue"
+              mode="decimal"
+              :min-fraction-digits="2"
+              :max-fraction-digits="2"
+              :min="0.01"
+              placeholder="0.00"
+              class="w-full"
+            />
+          </div>
         </div>
 
         <div class="flex flex-col gap-1.5">
-          <label class="text-sm font-medium text-[#384884]">Evaluated Value</label>
-          <InputNumber
-            v-model="form.evaluatedValue"
-            mode="currency"
-            currency="USD"
-            :min="0"
-            placeholder="0.00"
-            class="w-full"
-          />
+          <label class="text-sm font-medium text-[#384884]">Notes</label>
+          <Textarea v-model="form.eventNotes" rows="2" auto-resize placeholder="Optional notes" class="w-full" />
         </div>
-      </div>
-
-      <div class="flex flex-col gap-1.5">
-        <label class="text-sm font-medium text-[#384884]">Notes</label>
-        <Textarea v-model="form.eventNotes" rows="3" auto-resize placeholder="Optional notes" class="w-full" />
       </div>
 
       <div class="flex justify-end">

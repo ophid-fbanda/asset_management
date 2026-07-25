@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import { Column, DataTable } from 'primevue'
-import { dataFetchToCache, dataFromCache } from '@/api/datax'
+import { dataApiUrl, dataFetchToCache, dataFromCache } from '@/api/datax'
 import { exportToPDF } from '@/api/exportx'
 import { objectHeaders } from '@/api/objectx'
 import logo from '@/assets/logo.png'
@@ -184,7 +184,7 @@ onMounted(() => {
       <span class="text-[10px] text-[#64748b]">{{ details.reference_attachment }}</span>
     </div>
     <iframe
-      :src="`/api/files/${details.reference_attachment}`"
+      :src="dataApiUrl(`files/${details.reference_attachment}`)"
       class="w-full h-[400px] border-0"
       title="Reference Attachment"
     />

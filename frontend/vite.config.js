@@ -9,6 +9,7 @@ import Components from 'unplugin-vue-components/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/ams/',
   plugins: [
     vue(),
     vueDevTools(),
@@ -24,6 +25,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
+      // Dev only. Production uses IIS: /ams_be/api → Spring /api
       '/api': {
         target: 'http://localhost:8080',
         changeOrigin: true,

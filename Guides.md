@@ -106,20 +106,22 @@ Exchange DTOs live under `exchange/` and are named `<Domain>Exchange` (parent) a
 | `@ModelAttribute` (multipart) | Form has a file upload | `consumes = MULTIPART_FORM_DATA_VALUE` | `dataUpload` |
 | `@RequestBody` (JSON) | No file upload | default | `dataSend` |
 
-**`@ModelAttribute` DTOs — custom String setters required.**  
-Multipart payloads arrive as raw strings. Every non-`String` field must suppress the Lombok setter and provide a hand-written one that parses the string value:
+**All non-`String` frontend-bound fields must suppress the Lombok setter and provide a hand-written one that parses from `String`:**
 
 ```java
 @Setter(AccessLevel.NONE)
-Integer programId;
+@NotNull(message = "Station is required.")
+Integer eventStationId;
 
-public void setProgramId(String value) {
-    try { this.programId = Integer.parseInt(value); }
-    catch (Exception e) { this.programId = null; }
+public void setEventStationId(String v) {
+    try { this.eventStationId = Integer.parseInt(v.trim()); }
+    catch (Exception e) { this.eventStationId = null; }
 }
 ```
 
-Nested object lists arrive stringified (`JSON.stringify` on the client). Parse them with `TypeConvertor`:
+This applies to both `@ModelAttribute` and `@RequestBody` DTOs — it prevents Lombok from generating a type-permissive setter and gives explicit control over how each field is parsed. Nested object lists (`List<ItemExchange>`) keep standard Lombok setters since they are deserialised by Jackson as arrays, not raw strings.
+
+For `@ModelAttribute` DTOs, nested lists arrive stringified (`JSON.stringify` on the client) and must be parsed with `TypeConvertor`:
 
 ```java
 @Setter(AccessLevel.NONE)
@@ -130,10 +132,8 @@ public void setAssets(String value) {
 }
 ```
 
-**`@RequestBody` DTOs — standard Lombok setters.**  
-Jackson deserialises JSON natively. No custom setters or `@Setter(AccessLevel.NONE)` are needed; Lombok `@Data` is sufficient. The client sends the object graph as-is (no `JSON.stringify` on nested arrays).
-
-**Server-side internals** never need setters of either kind — they are set in the controller after binding:
+**Server-side internals** are set programmatically after binding and keep standard Lombok setters:
 
 - `eventId` (from `ExchangeBase`) — created via `base.createEventId()`.
 - `eventAdminId` (from `ExchangeBase`) — copied from the session profile.
+- Child-link fields (e.g. `assetTransferId`, `assetIssuanceId`) — stamped in the insert loop.

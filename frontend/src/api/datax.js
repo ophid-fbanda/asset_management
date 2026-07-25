@@ -1,6 +1,8 @@
 import { computed } from 'vue'
 import { cachex } from '@/api/cachex'
-import { httpGet, httpPost, httpMultiPost } from '@/api/httpx'
+import { httpGet, httpPost, httpMultiPost, httpApiUrl } from '@/api/httpx'
+
+export { httpApiUrl as dataApiUrl }
 
 //================================================//
 //                    PROFILE KEY                 //

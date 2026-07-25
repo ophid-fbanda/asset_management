@@ -24,6 +24,7 @@ const assetColumns = computed(() => objectHeaders(assets.value))
 
 const supervisorApproval = computed(() => approvals.value.find((a) => a.approval_type_id === 40 || a.approval_type_id === 41) ?? null)
 const managerApproval    = computed(() => approvals.value.find((a) => a.approval_type_id === 50 || a.approval_type_id === 51) ?? null)
+const recipientApproval  = computed(() => approvals.value.find((a) => a.approval_type_id === 10 || a.approval_type_id === 11) ?? null)
 
 const approvalColor = (typeId) => typeId % 2 === 0 ? '#384884' : '#ef4444'
 
@@ -105,7 +106,7 @@ onMounted(() => {
       <div class="border-t border-[#e2e8f0] pt-6 flex flex-col">
 
         <!-- Row 1: role labels -->
-        <div class="flex gap-10 pb-1">
+        <div class="flex gap-6 pb-1">
           <div class="flex-1">
             <span class="text-[8px] font-bold uppercase tracking-widest text-[#64748b]">Submitted By</span>
           </div>
@@ -121,10 +122,16 @@ onMounted(() => {
               :style="{ color: managerApproval ? approvalColor(managerApproval.approval_type_id) : '#384884' }"
             >{{ managerApproval ? managerApproval.approval : 'Manager — Name, Signature &amp; Date' }}</span>
           </div>
+          <div class="flex-1">
+            <span
+              class="text-[8px] font-bold uppercase tracking-widest"
+              :style="{ color: recipientApproval ? approvalColor(recipientApproval.approval_type_id) : '#384884' }"
+            >{{ recipientApproval ? recipientApproval.approval : 'Received by — Name, Signature &amp; Date' }}</span>
+          </div>
         </div>
 
         <!-- Row 2: name left, timestamp right, on the signature line -->
-        <div class="flex gap-10 pt-2 pb-1">
+        <div class="flex gap-6 pt-2 pb-1">
           <div class="flex-1 border-b border-[#94a3b8] flex items-end justify-between">
             <span class="font-semibold text-[11px]">{{ details.submitted_by }}</span>
             <span class="text-[8px] text-[#64748b] pb-0.5">{{ details.transfer_date }}</span>
@@ -137,16 +144,23 @@ onMounted(() => {
             <span class="font-semibold text-[11px]">{{ managerApproval ? managerApproval.approved_by : '' }}</span>
             <span v-if="managerApproval" class="text-[8px] text-[#64748b] pb-0.5">{{ managerApproval.stamp }}</span>
           </div>
+          <div class="flex-1 border-b flex items-end justify-between" :style="{ borderColor: recipientApproval ? approvalColor(recipientApproval.approval_type_id) : '#94a3b8' }">
+            <span class="font-semibold text-[11px]">{{ recipientApproval ? recipientApproval.approved_by : '' }}</span>
+            <span v-if="recipientApproval" class="text-[8px] text-[#64748b] pb-0.5">{{ recipientApproval.stamp }}</span>
+          </div>
         </div>
 
         <!-- Row 3: approval notes -->
-        <div v-if="supervisorApproval?.notes || managerApproval?.notes" class="flex gap-10 pt-1">
+        <div v-if="supervisorApproval?.notes || managerApproval?.notes || recipientApproval?.notes" class="flex gap-6 pt-1">
           <div class="flex-1"></div>
           <div class="flex-1">
             <p v-if="supervisorApproval?.notes" class="text-[9px] text-[#64748b] italic">{{ supervisorApproval.notes }}</p>
           </div>
           <div class="flex-1">
             <p v-if="managerApproval?.notes" class="text-[9px] text-[#64748b] italic">{{ managerApproval.notes }}</p>
+          </div>
+          <div class="flex-1">
+            <p v-if="recipientApproval?.notes" class="text-[9px] text-[#64748b] italic">{{ recipientApproval.notes }}</p>
           </div>
         </div>
 

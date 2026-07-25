@@ -9,8 +9,19 @@ import IssuanceForm from '@/views/asset-admin/forms/IssuanceForm.vue'
 import VerificationForm from '@/views/asset-admin/forms/VerificationForm.vue'
 import EvaluationForm from '@/views/asset-admin/forms/EvaluationForm.vue'
 import PlacementForm from '@/views/asset-admin/forms/PlacementForm.vue'
+import DisposalForm from '@/views/asset-admin/forms/DisposalForm.vue'
+import IncidentForm from '@/views/home/forms/IncidentForm.vue'
+import RequisitionForm from '@/views/asset-admin/forms/RequisitionForm.vue'
 import RegistrationTemplate from '@/views/templates/RegistrationTemplate.vue'
 import TransferTemplate from '@/views/templates/TransferTemplate.vue'
+import IssuanceTemplate from '@/views/templates/IssuanceTemplate.vue'
+import VerificationTemplate from '@/views/templates/VerificationTemplate.vue'
+import EvaluationTemplate from '@/views/templates/EvaluationTemplate.vue'
+import PlacementTemplate from '@/views/templates/PlacementTemplate.vue'
+import DisposalTemplate from '@/views/templates/DisposalTemplate.vue'
+import IncidentTemplate from '@/views/templates/IncidentTemplate.vue'
+import RequisitionTemplate from '@/views/templates/RequisitionTemplate.vue'
+import AssetProfileTemplate from '@/views/templates/AssetProfileTemplate.vue'
 
 const props = defineProps({
   header: { type: String, default: 'Form' },
@@ -77,7 +88,8 @@ onMounted(() => {
   dataFetchToCache('meta/approval_types')
   if (props.external) {
     selectForm(props.external)
-  } else if (visibleOptions.value?.length === 1) {
+  } else if (visibleOptions.value?.length) {
+    // Open the first option so the form/document is visible immediately.
     selectForm(visibleOptions.value[0].id)
   }
 })
@@ -164,8 +176,19 @@ onMounted(() => {
             <VerificationForm     v-else-if="context.formId === 'verificationForm'" :collected="collected" />
             <EvaluationForm       v-else-if="context.formId === 'evaluationForm'"   :collected="collected" />
             <PlacementForm        v-else-if="context.formId === 'placementForm'"    :collected="collected" />
+            <DisposalForm         v-else-if="context.formId === 'disposalForm'"     :collected="collected" />
+            <IncidentForm         v-else-if="context.formId === 'incidentForm'"     :collected="collected" />
+            <RequisitionForm      v-else-if="context.formId === 'requisitionForm'" :collected="collected" />
             <RegistrationTemplate v-else-if="context.formId === 'regTemplate'"      :collected="collected" />
-            <TransferTemplate     v-else-if="context.formId === 'transferTemplate'" :collected="collected" />
+            <TransferTemplate     v-else-if="context.formId === 'transferTemplate'"  :collected="collected" />
+            <IssuanceTemplate      v-else-if="context.formId === 'issuanceTemplate'"      :collected="collected" />
+            <VerificationTemplate  v-else-if="context.formId === 'verificationTemplate'"  :collected="collected" />
+            <EvaluationTemplate   v-else-if="context.formId === 'evaluationTemplate'"    :collected="collected" />
+            <PlacementTemplate    v-else-if="context.formId === 'placementTemplate'"     :collected="collected" />
+            <DisposalTemplate     v-else-if="context.formId === 'disposalTemplate'"      :collected="collected" />
+            <IncidentTemplate     v-else-if="context.formId === 'incidentTemplate'"      :collected="collected" />
+            <RequisitionTemplate  v-else-if="context.formId === 'reqTemplate'"        :collected="collected" />
+            <AssetProfileTemplate v-else-if="context.formId === 'assetProfile'"          :collected="collected" />
           </div>
 
           <!-- Always-visible collected items table -->

@@ -1,7 +1,13 @@
 package assem.controllers;
 
+import assem.exchange.assets.DisposalExchange;
+import assem.exchange.assets.EvaluationExchange;
+import assem.exchange.assets.PlacementExchange;
+import assem.exchange.assets.IssuanceExchange;
 import assem.exchange.assets.Registration;
 import assem.exchange.assets.TransferExchange;
+import assem.exchange.assets.VerificationExchange;
+import assem.exchange.assets.RequestExchange;
 import assem.exchange.commons.Result;
 import assem.exchange.profiles.ProfileExchange;
 import assem.repository.ApprovalsRepository;
@@ -76,6 +82,97 @@ public class AssetsController {
         return ResponseEntity.ok(result.getData());
     }
 
+    @GetMapping("/requests/{station}")
+    public ResponseEntity<?> getRequests(@PathVariable int station, HttpSession session) {
+        ProfileExchange profile = checks.getProfile(session);
+        if (profile == null) {
+            return ResponseEntity.status(403).body("Forbidden");
+        }
+
+        if (!profile.hasRole(ASSET_ADMIN_ROLE_TYPE_ID, station)) {
+            session.invalidate();
+            return ResponseEntity.status(403).body("You are not authorized to view this station.");
+        }
+
+        Result<List<Map<String, Object>>> result = assetRepository.getRequests(station);
+        if (!result.isOk()) {
+            return ResponseEntity.badRequest().body(result.getMessage());
+        }
+
+        return ResponseEntity.ok(result.getData());
+    }
+
+    @GetMapping("/changes/{station}")
+    public ResponseEntity<?> getStationChanges(@PathVariable int station, HttpSession session) {
+        ProfileExchange profile = checks.getProfile(session);
+        if (profile == null) {
+            return ResponseEntity.status(403).body("Forbidden");
+        }
+
+        if (!profile.hasRole(ASSET_ADMIN_ROLE_TYPE_ID, station)) {
+            session.invalidate();
+            return ResponseEntity.status(403).body("You are not authorized to view this station.");
+        }
+
+        Result<List<Map<String, Object>>> result = assetRepository.getStationChanges(station);
+        if (!result.isOk()) {
+            return ResponseEntity.badRequest().body(result.getMessage());
+        }
+
+        return ResponseEntity.ok(result.getData());
+    }
+
+    @GetMapping("/incidents/{station}")
+    public ResponseEntity<?> getStationIncidents(@PathVariable int station, HttpSession session) {
+        ProfileExchange profile = checks.getProfile(session);
+        if (profile == null) {
+            return ResponseEntity.status(403).body("Forbidden");
+        }
+
+        if (!profile.hasRole(ASSET_ADMIN_ROLE_TYPE_ID, station)) {
+            session.invalidate();
+            return ResponseEntity.status(403).body("You are not authorized to view this station.");
+        }
+
+        Result<List<Map<String, Object>>> result = assetRepository.getStationIncidents(station);
+        if (!result.isOk()) {
+            return ResponseEntity.badRequest().body(result.getMessage());
+        }
+
+        return ResponseEntity.ok(result.getData());
+    }
+
+    @GetMapping("/incoming/{station}")
+    public ResponseEntity<?> getIncomingTransfers(@PathVariable int station, HttpSession session) {
+        ProfileExchange profile = checks.getProfile(session);
+        if (profile == null) {
+            return ResponseEntity.status(403).body("Forbidden");
+        }
+
+        if (!profile.hasRole(ASSET_ADMIN_ROLE_TYPE_ID, station)) {
+            session.invalidate();
+            return ResponseEntity.status(403).body("You are not authorized to view this station.");
+        }
+
+        Result<List<Map<String, Object>>> result = assetRepository.getIncomingTransfers(station);
+        if (!result.isOk()) {
+            return ResponseEntity.badRequest().body(result.getMessage());
+        }
+
+        return ResponseEntity.ok(result.getData());
+    }
+
+    @GetMapping("/incident/{id}")
+    public ResponseEntity<?> getIncident(@PathVariable int id, HttpSession session) {
+        if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
+        Result<Map<String, Object>> details = assetRepository.getIncidentDetails(id);
+        if (!details.isOk()) return ResponseEntity.badRequest().body(details.getMessage());
+        int eventRegisterId = ((Number) details.getData().get("event_register_id")).intValue();
+        Result<List<Map<String, Object>>> approvals = approvalsRepository.getEventApprovals(eventRegisterId);
+        if (!approvals.isOk()) return ResponseEntity.badRequest().body(approvals.getMessage());
+        return ResponseEntity.ok(Map.of("details", details.getData(), "approvals", approvals.getData()));
+    }
+
     @GetMapping("/registration/{id}")
     public ResponseEntity<?> getRegistration(@PathVariable int id, HttpSession session) {
         if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
@@ -87,6 +184,190 @@ public class AssetsController {
         Result<List<Map<String, Object>>> approvals = approvalsRepository.getEventApprovals(eventRegisterId);
         if (!approvals.isOk()) return ResponseEntity.badRequest().body(approvals.getMessage());
         return ResponseEntity.ok(Map.of("details", details.getData(), "list", list.getData(), "approvals", approvals.getData()));
+    }
+
+    @GetMapping("/request/{id}")
+    public ResponseEntity<?> getRequest(@PathVariable int id, HttpSession session) {
+        if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
+        Result<Map<String, Object>> details = assetRepository.getRequestDetails(id);
+        if (!details.isOk()) return ResponseEntity.badRequest().body(details.getMessage());
+        Result<List<Map<String, Object>>> list = assetRepository.getRequestItems(id);
+        if (!list.isOk()) return ResponseEntity.badRequest().body(list.getMessage());
+        int eventRegisterId = ((Number) details.getData().get("event_register_id")).intValue();
+        Result<List<Map<String, Object>>> approvals = approvalsRepository.getEventApprovals(eventRegisterId);
+        if (!approvals.isOk()) return ResponseEntity.badRequest().body(approvals.getMessage());
+        return ResponseEntity.ok(Map.of("details", details.getData(), "list", list.getData(), "approvals", approvals.getData()));
+    }
+
+    @PostMapping("/request")
+    public ResponseEntity<?> createRequest(
+            @Valid @RequestBody RequestExchange request,
+            BindingResult bindingResult,
+            HttpSession session
+    ) {
+        if (checks.hasErrors(bindingResult)) return ResponseEntity.badRequest().body(checks.getBindingErrors(bindingResult));
+        ProfileExchange profile = checks.getProfile(session);
+        if (profile == null) return ResponseEntity.status(401).body("Unauthorized");
+        if (!profile.hasRole(ASSET_ADMIN_ROLE_TYPE_ID, request.getEventStationId())) {
+            session.invalidate();
+            return ResponseEntity.status(403).body("You are not authorized to submit requisitions for this station.");
+        }
+        request.setEventAdminId(profile.getProfileId());
+        Result<Boolean> result = assetRepository.createRequest(request);
+        if (!result.isOk()) return ResponseEntity.badRequest().body(result.getMessage());
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/placement/{id}")
+    public ResponseEntity<?> getPlacement(@PathVariable int id, HttpSession session) {
+        if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
+        Result<Map<String, Object>> details = assetRepository.getPlacementDetails(id);
+        if (!details.isOk()) return ResponseEntity.badRequest().body(details.getMessage());
+        int eventRegisterId = ((Number) details.getData().get("event_register_id")).intValue();
+        Result<List<Map<String, Object>>> approvals = approvalsRepository.getEventApprovals(eventRegisterId);
+        if (!approvals.isOk()) return ResponseEntity.badRequest().body(approvals.getMessage());
+        return ResponseEntity.ok(Map.of("details", details.getData(), "approvals", approvals.getData()));
+    }
+
+    @GetMapping("/disposal/{id}")
+    public ResponseEntity<?> getDisposal(@PathVariable int id, HttpSession session) {
+        if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
+        Result<Map<String, Object>> details = assetRepository.getDisposalDetails(id);
+        if (!details.isOk()) return ResponseEntity.badRequest().body(details.getMessage());
+        int eventRegisterId = ((Number) details.getData().get("event_register_id")).intValue();
+        Result<List<Map<String, Object>>> approvals = approvalsRepository.getEventApprovals(eventRegisterId);
+        if (!approvals.isOk()) return ResponseEntity.badRequest().body(approvals.getMessage());
+        return ResponseEntity.ok(Map.of("details", details.getData(), "approvals", approvals.getData()));
+    }
+
+    @PostMapping("/disposal")
+    public ResponseEntity<?> createDisposal(
+            @Valid @RequestBody DisposalExchange disposal,
+            BindingResult bindingResult,
+            HttpSession session
+    ) {
+        if (checks.hasErrors(bindingResult)) return ResponseEntity.badRequest().body(checks.getBindingErrors(bindingResult));
+        ProfileExchange profile = checks.getProfile(session);
+        if (profile == null) return ResponseEntity.status(401).body("Unauthorized");
+        if (!profile.hasRole(ASSET_ADMIN_ROLE_TYPE_ID, disposal.getEventStationId())) {
+            session.invalidate();
+            return ResponseEntity.status(403).body("You are not authorized to submit disposals for this station.");
+        }
+        disposal.setEventAdminId(profile.getProfileId());
+        Result<Boolean> result = assetRepository.createDisposal(disposal);
+        if (!result.isOk()) return ResponseEntity.badRequest().body(result.getMessage());
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/placement")
+    public ResponseEntity<?> createPlacement(
+            @Valid @RequestBody PlacementExchange placement,
+            BindingResult bindingResult,
+            HttpSession session
+    ) {
+        if (checks.hasErrors(bindingResult)) return ResponseEntity.badRequest().body(checks.getBindingErrors(bindingResult));
+        ProfileExchange profile = checks.getProfile(session);
+        if (profile == null) return ResponseEntity.status(401).body("Unauthorized");
+        if (!profile.hasRole(ASSET_ADMIN_ROLE_TYPE_ID, placement.getEventStationId())) {
+            session.invalidate();
+            return ResponseEntity.status(403).body("You are not authorized to submit placements for this station.");
+        }
+        placement.setEventAdminId(profile.getProfileId());
+        Result<Boolean> result = assetRepository.createPlacement(placement);
+        if (!result.isOk()) return ResponseEntity.badRequest().body(result.getMessage());
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/evaluation/{id}")
+    public ResponseEntity<?> getEvaluation(@PathVariable int id, HttpSession session) {
+        if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
+        Result<Map<String, Object>> details = assetRepository.getEvaluationDetails(id);
+        if (!details.isOk()) return ResponseEntity.badRequest().body(details.getMessage());
+        int eventRegisterId = ((Number) details.getData().get("event_register_id")).intValue();
+        Result<List<Map<String, Object>>> approvals = approvalsRepository.getEventApprovals(eventRegisterId);
+        if (!approvals.isOk()) return ResponseEntity.badRequest().body(approvals.getMessage());
+        return ResponseEntity.ok(Map.of("details", details.getData(), "approvals", approvals.getData()));
+    }
+
+    @PostMapping("/evaluation")
+    public ResponseEntity<?> createEvaluation(
+            @Valid @RequestBody EvaluationExchange evaluation,
+            BindingResult bindingResult,
+            HttpSession session
+    ) {
+        if (checks.hasErrors(bindingResult)) return ResponseEntity.badRequest().body(checks.getBindingErrors(bindingResult));
+        ProfileExchange profile = checks.getProfile(session);
+        if (profile == null) return ResponseEntity.status(401).body("Unauthorized");
+        if (!profile.hasRole(ASSET_ADMIN_ROLE_TYPE_ID, evaluation.getEventStationId())) {
+            session.invalidate();
+            return ResponseEntity.status(403).body("You are not authorized to submit evaluations for this station.");
+        }
+        evaluation.setEventAdminId(profile.getProfileId());
+        Result<Boolean> result = assetRepository.createEvaluation(evaluation);
+        if (!result.isOk()) return ResponseEntity.badRequest().body(result.getMessage());
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/verification/{id}")
+    public ResponseEntity<?> getVerification(@PathVariable int id, HttpSession session) {
+        if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
+        Result<Map<String, Object>> details = assetRepository.getVerificationDetails(id);
+        if (!details.isOk()) return ResponseEntity.badRequest().body(details.getMessage());
+        int eventRegisterId = ((Number) details.getData().get("event_register_id")).intValue();
+        Result<List<Map<String, Object>>> approvals = approvalsRepository.getEventApprovals(eventRegisterId);
+        if (!approvals.isOk()) return ResponseEntity.badRequest().body(approvals.getMessage());
+        return ResponseEntity.ok(Map.of("details", details.getData(), "approvals", approvals.getData()));
+    }
+
+    @PostMapping("/verification")
+    public ResponseEntity<?> createVerification(
+            @Valid @RequestBody VerificationExchange verification,
+            BindingResult bindingResult,
+            HttpSession session
+    ) {
+        if (checks.hasErrors(bindingResult)) return ResponseEntity.badRequest().body(checks.getBindingErrors(bindingResult));
+        ProfileExchange profile = checks.getProfile(session);
+        if (profile == null) return ResponseEntity.status(401).body("Unauthorized");
+        if (!profile.hasRole(ASSET_ADMIN_ROLE_TYPE_ID, verification.getEventStationId())) {
+            session.invalidate();
+            return ResponseEntity.status(403).body("You are not authorized to submit verifications for this station.");
+        }
+        verification.setEventAdminId(profile.getProfileId());
+        Result<Boolean> result = assetRepository.createVerification(verification);
+        if (!result.isOk()) return ResponseEntity.badRequest().body(result.getMessage());
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/issuance/{id}")
+    public ResponseEntity<?> getIssuance(@PathVariable int id, HttpSession session) {
+        if (!checks.isAuthenticated(session)) return ResponseEntity.status(401).body("Unauthorized");
+        Result<Map<String, Object>> details = assetRepository.getIssuanceDetails(id);
+        if (!details.isOk()) return ResponseEntity.badRequest().body(details.getMessage());
+        Result<List<Map<String, Object>>> list = assetRepository.getIssuanceAssets(id);
+        if (!list.isOk()) return ResponseEntity.badRequest().body(list.getMessage());
+        int eventRegisterId = ((Number) details.getData().get("event_register_id")).intValue();
+        Result<List<Map<String, Object>>> approvals = approvalsRepository.getEventApprovals(eventRegisterId);
+        if (!approvals.isOk()) return ResponseEntity.badRequest().body(approvals.getMessage());
+        return ResponseEntity.ok(Map.of("details", details.getData(), "list", list.getData(), "approvals", approvals.getData()));
+    }
+
+    @PostMapping("/issuance")
+    public ResponseEntity<?> createIssuance(
+            @Valid @RequestBody IssuanceExchange issuance,
+            BindingResult bindingResult,
+            HttpSession session
+    ) {
+        if (checks.hasErrors(bindingResult)) return ResponseEntity.badRequest().body(checks.getBindingErrors(bindingResult));
+        ProfileExchange profile = checks.getProfile(session);
+        if (profile == null) return ResponseEntity.status(401).body("Unauthorized");
+        if (!profile.hasRole(ASSET_ADMIN_ROLE_TYPE_ID, issuance.getEventStationId())) {
+            session.invalidate();
+            return ResponseEntity.status(403).body("You are not authorized to issue assets from this station.");
+        }
+        issuance.setEventAdminId(profile.getProfileId());
+        Result<Boolean> result = assetRepository.createIssuance(issuance);
+        if (!result.isOk()) return ResponseEntity.badRequest().body(result.getMessage());
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/transfer/{id}")

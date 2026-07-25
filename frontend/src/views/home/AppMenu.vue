@@ -28,10 +28,6 @@ const menuLinkActiveClass = 'bg-[#5b6aa1] font-semibold text-white [&_i]:text-wh
         <i class="pi pi-home" />
         <span>Home</span>
       </RouterLink>
-      <RouterLink to="/my-assets" :class="menuLinkClass" :active-class="menuLinkActiveClass">
-        <i class="pi pi-box" />
-        <span>My Assets</span>
-      </RouterLink>
       <RouterLink to="/reports" :class="menuLinkClass" :active-class="menuLinkActiveClass">
         <i class="pi pi-chart-bar" />
         <span>Reports</span>

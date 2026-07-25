@@ -1,0 +1,19 @@
+# Copy to config.properties next to the running jar (or in backend/ for local runs).
+# Spring loads it via: spring.config.import=optional:file:./config.properties
+
+server.port=8080
+
+spring.datasource.url=jdbc:postgresql://HOST:PORT/assem
+spring.datasource.username=postgres
+spring.datasource.password=CHANGE_ME
+
+# Concrete origins only — Spring rejects * with credentials.
+# Blank = same-origin (recommended: nginx serves /ams and proxies /api).
+# Split-host example:
+# assem.cors.allowed-origins=https://assets.example.org
+assem.cors.allowed-origins=
+
+assem.storage.registrations=storage
+
+spring.servlet.multipart.max-file-size=25MB
+spring.servlet.multipart.max-request-size=25MB

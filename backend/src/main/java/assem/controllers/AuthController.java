@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
-
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -79,6 +79,61 @@ public class AuthController {
     public ResponseEntity<?> logout(HttpSession session) {
         session.invalidate();
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/password")
+    public ResponseEntity<?> changePassword(
+            @RequestBody Map<String, Object> body,
+            HttpSession session
+    ) {
+        if (!checks.isAuthenticated(session)) {
+            return ResponseEntity.status(401).body("Unauthorized");
+        }
+        ProfileExchange profile = checks.getProfile(session);
+        String currentPassword = body != null && body.get("currentPassword") != null
+                ? String.valueOf(body.get("currentPassword"))
+                : null;
+        String newPassword = body != null && body.get("newPassword") != null
+                ? String.valueOf(body.get("newPassword"))
+                : null;
+
+        Result<Boolean> result = authService.changePassword(
+                profile.getProfileId(),
+                currentPassword,
+                newPassword
+        );
+        if (!result.isOk()) {
+            return ResponseEntity.badRequest().body(result.getMessage());
+        }
+        return ResponseEntity.ok(true);
+    }
+
+    @PostMapping("/contact")
+    public ResponseEntity<?> updateContact(
+            @RequestBody Map<String, Object> body,
+            HttpSession session
+    ) {
+        if (!checks.isAuthenticated(session)) {
+            return ResponseEntity.status(401).body("Unauthorized");
+        }
+        ProfileExchange profile = checks.getProfile(session);
+        String email = body != null && body.get("email") != null
+                ? String.valueOf(body.get("email"))
+                : null;
+        String phone = body != null && body.get("phone") != null
+                ? String.valueOf(body.get("phone"))
+                : null;
+
+        Result<ProfileExchange> result = authService.updateContact(
+                profile.getProfileId(),
+                email,
+                phone
+        );
+        if (!result.isOk()) {
+            return ResponseEntity.badRequest().body(result.getMessage());
+        }
+        session.setAttribute("profile", result.getData());
+        return ResponseEntity.ok(result.getData());
     }
 
 }

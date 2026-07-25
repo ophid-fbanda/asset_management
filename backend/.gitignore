@@ -1,6 +1,8 @@
 HELP.md
 target/
 uploads/
+# Local/deploy secrets — keep config.properties.example in git
+config.properties
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/

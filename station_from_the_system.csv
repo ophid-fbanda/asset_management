@@ -1,0 +1,1103 @@
+"id","station_code","station_name","latitude","longitude","level"
+1,"/Z9zOAr1dQ8K","Central Office",NULL,NULL,1
+2,"/Z9zOAr1dQ8K/AP0oByfeNOO","Mashonaland East",NULL,NULL,2
+3,"/Z9zOAr1dQ8K/AP0oByfeNOO/A1qfbn7GkEj","Chikomba ",NULL,NULL,3
+4,"/Z9zOAr1dQ8K/AP0oByfeNOO/A1qfbn7GkEj/GVp3L9G62Gc","Gokomere Clinic",NULL,NULL,4
+5,"/Z9zOAr1dQ8K/AP0oByfeNOO/At0CT70yl34","Hwedza ",NULL,NULL,3
+6,"/Z9zOAr1dQ8K/AP0oByfeNOO/At0CT70yl34/mbDBz6MSz7W","Mt. St Marys Mission Hospital",NULL,NULL,4
+7,"/Z9zOAr1dQ8K/dqA5ZJs7S5m","Mashonaland West",NULL,NULL,2
+8,"/Z9zOAr1dQ8K/dqA5ZJs7S5m/EdrwoNn5vSY","Hurungwe ",NULL,NULL,3
+9,"/Z9zOAr1dQ8K/dqA5ZJs7S5m/EdrwoNn5vSY/OLRUUHnqxid","Wellness Centre Road Site Clinic",NULL,NULL,4
+11,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT","Bulawayo",NULL,NULL,3
+12,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/AQUWX00pVHC","Cowdray Park Clinic",NULL,NULL,4
+13,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/AU3HqiX44Iu","Tshabalala Clinic",NULL,NULL,4
+14,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/BNmgLUTqvi9","United Bulawayo Hospital Central Hospital",NULL,NULL,4
+15,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/bTFUZdQpl2O","Pumula Clinic",NULL,NULL,4
+16,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/cIHo19pHPnw","Emakhandeni Clinic",NULL,NULL,4
+17,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/en6HLtwW3sN","Northern Suburbs Clinic",NULL,NULL,4
+18,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/ETnCTKuzUNg","Emganwini Clinic",NULL,NULL,4
+19,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/FEdl2EBiTBV","Magwegwe Clinic",NULL,NULL,4
+20,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/GLh9L9T8kCh","Mahatshula Clinic",NULL,NULL,4
+21,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/gpJEjabIuP7","Nketa Clinic",NULL,NULL,4
+22,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/gs4v5i69tux","Dr. Shennan Clinic",NULL,NULL,4
+23,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/HTOW8SwHLtO","Khami Clinic",NULL,NULL,4
+24,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/ikrpWZKIaxV","Maqhawe Clinic",NULL,NULL,4
+25,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/jYoTBp4PIJa","Ingutsheni Central Hospital",NULL,NULL,4
+26,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/jYoTBp4PIJa/CMfdOI3UAkF","CRFIngutsheni  Hospital",NULL,NULL,5
+27,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/KIAW84qSifO","Entumbane Clinic",NULL,NULL,4
+28,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/l3sa1esKB5N","Cowdry Park Health Centre",NULL,NULL,4
+29,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/LzPod6UX2mA","Mzilikazi Clinic",NULL,NULL,4
+30,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/OnysnioygHR","Pelandaba Clinic",NULL,NULL,4
+31,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/oZk9I1XeSu9","E.F. Watson Clinic",NULL,NULL,4
+32,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/Sss3M30PqRD","Luveve Clinic",NULL,NULL,4
+33,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/sTQ6BFy94pp","Princess Margaret Clinic",NULL,NULL,4
+34,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/Sv1eXLkWUya","Nkulumane Clinic",NULL,NULL,4
+35,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/UCKxgQFp862","Njube Clinic",NULL,NULL,4
+36,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/UNvppQDgoqJ","Mpilo Central Hospital",NULL,NULL,4
+37,"/Z9zOAr1dQ8K/gLRkKaY6yuS/DlE6bBnEvJT/zhkFyAbgMc2","Pumula South Clinic",NULL,NULL,4
+38,"/Z9zOAr1dQ8K/kUS61oPWPF9","Matabeleland South",NULL,NULL,2
+39,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3","Beitbridge",NULL,NULL,3
+40,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/cLOvKUEH5RN","Dulibadzimu Clinic",NULL,NULL,4
+41,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/EOeDi6taCLr","Beitbridge District Hospital",NULL,NULL,4
+42,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/FHW8J9cVHxt","Tongwe Clinic",NULL,NULL,4
+43,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/G6nmGfnklSb","Dite Rural Health Centre",NULL,NULL,4
+44,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/HLtonOYJwWn","Majini Rural Health Centre",NULL,NULL,4
+45,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/JLZubuHTJDP","Chikwarakwara Rural Health Centre",NULL,NULL,4
+46,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/mzisptcnWiW","Chasvingo Clinic",NULL,NULL,4
+47,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/NAmW5KR5wQx","Masera Clinic",NULL,NULL,4
+48,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/OAq1i8fDht3","Makombe Clinic ",NULL,NULL,4
+49,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/oDmbYIOSipy","Makakabule Rural Health Centre",NULL,NULL,4
+50,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/OF8acIjcyKQ","Chamunangana Clinic",NULL,NULL,4
+51,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/ooCbPaLKfGV","Mtetengwe Clinic",NULL,NULL,4
+52,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/pNbIgW9kn5C","Chituripasi Rural Health Centre",NULL,NULL,4
+53,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/qusMEMLJjQi","Tshabili clinic",NULL,NULL,4
+54,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/RHrm9PxyBYg","Malabe Health Post",NULL,NULL,4
+55,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/rpej7yiXTfc","Beitbridge Wellness Clinic Private Clinic",NULL,NULL,4
+56,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/RvZ2KNZoPql","Shabwe Rural Health Centre",NULL,NULL,4
+57,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/T9MjXsATFab","Zezane Clinic",NULL,NULL,4
+58,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/tPS02lV0yjF","Swereki Clinic",NULL,NULL,4
+60,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/xg2duO1UjSL","Shashe Clinic",NULL,NULL,4
+61,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/Z7Wzn53893G","Nottingham Rural Health Centre",NULL,NULL,4
+62,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr","Gwanda",NULL,NULL,3
+63,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/A4cvoTFnkVd","Sitezi clinic",NULL,NULL,4
+64,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/B7i3EGdTPnj","Buvuma Clinic",NULL,NULL,4
+65,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/bB4csCSIDEn","Garanyemba Clinic",NULL,NULL,4
+66,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/CPy6XjJD08i","Nhwali Rural Health Centre",NULL,NULL,4
+67,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/cUPFcuov2Fc","West Nicolson Clinic",NULL,NULL,4
+68,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/fqYJ8EfOnTe","Manama Mission Hospital",NULL,NULL,4
+69,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/IVZFwtiwLgU","Mtshabezi Mission Hospital",NULL,NULL,4
+70,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/KlVFxBUmMPa","Gungwe Rural Health Centre",NULL,NULL,4
+71,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/KOtS4LirnJo","Mzimuni Clinic",NULL,NULL,4
+72,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/lq1a53Zl3Gn","Silkwe Rural Health centre",NULL,NULL,4
+73,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/Lv590WIYBnO","Simbumbumbu Rural Health Centre",NULL,NULL,4
+74,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/M2LcdnNLboq","Mapate Cliniclinic",NULL,NULL,4
+75,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/MfChw9iO4MQ","Makwe Rural Health Centre",NULL,NULL,4
+76,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/mm2j4nL6ha9","Ntalale Clinic",NULL,NULL,4
+10,"/Z9zOAr1dQ8K/gLRkKaY6yuS","Bulawayo Provincial Office",NULL,NULL,2
+77,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/mQbanvNia3z","Selonga Rural Health Centre",NULL,NULL,4
+78,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/N26tcya5qNw","Kafusi Clinic",NULL,NULL,4
+79,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/nWY5DVISxvp","Lushongwe Clinic",NULL,NULL,4
+80,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/OAYfFKYAty5","Stanmore Clinic",NULL,NULL,4
+81,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/PvpAI8GMs3i","Mandihongola RHC",NULL,NULL,4
+82,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/Sq0OXYtsjYO","Sengwezani Rural Health Centre",NULL,NULL,4
+83,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/XssBk2TpOIJ","Mashaba Clinic",NULL,NULL,4
+84,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/zrlHTputbK4","Pakama Clinic",NULL,NULL,4
+85,"/Z9zOAr1dQ8K/kUS61oPWPF9/LHy36wzzZSr/zxAtMDQ2Qqc","Gwanda Provincial Hospital",NULL,NULL,4
+86,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ","Bulilima",NULL,NULL,3
+87,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/D79NwzzVJYp","Dombodema Clinic",NULL,NULL,4
+88,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/dSsH9yE0duM","Village 13 Rural Health Centre",NULL,NULL,4
+89,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/fQFZqhixGvs","Gambu Clinic",NULL,NULL,4
+90,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/hNWAEAb2Nhd","Nyabane Clinic",NULL,NULL,4
+91,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/KYBy3FfZcPu","Bezu Clinic",NULL,NULL,4
+92,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/L0BhteRCV93","Solusi Clinic",NULL,NULL,4
+93,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/mb8xNkQoiuv","Sikhatini Clinic",NULL,NULL,4
+94,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/mCKQlE4o0Yr","Ndiweni Clinic",NULL,NULL,4
+95,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/mJIpxNdl2QY","Madlambuzi Clinic",NULL,NULL,4
+96,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/O4kX8ajY1Lp","Tokwana Clinic",NULL,NULL,4
+97,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/ofDSu93XYEs","Matjinge Rural Health Centre",NULL,NULL,4
+98,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/Orr1ircj1n9","Lady Stanley Mission Hospital",NULL,NULL,4
+99,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/pAUXg8FfZlS","Hingwe Clinic",NULL,NULL,4
+100,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/QPHAMe5GEWA","Makhuleka Clinic",NULL,NULL,4
+101,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/r3OGNRrJ82z","Nswazwi Rural Health Centre",NULL,NULL,4
+102,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/rkQa7RnEWDS","Huwana Clinic",NULL,NULL,4
+103,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/sqWVRgo6BjX","Malalume RHC",NULL,NULL,4
+104,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/twOU9Qka6Hm","Masendu Clinic",NULL,NULL,4
+105,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/txZAALJZy6S","Temateme Clinic",NULL,NULL,4
+106,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/XdWdQRJn9Py","Lady Barring Mission Hospital",NULL,NULL,4
+107,"/Z9zOAr1dQ8K/kUS61oPWPF9/nUBLdaaGcbJ/y98J2AtbZsT","Mbimba Clinic",NULL,NULL,4
+108,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG","Matobo",NULL,NULL,3
+109,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/B5YF4fUJEVU","Bazha Clinic",NULL,NULL,4
+110,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/BT9ERqzG21A","Natisa Rural Health Centre",NULL,NULL,4
+111,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/f3mLKel2gIx","Matobo Rural Rural Hospital",NULL,NULL,4
+112,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/FDm9hBNYb99","Kezi Rural Hospital",NULL,NULL,4
+113,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/gri4bmtWbqG","Matobo Mission Clinic",NULL,NULL,4
+114,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/gygPTU6Jrgx","Mlugulu Clinic",NULL,NULL,4
+115,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/jxSgfvRa1kd","Cyrene Mission Clinic",NULL,NULL,4
+116,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/kEC31WjP2wR","Gulati Rural Health Centre",NULL,NULL,4
+117,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/khHSytZaECG","Sankonjana Rural Health Centre",NULL,NULL,4
+118,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/lXWXq7pvXNr","Mbembeswana Rural Health Centre",NULL,NULL,4
+119,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/mgxlglCseF4","Masiye Camp Clinic",NULL,NULL,4
+120,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/pE7JIVQTAax","Silozwi Clinic",NULL,NULL,4
+121,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/pzIEDyvh4SS","Ndabankulu Clinic",NULL,NULL,4
+122,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/QBWN4VDaKc9","Fumugwe Clinic",NULL,NULL,4
+123,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/qwnyqPsOoCT","Maphisa District Hospital",NULL,NULL,4
+124,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/RsSbNZR2lnR","Ekukanyeni Clinic",NULL,NULL,4
+125,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/TBrKYpmE8ys","Beula Rural Health Centre",NULL,NULL,4
+126,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/wa7S2vIGgVg","Tshelanyemba Mission Hospital",NULL,NULL,4
+127,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/XVUGfE4rVxG","St. Josephs Rural Hospital",NULL,NULL,4
+128,"/Z9zOAr1dQ8K/kUS61oPWPF9/pKhWt8ZkncG/Zjgwzp0iPau","Homestead Rural Health Centre",NULL,NULL,4
+129,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn","Mangwe",NULL,NULL,3
+130,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/AxbWlACKfun","Maninji Clinic",NULL,NULL,4
+131,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/Bk03KuutZss","SANZUKWI Clinic",NULL,NULL,4
+132,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/CoCGCYaDyfm","Mambale Clinic",NULL,NULL,4
+133,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/csZvGNTFp2K","Embakwe Mission Hospital",NULL,NULL,4
+134,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/FjN22JqEC4D","Tshitshi Clinic",NULL,NULL,4
+135,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/HWtwaa3MidK","St. Annes Brunapeg Mission Hospital",NULL,NULL,4
+136,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/HYNPD4P3JyV","Marula Clinic",NULL,NULL,4
+137,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/ImEOeEnBhCe","Ingwizi Clinic",NULL,NULL,4
+138,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/JOr33aW1Qul","Empandeni Clinic",NULL,NULL,4
+139,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/jPcuTzdshv2","Madabe Clinic",NULL,NULL,4
+140,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/m3xf7bSFUsi","Izimnyama Clinic",NULL,NULL,4
+141,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/qKa0cqfK6cB","Macingwana RHC",NULL,NULL,4
+142,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/RFTwaeEoUqu","Plumtree District Hospital",NULL,NULL,4
+143,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/RJnzhQ3jWs2","Mayobodo Rural Health Centre",NULL,NULL,4
+144,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/ut7vZn6zqdQ","Nguwanyana",NULL,NULL,4
+145,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/vccaicHoiyB","Plumtree Border Post Clinic",NULL,NULL,4
+146,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/vNLrnKgUtPc","Bango Clinic",NULL,NULL,4
+147,"/Z9zOAr1dQ8K/kUS61oPWPF9/tYiMfzPnISn/YaLsThHfLT9","Dingumuzi Clinic",NULL,NULL,4
+148,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz","Umzingwane",NULL,NULL,3
+149,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/B9HL312kFTS","Dula Clinic",NULL,NULL,4
+150,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/BryKgdfmnnU","Mawabeni Clinic",NULL,NULL,4
+151,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/cMnfYLDG3wb","Zimbili Clinic",NULL,NULL,4
+152,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/DD4GJqpcTRS","Nswazi Clinic",NULL,NULL,4
+153,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/e4A1s0LVXW8","How Mine Mine Clinic",NULL,NULL,4
+154,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/EJIkhGYlQVb","Esigodini District Hospital",NULL,NULL,4
+155,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/JfjyEPK4x5b","Mhlahlandlela Clinic",NULL,NULL,4
+156,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/JHAlEGeE4Cl","Irisvale Rural Health Centre",NULL,NULL,4
+157,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/MJItwbZps26","Habani Clinic",NULL,NULL,4
+158,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/NYyR0XgxhQr","Umzingwane Clinic",NULL,NULL,4
+159,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/QF8O7qAp5NJ","Mpisini Clinic",NULL,NULL,4
+160,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/RbPl86Ek1pJ","Kumbuzi Rural Health Centre",NULL,NULL,4
+161,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/SjvPWQ5l2gT","Esibobvu Clinic",NULL,NULL,4
+162,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/tN6rOnRMwmB","Nhlangano Clinic",NULL,NULL,4
+163,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/WRQDsk1fI1Z","Mbizingwe Rural Health Centre",NULL,NULL,4
+164,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/xKCmMnOpkq8","Ntshamathe Clinic",NULL,NULL,4
+165,"/Z9zOAr1dQ8K/kUS61oPWPF9/tzUGOJR9KMz/ZskGFI5lTex","Shale Clinic",NULL,NULL,4
+166,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr","Insiza",NULL,NULL,3
+167,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/Adc2S4HRzAf","Sanale Rural Health Centre",NULL,NULL,4
+168,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/b3PU8AeeaQC","Wanezi Rural Hospital",NULL,NULL,4
+169,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/Ct34hgdcaQf","Kombo Clinic",NULL,NULL,4
+170,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/dopFToosDbC","Montrose 7 Clinic ",NULL,NULL,4
+171,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/ec12kvcjS7E","Singwambizi Clinic",NULL,NULL,4
+172,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/gu6QjBK15Rz","Nkankezi Rural Health Centre",NULL,NULL,4
+173,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/IzjQ0ClMwFr","Mbondo Clinic",NULL,NULL,4
+174,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/krUJBXgxsij","Zhulube Clinic",NULL,NULL,4
+175,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/LAGfgfyUDwT","Nyamime Rural Health Centre",NULL,NULL,4
+176,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/nTq5H4A7Lyc","Filabusi District Hospital",NULL,NULL,4
+177,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/ohXsGJeKhB4","Shangani Mine Clinic",NULL,NULL,4
+178,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/qmtMQzRoH0H","Avoca Rural Hospital",NULL,NULL,4
+179,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/Qx7IPzhtG69","GSU Clinic",NULL,NULL,4
+180,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/WX4iuiyQmwV","Amazon Clinic",NULL,NULL,4
+181,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/wzZvw0u6fe2","Saphila Council Clinic",NULL,NULL,4
+182,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/xGshYPXKdF6","Shangani Rural Hospital",NULL,NULL,4
+183,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/y6M9rtUuWa9","Gwatemba Rural Health Centre",NULL,NULL,4
+184,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/YAoTF1MIrjU","Singwango Clinic",NULL,NULL,4
+185,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/ZaWOfFs5CGk","Insiza PBS Clinic",NULL,NULL,4
+186,"/Z9zOAr1dQ8K/kUS61oPWPF9/Umg8MchY5Yr/ZzNvcMVOVP3","Mabuze Rural Health Centre",NULL,NULL,4
+187,"/Z9zOAr1dQ8K/MVEckxDrWZS","Midlands",NULL,NULL,2
+188,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs","Kwekwe",NULL,NULL,3
+189,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/A2VmYuwHVAw","Malisa Josefa Clinic",NULL,NULL,4
+190,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/A4XNUkiCCCp","Jackson Clinic",NULL,NULL,4
+191,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/ANNzC8MbOqF","Donga Clinic",NULL,NULL,4
+192,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/blbFyrowZRf","Munyati Clinic",NULL,NULL,4
+193,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/ciA1z5O6JiF","Kwekwe ZRP Clinic ",NULL,NULL,4
+194,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/cNMEcj2lCN3","Mbizo 1 Clinic",NULL,NULL,4
+195,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/DFCkzGef5fF","Nyoni Rural Health Centre",NULL,NULL,4
+196,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/dMwOTm1TWlM","Dambridge Clinic",NULL,NULL,4
+197,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/EVPUA0tsGJm","Kwekwe Prision Clinic",NULL,NULL,4
+198,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/F2rElAKbgv8","Dendera Rural Hospital",NULL,NULL,4
+199,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/fBCkowl14OR","Sidakeni Clinic",NULL,NULL,4
+200,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/GicGwiouuoj","Sherwood Clinic",NULL,NULL,4
+201,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/h5siIA7lQfx","Ntabeni Clinic",NULL,NULL,4
+202,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/H9fZA1uaQOi","Neighbourhood Surgery ",NULL,NULL,4
+203,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/hDnFtSieSV6","Gaika Clinic ",NULL,NULL,4
+204,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/hZNgOzXAjrf","Mbizo 2 Clinic",NULL,NULL,4
+205,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/IJFe4swzr4G","Amaveni Clinic",NULL,NULL,4
+206,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/JbefFk6huNS","Cambridge Clinic",NULL,NULL,4
+207,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/k4sThzc4zIy","Don Juan Clinic",NULL,NULL,4
+208,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/lr8nRgvCs8m","Redcliff Clinic",NULL,NULL,4
+209,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/MsixjXiip6A","Connemara Prison",NULL,NULL,4
+210,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/n8fSBgAncxp","Samambwa Clinic",NULL,NULL,4
+211,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/N9VWu2Kppre","Torwood Hospital",NULL,NULL,4
+212,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/nCBpV7ktT9y","Rutendo Clinic",NULL,NULL,4
+213,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/nFw1qqq3OEx","Sigezububi Clinic",NULL,NULL,4
+214,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/NGyX8ov4BLC","Exchange Clinic",NULL,NULL,4
+215,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/nHD84jaIlra","Melisa Zhombe Clinic",NULL,NULL,4
+216,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/nThW8r8MZtE","Kwekwe District Hospital",NULL,NULL,4
+217,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/ozA3NlEUYDi","Simana Clinic",NULL,NULL,4
+218,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/q2PCmYuFLcy","Mayoka Rural Health Centre",NULL,NULL,4
+219,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/QwFhomr6Alo","Mazebe Rural Health Centre",NULL,NULL,4
+220,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/RgkNZppVRq4","Zhombe Mission Clinic",NULL,NULL,4
+221,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/RIBxxUnvvQD","Rio Tinto Mine Clinic",NULL,NULL,4
+222,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/rUINnsV4knE","Silobela 101871 - Clinic",NULL,NULL,4
+223,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/s33kOOe8v54","Msilahove Rural Hospital",NULL,NULL,4
+224,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/tFiCFVJ3KLP","Donsa Clinic",NULL,NULL,4
+225,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/Thu4CNtiulz","ZRP Kwekwe clinic ",NULL,NULL,4
+226,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/tmh3MNEV8eO","Jena Mine Mine Clinic",NULL,NULL,4
+227,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/tnlz7dGBqL9","Al Davies Clinic",NULL,NULL,4
+228,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/tSdwPF3mcEX","Mpinda Clinic",NULL,NULL,4
+229,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/uRMnnJCuNip","IP  ZUVA ILANGA",NULL,NULL,4
+230,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/uZE16ljHypJ","Sebakwe Clinic",NULL,NULL,4
+231,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/V9SM8e6sFIW","Silobela District Hospital",NULL,NULL,4
+232,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/VZxPjFpaeGG","Senkwasi Clinic",NULL,NULL,4
+233,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/wc8aKMtV9c6","Mbizo16 Clinic",NULL,NULL,4
+234,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/WscRtpmKh2V","Mlezu College Clinic",NULL,NULL,4
+235,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/wZ7hEF8GrRX","Community Polyclinic ",NULL,NULL,4
+236,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/xaczn8FKa6F","Globe and Phoenix Clinic",NULL,NULL,4
+237,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/yAnOckdjmVz","Zibagwe Clinic",NULL,NULL,4
+238,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/yOm4gMuq9Hu","IP  KUFA KUDA",NULL,NULL,4
+239,"/Z9zOAr1dQ8K/MVEckxDrWZS/a6KxeLEZSxs/yuQafsH22Bi","Gomola Clinic",NULL,NULL,4
+240,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q","Chirumhanzu",NULL,NULL,3
+241,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/AG0AInbPjbR","Siyahokwe Rural Health Centre",NULL,NULL,4
+242,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/BI7Domoboqc","Lalapanzi Clinic",NULL,NULL,4
+243,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/bOtIKKLgzrL","Lynwood Rural Health Centre",NULL,NULL,4
+244,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/F98KYFl0JZK","Chilimanzi RHC Clinic",NULL,NULL,4
+245,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/fYT4uwYX7bR","Musena Clinic",NULL,NULL,4
+246,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/i8SDWohtjJe","Driefontein Hospital",NULL,NULL,4
+247,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/K7RUlLabEOr","Chizhou Rural Health Centre",NULL,NULL,4
+248,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/nyRhQzZTMgL","Mapiravana Clinic",NULL,NULL,4
+249,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/oMURIy2awFC","Tokwe 4 Clinic",NULL,NULL,4
+250,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/PkIW54COBR3","ZIMASCO Lalapanzi Private Clinic",NULL,NULL,4
+251,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/q7CsC5gKzVu","Hama Clinic",NULL,NULL,4
+252,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/rtu1rrjHMxx","St. Theresa Mission Hospital",NULL,NULL,4
+253,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/T43BsZkYC8w","Guramatunhu Clinic",NULL,NULL,4
+254,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/t893O92bmkm","Denhere Rural Health Centre",NULL,NULL,4
+255,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/uK2AXbSDp9c","Chengwena Clinic",NULL,NULL,4
+256,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/v2dDQACnriT","Nyautonga Rural Health Centre",NULL,NULL,4
+257,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/Vc71NvyZxMc","Muwonde Mission Hospital",NULL,NULL,4
+258,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/VvXKQuTq6Ob","Nyikavanhu Rural Health Centre",NULL,NULL,4
+259,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/wq5A0P7NE7q","Mvuma District Hospital",NULL,NULL,4
+260,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/XB7nROXhlv4","Central Estates Clinic",NULL,NULL,4
+261,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/yIvHq6axMFE","Mtao Clinic",NULL,NULL,4
+262,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/ziEwv7j7AuE","Holy Cross Mission Hospital",NULL,NULL,4
+263,"/Z9zOAr1dQ8K/MVEckxDrWZS/c38pTGryV5q/zooTt6xUGVe","Chaka Clinic",NULL,NULL,4
+264,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK","Gokwe South",NULL,NULL,3
+265,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/arOSpdbJ7jw","Nyaje Rural Health Centre",NULL,NULL,4
+266,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/BDBlD72O55s","Nyaradza",NULL,NULL,4
+267,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/c1mSK9ChOGv","Ganye clinic",NULL,NULL,4
+268,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/cBe8uJrLNGC","Gwanyika Rural Health Centre",NULL,NULL,4
+269,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/CbhVTBWPjFE","Nyamunga Clinic",NULL,NULL,4
+270,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/DatBlAwahyx","Manyoni Clinic",NULL,NULL,4
+271,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/EwHQN1F5qHJ","Mateta Rural Health Centre",NULL,NULL,4
+272,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/fH3XHnD9BCh","Manoti Clinic",NULL,NULL,4
+273,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/g6MwwPKIddS","Mkoka Rural Health Centre",NULL,NULL,4
+274,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/g7fNiqyS7WV","Cheziya Clinic",NULL,NULL,4
+275,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/ge97aHzWbju","Msala Clinic",NULL,NULL,4
+276,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/HFr9g4kazyr","Gokwe South ZRP Camp Clinic ",NULL,NULL,4
+277,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/HOkDsYNkFWL","Huchu Clinic",NULL,NULL,4
+278,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/iIJY7AzDu3b","Krima Clinic",NULL,NULL,4
+279,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/JBqKjqAG2ir","Jiri Clinic",NULL,NULL,4
+280,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/Jt1CGWaXQsq","Mangidi Clinic",NULL,NULL,4
+281,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/k0ZyBtS4wZT","Sesame Clinic",NULL,NULL,4
+282,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/kalt3ukfjNw","Chitapo Clinic",NULL,NULL,4
+283,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/kM0ROOTX0qh","Ndhlalambi",NULL,NULL,4
+284,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/M8BCidxIPZM","Musita Clinic",NULL,NULL,4
+285,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/O4s37nmNxxd","Masuka Clinic",NULL,NULL,4
+286,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/OkK9ixbSp7W","Zhamba Clinic",NULL,NULL,4
+287,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/OrydhbKFg8H","Gokwe District Hospital",NULL,NULL,4
+288,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/qKPPhaui7JF","Kana Mission Hospitals",NULL,NULL,4
+289,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/Qryp4Or7gFU","Mapfungautsi clinic",NULL,NULL,4
+290,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/S2bq66BaqLc","Sai Clinic",NULL,NULL,4
+291,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/tzl7tNuGHRa","Mateme Clinic",NULL,NULL,4
+292,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/v3XtUlhTAEv","Chitave Clinic",NULL,NULL,4
+293,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/V3ZLerPguLB","Svisvi Rural Health Centre",NULL,NULL,4
+294,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/vXnel4MlOIT","Njelele Clinic",NULL,NULL,4
+295,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/w1k2xD78mUR","Tongwe Clinic",NULL,NULL,4
+296,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/XJsn6cGdf0G","Ndabambi Clinic",NULL,NULL,4
+297,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/XSmGmvAT5tj","Gawa Clinic",NULL,NULL,4
+298,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/yhtctd0Cnr6","Katema clinic",NULL,NULL,4
+299,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/Z5JW59dTYkT","Mutange Clinic",NULL,NULL,4
+300,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/zP9QBYI8isU","Gokwe South Population Services Zimbabwe ",NULL,NULL,4
+301,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/ZsERKMysaqk","Chemahororo Clinic",NULL,NULL,4
+302,"/Z9zOAr1dQ8K/MVEckxDrWZS/dtSWh4GEflK/zsRDbhBIGQR","Jahana Clinic",NULL,NULL,4
+303,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ","Gokwe North",NULL,NULL,3
+304,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/AItQqOMxOox","Vumba Clinic",NULL,NULL,4
+305,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/aLIaeQLx8B2","Mtora Rural Hospital",NULL,NULL,4
+306,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/CGpH4xxmfZB","Rubatsiro Clinic",NULL,NULL,4
+307,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/dPeHZhhlRGv","Zhomba Clinic",NULL,NULL,4
+308,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/eQS88MPElhc","Nenyunga Clinic",NULL,NULL,4
+309,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/eWmsHCZ8eUb","Nembudziya Hospital",NULL,NULL,4
+310,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/Ez1xUxP13W6","Simchembu Clinic",NULL,NULL,4
+311,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/Fdo72wUF5r0","Goredema Clinic",NULL,NULL,4
+312,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/ftFOxqRJROM","Kuwirirana Clinic",NULL,NULL,4
+313,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/g7ArwKlq8xZ","Sanyati Mine Clinic",NULL,NULL,4
+314,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/GB65BE0uoLA","Mashame Rural Health Centre",NULL,NULL,4
+315,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/gs4o7ahP2MC","Chireya Mission Hospital",NULL,NULL,4
+316,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/jZszukLR7Iy","Burure Clinic",NULL,NULL,4
+317,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/lUbaZpr7l25","Denda Clinic",NULL,NULL,4
+318,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/nTZ9JlkZyBK","Simchembu Rural Health Centre",NULL,NULL,4
+319,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/OGUMmDY7jLs","Kadzidirire Rural Health Centre",NULL,NULL,4
+320,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/QUjtyFAkEez","Nyamhara Clinic",NULL,NULL,4
+321,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/qYCk7o87itz","Tsungai Rural Health Centre",NULL,NULL,4
+322,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/qyIkAwAvuCb","Zumba Clinic",NULL,NULL,4
+323,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/R9cv2jkCehY","Nyamazengwe Clinic",NULL,NULL,4
+324,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/RCpPlLVf75W","Mutora Mission Hospital",NULL,NULL,4
+325,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/RZer5wJQGdq","Kahobo Clinic",NULL,NULL,4
+326,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/uivBreE2eHQ","Mzadzi Rural Health Centre",NULL,NULL,4
+327,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/w0Dyom77Nug","Gandavaroyi Clinic",NULL,NULL,4
+328,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/wAqD43qHQAZ","Madzivazvido Clinic100106",NULL,NULL,4
+329,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/xyDWFkQyu9K","Gumunyu Clinic",NULL,NULL,4
+330,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/YaKDckn1Qrk","Norah Rural Health Centre",NULL,NULL,4
+331,"/Z9zOAr1dQ8K/MVEckxDrWZS/L2GCOZE3ZGJ/ZIC6ZIR7PJS","Gokwe North District Hospital",NULL,NULL,4
+332,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9","Mberengwa",NULL,NULL,3
+333,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/b1EmP6cfSji","Musume Mission Hospital",NULL,NULL,4
+334,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/B9tfPt6kbdN","Mponjani Clinic",NULL,NULL,4
+335,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/bAlZzNKhdBr","Makuwerere Clinic",NULL,NULL,4
+336,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/dAuWnsrDRVU","Gaha Clinic",NULL,NULL,4
+337,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/DHlTNsaO7Yr","Matedzi Clinic",NULL,NULL,4
+338,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/dL7QsbOygia","Mnene Outreach ",NULL,NULL,4
+339,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/dySKWJvcCwO","Chiedza Clinic",NULL,NULL,4
+340,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/E0ZtvGWVlYJ","Chaza Clinic",NULL,NULL,4
+341,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/Ffe71rF6iVh","Vurasha Rural Health Centre",NULL,NULL,4
+342,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/g4dlEEnd7hO","Bonda Clinic ",NULL,NULL,4
+343,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/HQMqEmIOVzv","Ngungumbane Clinic",NULL,NULL,4
+344,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/iSTR4XRC1dk","Sandawana Clinic",NULL,NULL,4
+345,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/iTw40m40wuw","Mataga Rural Health Centre",NULL,NULL,4
+346,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/j97TJ4Hxidj","Bonda Mission Hospital",NULL,NULL,4
+347,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/kZNamfgj28K","Neta Clinic ",NULL,NULL,4
+348,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/l41qggZoaFK","Gwarava Rural Health Centre",NULL,NULL,4
+349,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/MQblsJGrTBd","Mazivofa Clinic",NULL,NULL,4
+350,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/n7JrJFbZSSY","Chedembeko Clinic",NULL,NULL,4
+351,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/nyYPQGMntMU","Vutsanana Clinic",NULL,NULL,4
+352,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/Ocwsmwt9N25","Imbahuru Clinic",NULL,NULL,4
+353,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/OrU0ovRBTxi","Marirazhombe Clinic",NULL,NULL,4
+354,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/PoguCXsvJZj","Wanezi Clinic",NULL,NULL,4
+355,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/pZIckeagBf7","Murongwe Rural Health Centre",NULL,NULL,4
+356,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/Q307hGeLwHq","Mnene Mission Hospital",NULL,NULL,4
+357,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/Q8Btfg2jxPv","Negobe Clinic",NULL,NULL,4
+358,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/R1CcS5Hxd1k","Mposi Clinic",NULL,NULL,4
+359,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/rbE4iLAquiP","Mberengwa District Hospital",NULL,NULL,4
+360,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/rhEss5YJ0lt","Chingezi Clinic",NULL,NULL,4
+361,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/RXaYWmsAjhs","Masase Mission Hospital",NULL,NULL,4
+362,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/sBdgbB2fR3S","Kotokwe Clinic",NULL,NULL,4
+363,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/sMfRb7ilqPz","Muketi Clinic",NULL,NULL,4
+364,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/soB2Lgw5gnB","Ingezi Clinic",NULL,NULL,4
+365,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/TdlbemyPNd1","Chabwira Clinic",NULL,NULL,4
+366,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/Tuja7aMuhP7","Neta Clinic",NULL,NULL,4
+367,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/V1UPlYfZT1D","Svita Clinic",NULL,NULL,4
+368,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/YtbICY59p63","Jeka Rural Hospital",NULL,NULL,4
+369,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/YvS8idqg8Ly","Buchwa Clinic",NULL,NULL,4
+370,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/yWRCzwtdVqp","Bonda Clinic",NULL,NULL,4
+371,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/yzbqtmKSajN","Mavorovondo Rural Health Centre",NULL,NULL,4
+372,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/ZKI10jvmQ9W","Wanezi Rural Hospital ",NULL,NULL,4
+373,"/Z9zOAr1dQ8K/MVEckxDrWZS/SfKFsufoKy9/ZWwFAVck5em","Mwenezi Rural Health Centre",NULL,NULL,4
+374,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD","Gweru",NULL,NULL,3
+375,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/a8GphVKSr2H","Connemara Clinic",NULL,NULL,4
+376,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/aGWqGhV3ang","Monomutapa Clinic",NULL,NULL,4
+377,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/aihGnf5U3JA","Nyama Clinic",NULL,NULL,4
+378,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/aJhsccht7WS","Tumbire Clinic",NULL,NULL,4
+379,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/B1ZFRN0RAMC","Mkoba Poly Clinic",NULL,NULL,4
+380,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/BCGrLFAapBT","Vungu Mobile Clinic",NULL,NULL,4
+381,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/BiLbWhqc5wO","Maboleni Clinic",NULL,NULL,4
+382,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/c2KtIo5qOxJ","Gatawa Clinic",NULL,NULL,4
+383,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/cy8e1swz1c4","Harben Clinic",NULL,NULL,4
+384,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/cY93Nr1gwjo","Somabula Clinic",NULL,NULL,4
+385,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/FDmiILjP1eD","Impala Clinic",NULL,NULL,4
+386,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/GCjrq7GWU3O","Makepesi Clinic",NULL,NULL,4
+387,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/hAWCopu9V38","Nkululeko Rural Health Centre",NULL,NULL,4
+388,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/hRFRshSksyR","Ruby Clinic",NULL,NULL,4
+389,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/HY9D6A9Y6yI","Kabanga Clinic",NULL,NULL,4
+390,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/iEaTUEi6wdx","Senga Poly Clinic",NULL,NULL,4
+391,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/iGoaM56EbBM","Madhikani Clinic",NULL,NULL,4
+392,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/ixtnyj9buiO","Ivene Clinic",NULL,NULL,4
+393,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/JRHi4DxHO3h","Child Welfare Clinic",NULL,NULL,4
+394,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/jtWtzBZSo3X","Hozheri Clinic",NULL,NULL,4
+395,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/kaTOd9MJSSE","Mkoba 1 Clinic",NULL,NULL,4
+396,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/KMIq1ZmHSv8","Vungu Clinic",NULL,NULL,4
+397,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/M0WPf48urCw","Totonga Clinic",NULL,NULL,4
+398,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/oqwpCmwpRQM","ZPS Whawha Prison Young Offenders Clinic ",NULL,NULL,4
+399,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/pQhsTO2zXMS","Gweru Provincial Hospital",NULL,NULL,4
+400,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/PTsDqlRpf06","Chikwingwizha Mission Clinic",NULL,NULL,4
+401,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/q60Ib7StJ1S","Riverdale Clinic",NULL,NULL,4
+402,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/R0AbzHF3tB6","Gweru District Hospital",NULL,NULL,4
+403,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/RHxCTgkiU56","Thornhill Airbase Hospital ",NULL,NULL,4
+404,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/T7JmHwb645M","Gweru Provincial Hospital",NULL,NULL,4
+405,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/tdC1z2GmRLr","Lower Gweru Mission Clinic",NULL,NULL,4
+406,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/TqCxTt2cnSm","Chinamasa Clinic",NULL,NULL,4
+407,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/UcsFwpVoOEX","Chiundura Clinic",NULL,NULL,4
+408,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/UJXZfglDy6U","Vungu Mobile Clinic",NULL,NULL,4
+409,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/VbSjaVx4t0f","Gunde Clinic",NULL,NULL,4
+410,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/XdDKGCXjiWo","Mangwande Clinic",NULL,NULL,4
+411,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/XJoYREEPF4o","Masvori Clinic",NULL,NULL,4
+412,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/XS3MartMYZY","Kariba Clinic",NULL,NULL,4
+413,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/yG0rQVBjb5a","Medical Centre Private Clinic",NULL,NULL,4
+414,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/yy7YQ1Iak4s","St. Patricks Mission Clinic",NULL,NULL,4
+415,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/ZPOJK6AT4IP","Ntabamhlope Rural Health Centre",NULL,NULL,4
+416,"/Z9zOAr1dQ8K/MVEckxDrWZS/T80WDj2iahD/zZXWPXydW2S","ZPS Whawha Prison DEL",NULL,NULL,4
+417,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA","Zvishavane",NULL,NULL,3
+418,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/ASSntKFP1Ns","Zvishavane ZRP Clinic",NULL,NULL,4
+419,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/bnZSVkbpSBX","Drinkwater Nursing Home",NULL,NULL,4
+420,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/CJJQdq1o0Rt","Medical Centre Private Clinic",NULL,NULL,4
+421,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/CN5hSez1FZH","Shabanie Mine Mine Hospital",NULL,NULL,4
+422,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/CvqWEbuINjk","Weleza Rural Health Centre",NULL,NULL,4
+423,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/D9ut3NEHhGX","Mapanzure Clinic",NULL,NULL,4
+424,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/eiunn2MoKsC","MSU Clinic",NULL,NULL,4
+425,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/Hi6wNttAdd8","Kandodo Clinic",NULL,NULL,4
+426,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/huxj4MJyhKc","Maglas Clinic",NULL,NULL,4
+427,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/KuyZ6kj3XTb","Dadaya Mission Hospital",NULL,NULL,4
+428,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/L0rNZcH9Z5A","Maketo Rural Health Centre",NULL,NULL,4
+429,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/MNUxL1SRlNy","Sabi Mine Clinic",NULL,NULL,4
+430,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/NT6iUEF2uVS","Mabasa Clinic",NULL,NULL,4
+431,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/Ox0ydqSNkgB","ZIMASCO Shurungwi Private Clinic",NULL,NULL,4
+432,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/p8KL5Fuog5s","Mimosa Clinic",NULL,NULL,4
+433,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/QdIiE0YViIT","Dambudzo Clinic",NULL,NULL,4
+434,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/qe0LBjtqQap","Lundi Rural Hospital",NULL,NULL,4
+435,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/qkMuVw4MQEE","Rutendo Polyclinic",NULL,NULL,4
+436,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/QnMzPBGLmQ1","Mtambi Clinic",NULL,NULL,4
+437,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/STiWupVJidD","Mandava Rural Health Centre",NULL,NULL,4
+438,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/T4GXtObhlOJ","Highlands Clinic",NULL,NULL,4
+439,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/TUZt7mTC18H","Mhondongori clinic",NULL,NULL,4
+440,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/U9YejzJibuv","ZPS Zvishavane Prison Clinic",NULL,NULL,4
+441,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/UIBkjBWyuZ4","Nyanga Council Clinic",NULL,NULL,4
+442,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/ukkS2l3nv5k","Dayataya RHC Clinic",NULL,NULL,4
+443,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/vbppi9iFRlX","Vugwi Rural Health Centre",NULL,NULL,4
+444,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/VyrlfkMfooL","Gudo Clinic",NULL,NULL,4
+445,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/waZ68sJCJtf","Vukuzenzele Rural Health Centre",NULL,NULL,4
+446,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/wKuggNiqd4f","Cellmed Private Clinic",NULL,NULL,4
+447,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/X3DFLGTbrbV","Murowa Clinic",NULL,NULL,4
+448,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/xFBkyhr9rIH","Bannockburn Clinic",NULL,NULL,4
+449,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/xsM6MHhUD0w","Matenda Rural Health Centre",NULL,NULL,4
+450,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/yEJabXRhurV","Zvishavane District Hospital",NULL,NULL,4
+451,"/Z9zOAr1dQ8K/MVEckxDrWZS/W4O6XMG1LlA/ZSmg6Wqhwv5","Mapate Clinic",NULL,NULL,4
+452,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg","Shurugwi",NULL,NULL,3
+453,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/an1Pd09xktD","Tana Rural Health Centre",NULL,NULL,4
+454,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/bhrTNmQLvAI","Unki Clinic",NULL,NULL,4
+455,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/D1FyPUDQYi2","Zvamabande Rural Hospital",NULL,NULL,4
+456,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/DCU5QjMbbKz","Chikato Rural Health Centre",NULL,NULL,4
+457,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/DfMa1nOjEFp","Chironde Clinic",NULL,NULL,4
+458,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/F8F8X9L0sOV","Jobolinko Clinic",NULL,NULL,4
+459,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/FP1lRJ2sMlz","Zviumwa RDC clinic",NULL,NULL,4
+460,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/gYwM1oInq05","Peak Mine Mine Clinic",NULL,NULL,4
+461,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/H20P6B4Yluo","Marishongwe Rural Health Centre",NULL,NULL,4
+462,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/H8HToxLoWjA","Nhema Clinic",NULL,NULL,4
+463,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/hEMexb2wBNZ","Falcon 100460 - Mine Clinic",NULL,NULL,4
+464,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/hOfZBmVIXq4","Ruchanyu Clinic",NULL,NULL,4
+465,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/HQZFXzUSEUY","Rusike Clinic",NULL,NULL,4
+466,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/hTd6mJv5irD","Shurugwi District Hospital",NULL,NULL,4
+467,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/JwthRkrvn2g","Chitora Rural Health Centre",NULL,NULL,4
+468,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/K3eLjTWR7Ua","Tongogara Clinic",NULL,NULL,4
+469,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/ksGEyiL6VHK","Pakame Clinic",NULL,NULL,4
+470,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/L6HMMjCf2em","ZPS Shurugwi Prison Clinic",NULL,NULL,4
+471,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/lWzWzj8eDod","Hanke Clinic",NULL,NULL,4
+472,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/lypiu5vVvu0","Chrome Mines Shurugwi Mine Hospital",NULL,NULL,4
+473,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/PIZUU3RLWHG","Tokwe Clinic",NULL,NULL,4
+474,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/PydZayKOsQV","Zhaugwe Clinic",NULL,NULL,4
+475,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/qkFQzufmpjb","Dorset Clinic",NULL,NULL,4
+476,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/QW93hki8ayp","Rockford Clinic",NULL,NULL,4
+477,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/rtLLKsPVFcX","Mazibisa Clinic",NULL,NULL,4
+478,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/TenG4vHgD9p","Svika Clinic",NULL,NULL,4
+479,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/tg8XvvZ7SvM","Banga Clinic",NULL,NULL,4
+480,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/uI2DSCwZKUa","Golden Quarry Mine Clinic",NULL,NULL,4
+481,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/wmQIKWoVMfG","Gundura Clinic",NULL,NULL,4
+482,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/xg2YCfwetVR","Makusha Clinic",NULL,NULL,4
+483,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/xjIYZptpvVW","Gwanza Rural Health Centre",NULL,NULL,4
+484,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/yGSzG29MJxg","Ironsides Clinic",NULL,NULL,4
+485,"/Z9zOAr1dQ8K/MVEckxDrWZS/XQwyooJ2rFg/ZTPdE7JnPrm","Zvarota Rural Health Centre",NULL,NULL,4
+486,"/Z9zOAr1dQ8K/ngqYrheLIDD","Manicaland",NULL,NULL,2
+487,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R","Nyanga",NULL,NULL,3
+488,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/a4kWVQubF2X","Nyafaru Council Clinic",NULL,NULL,4
+489,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/aeF4KhBTPQI","Aberfoyle Clinic",NULL,NULL,4
+490,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/Aju73vTX3QS","Kambudzi Conucil Not Open",NULL,NULL,4
+491,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/ar0uDdfnZLj","Matize Rural Health Centre",NULL,NULL,4
+492,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/bbV3evgWChh","Mt. Mellary Mission Hospital",NULL,NULL,4
+493,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/CjgYvsSWY6Z","Fombe Council Clinic",NULL,NULL,4
+494,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/dDQvfr1J1WF","Nyangui Private Forestry Clinic",NULL,NULL,4
+495,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/E3dKaO9EVLG","Nyamaropa Council Clinic",NULL,NULL,4
+496,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/f2s3q3hpt2Y","Dombo Rural Health Centre",NULL,NULL,4
+497,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/Fb1Fnblxple","Nyanga Mobile Clinic",NULL,NULL,4
+498,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/fl6hx1uY9Eb","Nyarumvurwe Rural Health Centre",NULL,NULL,4
+499,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/fPNA1SRHldG","Mutarazi Clinic",NULL,NULL,4
+500,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/GbG0Da4p4Hc","Chitindo Council Clinic",NULL,NULL,4
+501,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/grCzCZ5MKey","Erin Forestry-Private",NULL,NULL,4
+502,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/H0EuZW5U6z0","Gairezi Council Clinic",NULL,NULL,4
+503,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/h7OMUB2Ob3i","Elim Mission Hospital",NULL,NULL,4
+504,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/i5llB2NrDWw","Nyamombe Rural Health Centre",NULL,NULL,4
+505,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/IgZY1FyiSSB","Samvure Council Clinic",NULL,NULL,4
+506,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/muBXBus5Chx","Bende Clinic",NULL,NULL,4
+507,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/nkf2rrmAkzP","Nyadowa Council Clinic",NULL,NULL,4
+508,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/NLhSRRNT8F4","Chiwarira Council Clinic",NULL,NULL,4
+509,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/NQBKBdfT0YJ","Nyanga District Hospital",NULL,NULL,4
+510,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/o8EDoGj6HD4","Nyajezi Clinic",NULL,NULL,4
+511,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/oALHRSyP6i2","Chatindo Clinic",NULL,NULL,4
+512,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/oqI2jr2KAz2","Nyamombe Camp Rural Health Centre",NULL,NULL,4
+513,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/OXSDJw3J1Zl","Tombo Council Clinic",NULL,NULL,4
+514,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/PVpAdwNSnq3","Nyatate Council Clinic",NULL,NULL,4
+515,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/qcGHhCLYnKa","Ruchera Rural Health Centre",NULL,NULL,4
+516,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/sVeHRWVdzTM","Nyautate Rural Health Centre",NULL,NULL,4
+517,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/UGYRNb8466w","Nyanguai Clinic",NULL,NULL,4
+518,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/v5Mf8W0aulE","Avilla Mission Hospital",NULL,NULL,4
+519,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/vwb72K515yt","Spring Valley Clinic",NULL,NULL,4
+520,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/WCu1aJrsw0l","Gotekote Rural Health Centre",NULL,NULL,4
+521,"/Z9zOAr1dQ8K/ngqYrheLIDD/dEbgc2xNR7R/wxKvq2qiszm","Regina Coeli Mission Hospital",NULL,NULL,4
+522,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc","Chimanimani",NULL,NULL,3
+523,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/AjBwPCDCukg","Chakohwa Clinic",NULL,NULL,4
+524,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/AW4wxesSF8S","Cashel Clinic",NULL,NULL,4
+525,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/BlkmcgIR2dz","Gudyanga Clinic",NULL,NULL,4
+526,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/CCzFofFOoMT","Nhedziwa Clinic",NULL,NULL,4
+527,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/E5CaoaX1605","Gwindingwe Clinic",NULL,NULL,4
+528,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/F6P4PtvHaZw","Chisengu Clinic",NULL,NULL,4
+529,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/GCMKQ32EWZU","Biriwiri Mission Hospital",NULL,NULL,4
+530,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/gvH9aEu9LFy","Nyanyadzi Rural Hospital",NULL,NULL,4
+531,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/hD3vfY5bAdi","Bumba Rural Health Centre",NULL,NULL,4
+532,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/hYSc6wvfcWG","Tilbury Clinic",NULL,NULL,4
+533,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/Ia12Df0aJyf","Chayamiti Clinic",NULL,NULL,4
+534,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/JAMuNO9sAlF","Muchadziya Clinic",NULL,NULL,4
+535,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/JijpjzeCPrb","Chimanimani Urban Clinic",NULL,NULL,4
+536,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/k0PmvWDldMm","Changazi Rural Health Centre",NULL,NULL,4
+537,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/kEGZiKotSKs","Mutsvangwa Clinic",NULL,NULL,4
+538,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/LrjXNgGMFo1","Chimanimani Hospital Rural Hosp",NULL,NULL,4
+539,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/M6S5SNi4qi5","ARDA Rusitu Clinic",NULL,NULL,4
+540,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/mq701zWt16S","Roscommon Clinic",NULL,NULL,4
+541,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/N3Ue3Ale4Mn","Charter Clinic",NULL,NULL,4
+542,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/PmHlHdYH6Yd","Tarka Clinic",NULL,NULL,4
+543,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/Szr0eoJtKNc","Shinja Clinic",NULL,NULL,4
+544,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/TFFSBxnsxMH","Martin Clinic",NULL,NULL,4
+545,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/TMfrBXHeLne","Nyahode Clinic",NULL,NULL,4
+546,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/tNrG9RqjXep","Mutambara District Hospital",NULL,NULL,4
+547,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/uJl69M3WiCL","Ngorima Clinic",NULL,NULL,4
+548,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/Us2ufZ2IjZC","Rusitu Mission Hospital",NULL,NULL,4
+549,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/vG0B1OTBL7l","Chikukwa Rural Health Centre",NULL,NULL,4
+550,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/VPHZ5xI0ci8","Mhakwe Clinic",NULL,NULL,4
+551,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/WLsZeN6rP6O","Nyabamba Satellite Clinic",NULL,NULL,4
+552,"/Z9zOAr1dQ8K/ngqYrheLIDD/Lhyoz3R6Ajc/YM73O6RSoJt","Chikwakwa Clinic",NULL,NULL,4
+553,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht","Mutare",NULL,NULL,3
+555,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/AsdXd0AoGXL","Chitaka Clinic",NULL,NULL,4
+556,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/Aw9meXkMQYK","Nyamazura Rural Health Centre",NULL,NULL,4
+557,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/AwcwYEbSQCl","ARDA Odzi Clinic",NULL,NULL,4
+558,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/BtCysCBfnDp","Nyagundi Rural Health Centre",NULL,NULL,4
+559,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/cAEJQYoN26N","Mukwada Clinic",NULL,NULL,4
+560,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/cr9XgOrqJwk","Dangamvura Clinic",NULL,NULL,4
+561,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/CzT0kz8uz7m","Chishingwi Clinic",NULL,NULL,4
+562,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/DApAIch75BK","Mutare Provincial Hospital",NULL,NULL,4
+563,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/dhvrhq8mLae","ARDA Transau Clinic",NULL,NULL,4
+564,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/DnVqMdfhU8F","Chinyamazizi",NULL,NULL,4
+565,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/eGJAGwnxFSZ","Sakubva Health Centre Hospital",NULL,NULL,4
+566,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/eN6ckU5zhfE","Chiadzwa Rural Health Centre",NULL,NULL,4
+567,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/fen7qRnHupP","Mutare Provincial Hospital",NULL,NULL,4
+568,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/fPVUTHduV6g","Umguza Infectious Diseases Hospital ",NULL,NULL,4
+569,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/FTXaJPvQwkN","Odzi Rural Hospital",NULL,NULL,4
+570,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/GmBfBIZu0RH","Florida Clinic",NULL,NULL,4
+571,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/gukxzjQHdEA","Chipendeke Rural Health Centre",NULL,NULL,4
+572,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/gzDYRQZm5rr","Nzvenga Clinic",NULL,NULL,4
+573,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/h22FuA9Lid3","Chiwere Rural Health Centre",NULL,NULL,4
+574,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/HQbYgzkaUjw","Berzerly Bridge Clinic",NULL,NULL,4
+575,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/icwINxeOGNY","Zvipiripiri Clinic",NULL,NULL,4
+576,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/IVF9iD8sboV","Sakubva District Hospital",NULL,NULL,4
+577,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/JS42B8mFEYI","Muromo Rural Health Centre",NULL,NULL,4
+578,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/Ju7yjwNpnZc","Chikwariro Mission Hospital",NULL,NULL,4
+579,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/KL8n0WXGgGS","Vumba Clinic",NULL,NULL,4
+580,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/KwpBAMKX07m","Bwizi Clinic",NULL,NULL,4
+581,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/L1KD15RCB3o","Mt. Zuma Rural Health Centre",NULL,NULL,4
+582,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/LLYfRU87KVr","Munyarari Clinic",NULL,NULL,4
+583,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/mMyO9i8yO9f","Rowa Clinic",NULL,NULL,4
+584,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/nFJhU0rVPlH","Mushunje Clinic",NULL,NULL,4
+585,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/OcGPckc3QEu","Fernvalley Clinic",NULL,NULL,4
+586,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/OdVIpeFRpxI","Dora Clinic",NULL,NULL,4
+587,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/ooBctEFShCo","Madanga",NULL,NULL,4
+588,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/pE1MgQBvhP2","Bakorenhema Clinic",NULL,NULL,4
+589,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/PMjhk9KezDp","Mambwere Clinic",NULL,NULL,4
+590,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/Q9uDyfOwrdT","Gutaurare Rural Health Centre",NULL,NULL,4
+591,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/QBQZTIv1lrz","Burma Valley Clinic",NULL,NULL,4
+592,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/QE02qC7QVJL","St. Josephs T.B Hospital",NULL,NULL,4
+593,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/QkfHdRxjphj","St. Welburgh Mission Clinic",NULL,NULL,4
+594,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/QMHTxq1jwsv","Masasi Clinic",NULL,NULL,4
+595,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/rotRV33ogHc","Zumbare Clinic",NULL,NULL,4
+596,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/RrRf8znKPaf","Matanda Rural Health Centre",NULL,NULL,4
+597,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/rRZdfRZ2VAu","ARDA Transau Clinic ",NULL,NULL,4
+598,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/rU8ccMdaYVq","St Josephs T.B Hospital",NULL,NULL,4
+599,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/RXChmJ29yIG","St. Andrews Mission Hospital",NULL,NULL,4
+600,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/RyINk05jngO","Chitakatira Clinic",NULL,NULL,4
+601,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/s3eJe4WBzCB","Fobbes Boarder Wellness Centre Private Clinic",NULL,NULL,4
+602,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/s4fE8Jt1g4L","Lee Kul Clinic",NULL,NULL,4
+603,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/s5QteHELIvJ","Zimunya Clinic",NULL,NULL,4
+604,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/savcKy76svm","Bvumba Private Clinic",NULL,NULL,4
+605,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/sySIljgDD4k","Chipfatsura Clinic",NULL,NULL,4
+606,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/tFn1RnL4Q1a","Hob House Clinic",NULL,NULL,4
+607,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/Tj9XAHdTx71","Chikanga Clinic",NULL,NULL,4
+608,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/uqcF5EYPpIZ","Mutare Council Clinic",NULL,NULL,4
+609,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/vuEfRSfa6e3","Gimboque Clinic",NULL,NULL,4
+610,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/wXnCifW3qRh","Chitora Clinic",NULL,NULL,4
+611,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/X7Tj1WoSu8a","Gwindingwi Rural Health Centre",NULL,NULL,4
+612,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/YaxwrjxwqJy","Chatora Clinic ",NULL,NULL,4
+613,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/Yb75x5mU1gC","Marange Rural Hospital",NULL,NULL,4
+614,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/Zif0pyzPbp5","Murambi Gardens Private Clinic",NULL,NULL,4
+615,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/zUEyrYaMPsk","Hob House Clinic",NULL,NULL,4
+616,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr","Mutasa",NULL,NULL,3
+617,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/adTkHyR4BvG","Gatsi Mission Clinic",NULL,NULL,4
+618,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/arVJbD2Phv8","Sachisuko Clinic",NULL,NULL,4
+619,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/B6T4mymKXpD","St. Augustines Mission Clinic",NULL,NULL,4
+620,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/bY4JUbYxhAI","St. Peters Mandeya Mission Hospital",NULL,NULL,4
+621,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/BYeo2WTlTbW","Sadziwa Council Clinic",NULL,NULL,4
+622,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/cJvWwH3FJLR","Premier Clinic",NULL,NULL,4
+623,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/CnknUJ5B5JT","Katiyo Private-Tanganda",NULL,NULL,4
+624,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/CxoOWvWIIw7","Chinangwe Clinic",NULL,NULL,4
+625,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/d6UW4bgGKi7","Sakupwanya Council Clinic",NULL,NULL,4
+626,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/dbl9tfa7QdC","Eastern Highlands 1 Private Tanganda",NULL,NULL,4
+627,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/eqxYAQqMAGm","Mupotedzi Gvt Clinic",NULL,NULL,4
+628,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/ETgdoZ3NO4b","Tsvingwe Clinic",NULL,NULL,4
+629,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/EzdyWsiwd8t","Chitombo Council Clinic",NULL,NULL,4
+630,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/f3nMyAIch9x","Samaringa Council clinic",NULL,NULL,4
+631,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/FOnficOMOxV","Samanga Council clinic",NULL,NULL,4
+632,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/hecbb09WesM","Mundeya Clinic",NULL,NULL,4
+633,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/ivSpKPosBuc","Hauna District Hospital",NULL,NULL,4
+634,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/iZoxQ2mltpe","Mt. Jenya Council Clinic",NULL,NULL,4
+635,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/jUWF0Gd5yAZ","Ngarura Council Clinic",NULL,NULL,4
+636,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/jZaPZgPWb5B","Drenane Timbers Private Clinic",NULL,NULL,4
+637,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/llNspZj777F","Chinaka Health Post",NULL,NULL,4
+638,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/mKPIOr2x9fm","Rupinda Rural Health Centre",NULL,NULL,4
+639,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/N4oXqGfFso8","Sagambe Council Clinic",NULL,NULL,4
+640,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/NOfUwvwI2PP","Sherukuru Rural Health Centre",NULL,NULL,4
+641,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/O4iWNzTwIyQ","Sahumani Council Clinic",NULL,NULL,4
+642,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/P9DDMEU84HO","Chisuko Council Clinic",NULL,NULL,4
+643,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/Pj2cnKKkXFf","EHPL 1 Clinic",NULL,NULL,4
+644,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/PscJCWrhzka","Old Mutare Mission Hospital",NULL,NULL,4
+645,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/PSTaVtwddQ4","Honde Mission Hospital",NULL,NULL,4
+646,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/pXNHetKSqH5","Imbeza Clinic",NULL,NULL,4
+647,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/qeqXIu3KfO0","Premier Medical Centre Private Clinic ",NULL,NULL,4
+648,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/QtsGPbZ9kIR","Guta Council Clinic",NULL,NULL,4
+649,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/QXqZoFfrO5f","EHPL 6 Clinic",NULL,NULL,4
+650,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/r97ObjsRhxc","Mapara Clinic",NULL,NULL,4
+651,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/rDAJbe52fOS","Bonda Mission Hospital",NULL,NULL,4
+652,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/reNojL4HxU8","Mandeya 11 Clinic",NULL,NULL,4
+653,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/S9ItwIxzitL","Hauna Clinic",NULL,NULL,4
+654,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/seMV6QMcbYn","Zongoro Council Clinic",NULL,NULL,4
+655,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/T46Sw2id6WV","Red Wing Private-Mine",NULL,NULL,4
+656,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/TqSLd6OiLlz","Sheba Border Timbers Private Clinic",NULL,NULL,4
+657,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/uE3RH5mk84U","Nyamukwarara Clinic",NULL,NULL,4
+658,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/UT3jZU0B8NY","Triashill Mission Hospitals",NULL,NULL,4
+659,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/vrfWESP2bX6","Moyoweshumba Council Clinic",NULL,NULL,4
+660,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/vtJMwcFafnS","Haparare Council Clinic",NULL,NULL,4
+661,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/WfLnM2upfzo","Chinaka Health Post ",NULL,NULL,4
+662,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/XarjiDpWpIl","Nyanga Pines Clinic",NULL,NULL,4
+663,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/xBQLT1WFHR7","Tsonzo Rural Hospital",NULL,NULL,4
+664,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/XMvFrrVQBbh","Dunsinane Clinic",NULL,NULL,4
+665,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/xRiIyDXPWV5","Zindi Clinic",NULL,NULL,4
+666,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/XRKLDnHvYFJ","Chavhanga Rural Health Centre",NULL,NULL,4
+667,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/XZkKJ2ARldu","ARDA Katiyo Clinic ",NULL,NULL,4
+668,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/y0JY0ye8q3J","Jombe Clinic",NULL,NULL,4
+669,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/YQvLvebHo4d","Chinamasa Rural Health Centre",NULL,NULL,4
+670,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/ZCHDN6RCLiA","Mutasa Council Clinic",NULL,NULL,4
+671,"/Z9zOAr1dQ8K/ngqYrheLIDD/n47r6kdRLGr/zP8n2YUWifz","St. Barbaras Mission Hospitals",NULL,NULL,4
+672,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC","Buhera",NULL,NULL,3
+673,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/BDEmqp90JTA","Mutepfe Clinic",NULL,NULL,4
+674,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/bqBYwNAxlo1","Gunura Clinic",NULL,NULL,4
+675,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/cBlAU3Ex35B","Murwira Rural Health Centre",NULL,NULL,4
+676,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/Di7OHhpjIr2","Chapanduka Clinic",NULL,NULL,4
+677,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/e0BxlFLWuKQ","Mudanda Clinic",NULL,NULL,4
+678,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/ExkPrlU2JL0","Birchenough Rural Hospital",NULL,NULL,4
+679,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/FRb74ACeEZB","Buhera Rural Hospital",NULL,NULL,4
+680,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/fSJy9rjmBSB","Bangure Clinic",NULL,NULL,4
+681,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/g9SCxKLS1Rl","Garamwera Clinic",NULL,NULL,4
+682,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/GRnO7AgEsEI","Mombeyarara Rural Health Centre",NULL,NULL,4
+683,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/GsL0s0RILmu","Zangama Rural Health Centre",NULL,NULL,4
+684,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/hcUbMLN50UW","Betera Rural Health Centre",NULL,NULL,4
+685,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/hzwVAOS3w2R","Mudawose Clinic",NULL,NULL,4
+686,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/I34x7M32C2r","Chawatama Rural Health Centre",NULL,NULL,4
+687,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/i8H1mPyK3Fm","Chabata Clinic",NULL,NULL,4
+688,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/IfQGMZN0HcM","Murambinda District Hospital",NULL,NULL,4
+689,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/jFqSHbG59uf","Muzokomba Clinic",NULL,NULL,4
+690,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/JXKy9DJE3gm","Chiweshe Clinic",NULL,NULL,4
+691,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/MUyHOXjfS9i","Mbundire clinic  010142",NULL,NULL,4
+692,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/O3Eqk96OQ4D","Nyashanu Rural Hospital",NULL,NULL,4
+693,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/PWF0NkIV5ry","Berenyazvidzi Clinic",NULL,NULL,4
+694,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/QcWGAc2BBkH","Chimbudzi Clinic",NULL,NULL,4
+695,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/rRYyzyfhDzN","Chiwenga Clinic",NULL,NULL,4
+696,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/RylLQnL36Fi","Rambanapasi Clinic",NULL,NULL,4
+697,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/RZQzoM8gIgm","Mutiusinazita Clinic",NULL,NULL,4
+698,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/snbgbGRWH3K","Madzimbashuro Rural Health Centre",NULL,NULL,4
+699,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/sOJ2bmldRlG","Chipondamidzi  010141",NULL,NULL,4
+700,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/tgvfmhl76EX","Mukubu  Clinic",NULL,NULL,4
+701,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/TmsVAKEii26","Moses clinic  010144",NULL,NULL,4
+702,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/tovyRP4oXFQ","Chirozva Clinic",NULL,NULL,4
+703,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/vdDCCb7mOh7","Ndyarima Clinic",NULL,NULL,4
+704,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/VxyFvXmfKoZ","Gombe Clinic",NULL,NULL,4
+705,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/we1xrcSbSU4","NSC  Murambinda",NULL,NULL,4
+706,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/WKyg79FMK1g","Munyanyi Clinic",NULL,NULL,4
+707,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/WqWubHGJiuf","Mutasa  Clinic",NULL,NULL,4
+708,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/XWTWzUKR92m","Chapwanya Clinic",NULL,NULL,4
+709,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/XXkxbdoBx3n","Nerutanga Clinic",NULL,NULL,4
+710,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/yivxyODFPUB","Maburutse  Clinic",NULL,NULL,4
+711,"/Z9zOAr1dQ8K/ngqYrheLIDD/tdTAQuQ1cyC/YlbaMtnwj8s","Msasa RDC Clinic",NULL,NULL,4
+712,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw","Makoni",NULL,NULL,3
+713,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/Adoq6MHcOB7","Bingaguru Rural Health Centre",NULL,NULL,4
+714,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/avJBKspv9hU","Tsanzaguru Clinic",NULL,NULL,4
+715,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/bkpJdhMUWKf","Vengere Clinic",NULL,NULL,4
+716,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/BTZXAPMERV4","Nedevedzo Rural Hospital",NULL,NULL,4
+717,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/C6U9KXkP1LK","Nasmie Clinic",NULL,NULL,4
+718,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/CDJGz6wu5lf","Nyazura Clinic",NULL,NULL,4
+719,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/ciscgPAvSgq","Katsenga Rural Health Centre",NULL,NULL,4
+720,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/D7ozNJrRYT5","Mubvurungwa Clinic",NULL,NULL,4
+721,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/DVLOKsqb4Zl","Maparura Rural Health Centre",NULL,NULL,4
+722,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/eqUVN5CpzeZ","Rukweza Clinic",NULL,NULL,4
+723,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/ESGACA5ofKz","Nzvimbe clinic 0104101",NULL,NULL,4
+724,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/etft9xU7U6U","Dumbamwe Clinic",NULL,NULL,4
+725,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/FNqqNK8uxkj","Nyamukamani Rural Health Centre",NULL,NULL,4
+726,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/gcxqxWPw1ZC","Chinyika 1 Rural Health Centre",NULL,NULL,4
+727,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/gmCfw2czWHi","Masvosva Rural Health Centre",NULL,NULL,4
+728,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/GPHfKajtX5M","Little Kraal Clinic",NULL,NULL,4
+729,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/gYjSfULDFyV","Chiduku Clinic",NULL,NULL,4
+730,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/hcyuAxmkOqu","Maurice Nyagumbo Clinic",NULL,NULL,4
+731,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/Hu31HxP4pnG","Era Mine Mine Clinic",NULL,NULL,4
+732,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/i1304rA978N","Tsikada Rural Health Center ",NULL,NULL,4
+733,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/igDHRzTsJrp","Chinyadza Clinic",NULL,NULL,4
+734,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/IS9RJYi881o","Tsikada Rural Health Center ",NULL,NULL,4
+735,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/jfvugcbgBLD","Chikobvore Rural Health Centre",NULL,NULL,4
+736,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/JRx4DirjNEn","Chitungwiza Clinic",NULL,NULL,4
+737,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/k1c19Mj2YZJ","Zunidza Clinic",NULL,NULL,4
+738,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/ldxZ72IIbir","St. Michaels Mission Hospital",NULL,NULL,4
+739,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/NMWRzVxqJBp","Tsikada Rural Health Center",NULL,NULL,4
+740,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/nrMK5a1kkjl","Weya Rural Hospital",NULL,NULL,4
+741,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/Oc6aa9el706","Mukamba Clinic",NULL,NULL,4
+742,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/ocBmfh8IMry","Little Kraal Clinic ",NULL,NULL,4
+743,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/OEmeKmvagQm","Mufusire Clinic",NULL,NULL,4
+744,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/OJpvLVgZmR0","Mayo 1 Rural Health Centre",NULL,NULL,4
+745,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/onNuwP6Pfw4","Nyamidzi Clinic",NULL,NULL,4
+746,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/pcXd2hwfzZV","Headlands Clinic",NULL,NULL,4
+747,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/Q5czETNKIUx","FACT Clinic Clinic",NULL,NULL,4
+748,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/Q821gRmBnL3","Dowa Clinic",NULL,NULL,4
+749,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/QHVCAkeXCog","Tandi Clinic",NULL,NULL,4
+750,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/qqyUMe7zgsr","Little Kraal Nyazura Farm Prison",NULL,NULL,4
+751,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/ritN087xLCM","Ringanayi Clinic",NULL,NULL,4
+752,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/RWivvGgnk5S","Chinhenga Rural Health Centre",NULL,NULL,4
+753,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/SISBOCPkjkv","Tariro Clinic",NULL,NULL,4
+754,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/sR5qFlyKfxO","Nyahowe Rural Health Centre",NULL,NULL,4
+755,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/SyzlxdgIEUo","Mukuwapasi Clinic",NULL,NULL,4
+756,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/T663SER6C7W","Nyahukwe Rural Health Centre",NULL,NULL,4
+757,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/tALfbumNAOT","Mayo 2 Rural Health Centre",NULL,NULL,4
+758,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/tjtRpuZkP15","Chiome Clinic",NULL,NULL,4
+759,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/TQqJCd3vopo","Nedziwa Clinic",NULL,NULL,4
+760,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/Txi298JjnJB","Chinyudze Rural Health Centre",NULL,NULL,4
+761,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/Uh7O39laKjv","Gowakowa Rural Health Centre",NULL,NULL,4
+762,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/uWhfHwNDemw","Makoni Rural Hospital",NULL,NULL,4
+763,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/V1bA6zIKJdr","Mabvaziva clinic 0104102",NULL,NULL,4
+764,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/VKhKIdCsAHA","Nyazura Mission Clinic",NULL,NULL,4
+765,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/VUl74f1phMs","Rusape District Hospital",NULL,NULL,4
+766,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/VWsEtgX9I8R","Nyamusosa Clinic",NULL,NULL,4
+767,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/VxybGJwWgEV","Gorubi Springs Rural Health Centre",NULL,NULL,4
+768,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/wHqZbOi222z","Nyazura Clinic",NULL,NULL,4
+769,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/wo9el2iugOq","Matotwe Clinic",NULL,NULL,4
+770,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/X8eNcHrqP3q","St. Theresa Mission Hospital",NULL,NULL,4
+771,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/X8PgJiXb9dh","Mavhudzi Clinic",NULL,NULL,4
+772,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/Xn3QvNdNdVf","Chinyika 2 Rural Health Centre",NULL,NULL,4
+773,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/XxVznC08Dqf","Bamba Rural Health Centre",NULL,NULL,4
+774,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/xydbCkcaUfL","Chikore Clinic",NULL,NULL,4
+775,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/YXs6Sw0yceC","Sangano Clinic",NULL,NULL,4
+776,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/z3QmTgqAP04","Matsika Clinic",NULL,NULL,4
+777,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/zbiLLHQRvvr","Rusape ZRP Clinic ",NULL,NULL,4
+778,"/Z9zOAr1dQ8K/ngqYrheLIDD/yJFlOa4npWw/ZP6AUxsoZDz","Anorldine Clinic",NULL,NULL,4
+779,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc","Chipinge",NULL,NULL,3
+780,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/amsyTo6Om22","Tongogara Clinic",NULL,NULL,4
+781,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/Ay1YSvb4KQR","Changazi clinic ",NULL,NULL,4
+782,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/B4RFb8m7IUg","Zona Clinic",NULL,NULL,4
+783,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/BSTfx1ktZet","Chipinge New Start Centre/New Life Cent ",NULL,NULL,4
+784,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/cQ6zS5sLoW0","Gwenzi Clinic",NULL,NULL,4
+785,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/d6NhWP6vRNF","Musirwizi Clinic",NULL,NULL,4
+786,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/dmG5Nog6eNq","Musani Clinic",NULL,NULL,4
+787,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/E5TbMMc7bA3","Kondo Clinic",NULL,NULL,4
+788,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/ElZc8VF2oSA","Tanganda Clinic",NULL,NULL,4
+789,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/eM48tOmb5ex","Kopera Clinic",NULL,NULL,4
+790,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/ggRzUEiEnO3","Avontour Tingamire Clinic",NULL,NULL,4
+791,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/GoVLABLOLs3","Ngaome Clinic",NULL,NULL,4
+792,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/hC6cct2Jj4T","Chipinge New Start Centre/New Life Centre",NULL,NULL,4
+793,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/HlCM9K3wEBr","Chipangayi Clinic",NULL,NULL,4
+794,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/IAxIHwuKmli","Rimbi Clinic",NULL,NULL,4
+795,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/IfKqyKB6VCQ","Zamchiya Clinic",NULL,NULL,4
+796,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/IGGZELojXLu","Manzvire Clinic",NULL,NULL,4
+797,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/JrkEzV0EXrw","Paidamoyo Clinic",NULL,NULL,4
+798,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/JSZvh2eCSTO","Midsave Clinic ",NULL,NULL,4
+799,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/keLg1H27wuQ","Junction Gate Clinic",NULL,NULL,4
+800,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/KTR82HGVqGM","Mabeye Clinic",NULL,NULL,4
+801,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/llEZFtnjIuw","Chiriga Rural Health Centre",NULL,NULL,4
+802,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/LQPbeSx2vyk","Gumira Clinic",NULL,NULL,4
+803,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/LXXmlgvXDJk","ARDA Mid 100023 - Clinic",NULL,NULL,4
+804,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/LY5YYd3NGVB","Jersey Clinic",NULL,NULL,4
+805,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/LyRjn3QDVEk","Takwirira Clinic",NULL,NULL,4
+806,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/m9X5oVENSzf","Silverstream Clinic",NULL,NULL,4
+807,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/MBZYJhiMWW9","Tamandai Clinic",NULL,NULL,4
+808,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/MKTghrOSky3","Chiringa Clinic",NULL,NULL,4
+809,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/n4Ie2UOMdnJ","Lamont Clinic",NULL,NULL,4
+810,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/nlmsitPL9Iu","Mt. Selinda Mission Hospital",NULL,NULL,4
+811,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/nNmjZD0Xkbi","Vheneka Clinic",NULL,NULL,4
+812,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/nnTF3x2k1Nj","Chikore Mission Hospital",NULL,NULL,4
+813,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/ONLXKfU6kMU","Mahenye Clinic ",NULL,NULL,4
+814,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/pv8AC8uKyqP","Gaza Council Clinic",NULL,NULL,4
+815,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/q8w6UsNPbMG","Chibuwe Clinic",NULL,NULL,4
+816,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/QGNk0xwCPLp","Southdowns Clinic",NULL,NULL,4
+817,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/qGRNNxCRE9F","Hwakata Clinic",NULL,NULL,4
+818,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/qjwyEub0gWL","Chipinge District Hospital",NULL,NULL,4
+819,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/QxmfRcsbHhH","Muswera Clinic",NULL,NULL,4
+820,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/REgkS89loxc","Chichichi Clinic",NULL,NULL,4
+821,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/tJL4F34QLHI","Ngaome Clinic ",NULL,NULL,4
+822,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/tsaaH8cN0EY","Ratelshoek Clinic",NULL,NULL,4
+823,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/TT234FizJFS","Nyunga Clinic",NULL,NULL,4
+824,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/uj8ctjqnN8U","St. Peters Mission Hospital",NULL,NULL,4
+825,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/vGKeDpIYJOG","Muparadze Clinic",NULL,NULL,4
+826,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/W0Ppo7ae6a9","Mahenye Clinic",NULL,NULL,4
+827,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/W9p1h4w64te","Mutandahwe Clinic",NULL,NULL,4
+828,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/W9ZONCEDDsl","Chisuma Clinic",NULL,NULL,4
+829,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/XPMMDcY8BuB","Chinyamukwaka Clinic",NULL,NULL,4
+830,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/xvTQ8nB5Mvj","Madhuka Rural Health Centre",NULL,NULL,4
+831,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/y2zdUiQO4He","Mutema Clinic",NULL,NULL,4
+832,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/Y7iKPeu2gzq","New Year Gift Clinic",NULL,NULL,4
+833,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/YETAaWuPz4X","Tuzuka Rural Health Centre",NULL,NULL,4
+834,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/Z3mLXNOy7eM","Chipinge Town Clinic",NULL,NULL,4
+835,"/Z9zOAr1dQ8K/ngqYrheLIDD/ZBDSjKKpYBc/ZCIZz6WLNmo","ARDA Estates Clinic",NULL,NULL,4
+836,"/Z9zOAr1dQ8K/S9JaZTjqDf0","Mashonaland Central",NULL,NULL,2
+837,"/Z9zOAr1dQ8K/S9JaZTjqDf0/IqKdDLmC19q","Centenary ",NULL,NULL,3
+838,"/Z9zOAr1dQ8K/S9JaZTjqDf0/VipQY4RTgL8","Mazowe ",NULL,NULL,3
+839,"/Z9zOAr1dQ8K/Swcfysry1GK","Masvingo",NULL,NULL,2
+840,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5","Zaka",NULL,NULL,3
+841,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/Dsxy9OYWGra","Mushaya Clinic",NULL,NULL,4
+842,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/dVYZfmaQlZu","Gumbo Clinic",NULL,NULL,4
+843,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/EJ8AWcWntZC","Ndanga Clinic",NULL,NULL,4
+844,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/enmkxbYDcf1","Madhloro Clinic ",NULL,NULL,4
+845,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/FIVfQy6uvyY","Jichidza Council Clinic",NULL,NULL,4
+846,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/g9tFVjxzZDT","Veza Clinic",NULL,NULL,4
+847,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/icfOvgEjvBc","Benzi Clinic",NULL,NULL,4
+848,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/ifRp2NyE9bf","Fuve Clinic",NULL,NULL,4
+849,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/IZd8YJZuStE","Siyawareva Clinic",NULL,NULL,4
+850,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/j242MePofT5","Mageza Rural Health Centre",NULL,NULL,4
+851,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/JAnao9byjMH","Nhema Clinic",NULL,NULL,4
+852,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/JmCXC6C7rrq","Njiva Clinic ",NULL,NULL,4
+853,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/ky8LXqc6FT7","Njiva Clinic",NULL,NULL,4
+854,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/lV9XsdZFQJO","Machiva Clinic",NULL,NULL,4
+855,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/m1d3Az0zvDK","Chiredzana Clinic",NULL,NULL,4
+856,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/mJ9eUB3If4W","Musiso Mission Hospital",NULL,NULL,4
+857,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/MN5sIO2VqYH","Jichidza Mission Clinic",NULL,NULL,4
+858,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/Ns9TN1yfjMZ","Bota Clinic",NULL,NULL,4
+859,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/pkT7Hpy8KXy","Machiva Clinic ",NULL,NULL,4
+860,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/PMfFMZIrZm5","Jerera Satelite Clinic",NULL,NULL,4
+861,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/s0NGujuznMj","Harava Rural Health Centre",NULL,NULL,4
+862,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/S6noqN7rl9N","Bvukururu Clinic",NULL,NULL,4
+863,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/TnFsY7jz1e9","Nyakunhuwa Clinic",NULL,NULL,4
+864,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/uilLHWBmgKT","Mandhloro Clinic",NULL,NULL,4
+865,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/UjPKTFDVqUE","Chipinda Rural Health Centre",NULL,NULL,4
+866,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/USZm9peQXTh","Svuvure Rural Health Hospital",NULL,NULL,4
+867,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/uuD4wwSkIeT","Chinyabako Clinic",NULL,NULL,4
+868,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/VTBMaKUuMpQ","Murerekwa Clinic",NULL,NULL,4
+869,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/w4buke8xk7w","Zibwowa Private Clinic",NULL,NULL,4
+870,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/WGJRn7abY4N","Nemauku Clinic",NULL,NULL,4
+871,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/Z5J3cdh6yMb","Zinguwo Clinic",NULL,NULL,4
+872,"/Z9zOAr1dQ8K/Swcfysry1GK/cmSn9zK9Tn5/ZlQRjkoXG9b","Ndanga Hospital",NULL,NULL,4
+873,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R","Bikita",NULL,NULL,3
+874,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/crSUbi6i5F5","Gava Rural Health Centre",NULL,NULL,4
+875,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/eyzAFcfSQEX","Mkanga Rural Hospital",NULL,NULL,4
+876,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/fo8DmvW4GD4","Bikita Minerals Clinic",NULL,NULL,4
+877,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/G5jQ0PgLBmE","Nyika Rural Health Centre",NULL,NULL,4
+878,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/i9PX3wtF6cy","Muvava Satelite Clinic",NULL,NULL,4
+879,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/iSsPDmuYqMy","Marozva Clinic",NULL,NULL,4
+880,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/j70GjIlGs0j","Pfupajena Clinic",NULL,NULL,4
+881,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/jTHXPdvfmvE","Gangare Rural Health Centre",NULL,NULL,4
+882,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/M3fHp1fXm4C","Hozvi Clinic",NULL,NULL,4
+883,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/NaO74LLddM5","Chitasa Clinic",NULL,NULL,4
+884,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/NUbvkDjF8gR","Chikuku Clinic",NULL,NULL,4
+885,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/O3syMqZH5bx","Bikita Epi Mobile",NULL,NULL,4
+886,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/ObJD78iiFpH","Deure II Clinic",NULL,NULL,4
+887,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/oKF4ghEdf2q","Ngorima Clinic",NULL,NULL,4
+888,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/P7RIEu3l0cg","Odzi Rural Hospital",NULL,NULL,4
+889,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/rkqZQFjc9on","Murwira Clinic",NULL,NULL,4
+890,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/RRoxTlWt5OO","Mashoko Hospital",NULL,NULL,4
+891,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/sk68oHctZOt","ZRP Bikita Clinic",NULL,NULL,4
+892,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/SsH6OoS1V9b","Bikita Rural Hospital",NULL,NULL,4
+893,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/steehc0leFc","Masarasa Clinic",NULL,NULL,4
+894,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/SVnZJjfH3bd","Mungezi Rural Health Centre",NULL,NULL,4
+895,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/v3oBPHTfkPf","Silveira Mission Hospital",NULL,NULL,4
+896,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/v49gHHSg0ql","Mandara Clinic",NULL,NULL,4
+897,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/w2OET5yQcEH","Mutikizizi Rural Health Centre",NULL,NULL,4
+898,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/WImVX85YsWu","Ruponeso Clinic",NULL,NULL,4
+899,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/WKvlACWxQJa","Mukore Rural Health Centre",NULL,NULL,4
+900,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/x6KqZuVLib1","Odzi Clinic",NULL,NULL,4
+901,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/y1AymbEJYoE","Devure 1 Clinic",NULL,NULL,4
+902,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/YQpWsAxwrFd","Chirorwe Clinic",NULL,NULL,4
+903,"/Z9zOAr1dQ8K/Swcfysry1GK/dMQxp7sPj1R/zygIXPCfI2m","Negovano Rural Health Centre",NULL,NULL,4
+904,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4","Mwenezi",NULL,NULL,3
+905,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/AarDXWOHk2L","Munyamani Rural Health Centre ",NULL,NULL,4
+906,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/AfnXx27tQ4L","Mwenezi Council Clinic ",NULL,NULL,4
+907,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/bA0TiXkTzDI","Chimbudzi Clinic",NULL,NULL,4
+908,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/cryqOuYCTo9","Mazetese Clinic",NULL,NULL,4
+909,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/eNq2hEBUbBx","Mwenezana Clinic",NULL,NULL,4
+910,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/fil4aqGSpkM","Chizumba Clinic",NULL,NULL,4
+911,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/gkGXl8Nh29p","Manyuchi Clinic2",NULL,NULL,4
+912,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/GUyrKhGPkmB","Chingwizi Satelite Clinic",NULL,NULL,4
+913,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/iBtiSFIva5U","Murove Clinic",NULL,NULL,4
+914,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/ihx0kEPhDMu","Munyamani Clinic",NULL,NULL,4
+915,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/JwYM3bMuGN8","Manyuchi Clinic",NULL,NULL,4
+916,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/KaZSdnHLBYC","Munyamani Rural Health Centre",NULL,NULL,4
+917,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/KGODrJyUU0d","Chirindi Clinic",NULL,NULL,4
+918,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/KSeMcOy1Blg","Rutenga Clinic",NULL,NULL,4
+919,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/L1NXyIXr4Xi","Neshuro District Hospital",NULL,NULL,4
+920,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/mtHydPyChpG","Maranda Sub-Clinic",NULL,NULL,4
+921,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/nNRxlONErnx","Mwenezi Council Clinic",NULL,NULL,4
+922,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/NWTeFnEAJnq","Petronella Rural Health Centre ",NULL,NULL,4
+923,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/OEtit4CZpza","Mwenezana Clinic ",NULL,NULL,4
+924,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/QawCcirF9wM","Maryvale Rural Health Centre",NULL,NULL,4
+925,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/QqmegtpUcnx","Maranda Mission Hospital",NULL,NULL,4
+926,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/rGj6vwocIr0","Matibi Mission Hospital",NULL,NULL,4
+927,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/RrnkwgdtPCM","Ruzambu Clinic",NULL,NULL,4
+928,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/RutCBJv2FDw","Bubi River Ranch Clinic",NULL,NULL,4
+929,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/Sd1voKwxJhS","Mushava Clinic",NULL,NULL,4
+930,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/t2cfj97U17r","Mwenezi Council Clinic",NULL,NULL,4
+931,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/twnngm080PW","Mwenezi Council Clinic ",NULL,NULL,4
+932,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/U6uRzVh0RSW","NRZ Clinic",NULL,NULL,4
+933,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/uZxyGTs0zwb","Lundi Clinic",NULL,NULL,4
+934,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/VQBNHdBY781","Mulelesi Clinic",NULL,NULL,4
+935,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/XIv6Q7a9F0J","Boterere Rural Health Centre",NULL,NULL,4
+936,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/XJsvcIzmT1E","Rutenga Railways Clinic",NULL,NULL,4
+937,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/xXvAFa6LVPB","G&N Clinic Clinic",NULL,NULL,4
+938,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/YY58oZC8vq5","Marinda Rural Health Centre",NULL,NULL,4
+939,"/Z9zOAr1dQ8K/Swcfysry1GK/iTHhUYtNnL4/yzw2HRX9Prn","Nehanda Clinic",NULL,NULL,4
+940,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF","Masvingo",NULL,NULL,3
+941,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/AMIatgPm3xb","Stanmore Rural Health Centre",NULL,NULL,4
+942,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/AUU2Za6iKUr","Mukosi Clinic",NULL,NULL,4
+943,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/baRAS8w9gmR","Summerton Clinic",NULL,NULL,4
+944,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/bfcqsUA785y","Zvamahande Rural Health Centre",NULL,NULL,4
+945,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/bGVZqTZYySb","Mushandike Clinic",NULL,NULL,4
+946,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/BQphG56vN2b","Zimuto Clinic",NULL,NULL,4
+947,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/BYmITScQJL8","Nemwanwa Clinic",NULL,NULL,4
+948,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/DthvHWxwhl8","Chatikobo Clinic",NULL,NULL,4
+949,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/epPROUCXfAX","Rukovo Clinic",NULL,NULL,4
+950,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/EQMIsSwYCJE","Nyikavanhu Rural Health Centre",NULL,NULL,4
+951,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/FUoqhbrAxqB","Bere Clinic",NULL,NULL,4
+952,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/gEEJqV8kQoU","Ngomahuru Psychiatric Hospital ",NULL,NULL,4
+953,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/Hc4fFQhQIgR","Hwendedzo Clinic",NULL,NULL,4
+954,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/hIQLu7ZOrfq","Gundura Clinic",NULL,NULL,4
+955,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/HyiupeyROhN","Gaths Mine Hospital",NULL,NULL,4
+956,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/j0Sp4T1CCZR","Runyararo Clinic",NULL,NULL,4
+957,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/J4lnaGjZpej","Mogenester Mission Hospital",NULL,NULL,4
+958,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/Ktj9CxKCM5h","Shonganiso Clinic",NULL,NULL,4
+959,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/l3E01g797F0","Zimuto BC Clinic",NULL,NULL,4
+960,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/mAVZzsETxl1","4.1 Barracks Camp Hospital",NULL,NULL,4
+961,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/O7ozICEgzWS","Ngomahuru Rural Health Centre",NULL,NULL,4
+962,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/Oqk09GQNE6K","Gurajena Hospital",NULL,NULL,4
+963,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/OwDR7D9U5Iq","Masvingo General Hospital",NULL,NULL,4
+964,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/P6v8ImHzR3c","Shumba Clinic",NULL,NULL,4
+965,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/PPyDaHmqOoL","Mucheke Clinic",NULL,NULL,4
+966,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/qU8ZCeQVNaR","Renco Mine Clinic",NULL,NULL,4
+967,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/qWZgejuypcm","Musvovi Clinic",NULL,NULL,4
+968,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/RPaFuf61WaI","Zano Clinic",NULL,NULL,4
+969,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/RTubzXUovqL","Nyajena Rural Hospital",NULL,NULL,4
+970,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/shU0JKeINLz","Bondolfi Rural Hospital",NULL,NULL,4
+971,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/sRPZyqImKVc","PSG Renco clinic Mine Clinic",NULL,NULL,4
+972,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/swgwGmtq9YH","Guwa Clinic",NULL,NULL,4
+973,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/TmpVq0GSnlG","Charumbira Clinic",NULL,NULL,4
+974,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/uYEnUHn5H1C","Murinye Clinic",NULL,NULL,4
+975,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/v5kcc0wO1Rj","Nyamande Clinic",NULL,NULL,4
+976,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/VgXt1sUEhBq","Alvod Clinic",NULL,NULL,4
+977,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/VKwux4TM7D1","Mavizhu Clinic",NULL,NULL,4
+978,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/vQIAHTp5Tc7","Gokomere Clinic",NULL,NULL,4
+979,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/vTuEqoISlEa","Runyararo South West Council Clinic",NULL,NULL,4
+980,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/wQ9HjnprvIf","Rujeko Clinic",NULL,NULL,4
+981,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/Xr97xbx0yb9","Zimuto Mission Hospital",NULL,NULL,4
+982,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/ycRz5OfK66h","Chisase Clinic",NULL,NULL,4
+983,"/Z9zOAr1dQ8K/Swcfysry1GK/UrkEr9fULhF/yPQXMrWCQ8C","Mapanzure Clinic",NULL,NULL,4
+984,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE","Chiredzi",NULL,NULL,3
+985,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/Ah71A5p6U9l","Chambuta Clinic",NULL,NULL,4
+986,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/bUgKeujjHs0","Mkwasine Clinic",NULL,NULL,4
+987,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/bYajIrtO7BJ","Gudo Clinic",NULL,NULL,4
+988,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/c4XotWaksY0","Chizvirizvi Clinic",NULL,NULL,4
+989,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/cnqg74tvFv1","Chiredzi Hospital",NULL,NULL,4
+990,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/ezd2O5cLGKR","Chikombedzi Hospital",NULL,NULL,4
+991,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/fHlFvOJjEZa","Faversham Clinic",NULL,NULL,4
+992,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/FZFi6UbvoAK","Gezani Clinic",NULL,NULL,4
+993,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/g7P5iJOCBdW","Tsovani Clinic",NULL,NULL,4
+994,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/Gve7jwYBtm7","Masivamele SDA Clinic",NULL,NULL,4
+995,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/HeZbUZjnuhb","Pahlela Clinic",NULL,NULL,4
+996,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/ITtrofNJXsa","Rutandare Clinic",NULL,NULL,4
+997,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/jRF48ebIi8o","Dumisa Clinic",NULL,NULL,4
+998,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/JSfdVXhCx93","Triangle New Start Centre/New Life Cent ",NULL,NULL,4
+999,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/kOc9rm7UnpQ","Chilonga Clinic",NULL,NULL,4
+1000,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/kp1ChvzDVdl","Chimbwedziva Clinic",NULL,NULL,4
+1001,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/lgDPtblnWoX","Chipiwa Clinic",NULL,NULL,4
+1002,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/mAFrIy4VwQg","Chiredzi New Start Centre/New Life Centre",NULL,NULL,4
+1003,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/olto9KrCczo","Neromwe Clinic",NULL,NULL,4
+1004,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/pjRsLtIEfFO","Turkey Heart Clinic",NULL,NULL,4
+1005,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/pnbUOG9jvyE","Malipati Rural Health Centre",NULL,NULL,4
+1006,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/ps6ALhKY4N1","Old Boli Clinic",NULL,NULL,4
+1007,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/PwO2lU5SrxH","Rusununguko Clinic",NULL,NULL,4
+1008,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/q3b5EkPCQLi","St. Joseph Clinic",NULL,NULL,4
+1009,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/Q3ugvdCRvpY","Chingele Clinic",NULL,NULL,4
+1010,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/qFUR51Ms9q0","Chiredzi New Start Centre/New Life Cent ",NULL,NULL,4
+1011,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/qvDZsNpDxFc","Nyangambe Clinic",NULL,NULL,4
+1012,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/rBSC8oca3nk","Makambe Clinic",NULL,NULL,4
+1013,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/sbkQMAzfGDC","Chikwirire Clinic",NULL,NULL,4
+1014,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/swOU5pflWXo","Chiredzi ZSA Clinic ",NULL,NULL,4
+1015,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/T5GUOFScrzV","Mahlanguleni Clinic",NULL,NULL,4
+1016,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/TWQYlcVIUbh","Davata Clinic",NULL,NULL,4
+1017,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/u33AB2pSZpc","Colin Saunders Hospital1",NULL,NULL,4
+1018,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/u5Jvb683DTu","Matedzi Clinic",NULL,NULL,4
+1019,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/uh35NSt2dAR","Rapanguwana Clinic",NULL,NULL,4
+1020,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/UM1EEsLNksq","Hippo Valley Clinic",NULL,NULL,4
+1021,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/uQ25d2VfGtd","Porepore Clinic",NULL,NULL,4
+1022,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/UxHXfAoScYm","Sango Health Post",NULL,NULL,4
+1023,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/V7g1YWWJjww","Chomopani Clinic",NULL,NULL,4
+1024,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/waM3lzKr2NR","Colin Saunders Hospital",NULL,NULL,4
+1025,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/X2s4IkAsMAk","Crown Range Clinic",NULL,NULL,4
+1026,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/YCwmksrQv9l","Muteyo Clinic",NULL,NULL,4
+1027,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/YZNLtCPMaHT","Samu Clinic",NULL,NULL,4
+1028,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/Z2jeuNuhkJQ","Chitsa Clinic",NULL,NULL,4
+1029,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/zEztqtVfvls","Damarakanaka Clinic",NULL,NULL,4
+1030,"/Z9zOAr1dQ8K/Swcfysry1GK/XvbYZilN1PE/zxqlLRCxD3M","Gwaseche Clinic ",NULL,NULL,4
+1031,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz","Chivi",NULL,NULL,3
+1032,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/aGhPTFxnILJ","Davira Clinic",NULL,NULL,4
+1033,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/BbcsNsBiQJM","Chivi Rural Hospital",NULL,NULL,4
+1034,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/d507u4dhfug","Mhandamabwe Rural Health Centre",NULL,NULL,4
+1035,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/d7ci3o1HtZD","Chasiyatende Clinic",NULL,NULL,4
+1036,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/hqEu71WoaVR","Chifedza Clinic",NULL,NULL,4
+1037,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/HT2y1s8pLHX","Masinire Clinic",NULL,NULL,4
+1038,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/IwB4D1rHsl6","Madamombe Rural Health Centre",NULL,NULL,4
+1039,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/laeJBf3k7tI","Chivi District Hospital",NULL,NULL,4
+1040,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/LnBI34VkdXc","Utete Clinic",NULL,NULL,4
+1041,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/n4tZ9FiLuGP","Razi Rural Health Centre",NULL,NULL,4
+1042,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/PwTUs91whQ3","Chirongwe Clinic",NULL,NULL,4
+1043,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/qlF46STsFVq","Ziviku Clinic",NULL,NULL,4
+1044,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/t0FJDGAu6fL","Chidyamakono Clinic",NULL,NULL,4
+1045,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/TEsXYdnUcfu","Ngundu Rural Health Centre",NULL,NULL,4
+1046,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/TKcNzGxZmGw","Berejena Mission Clinic",NULL,NULL,4
+1047,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/tnAAI1FRv9X","Takavarasha Rural Health Centre",NULL,NULL,4
+1048,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/uCEsnsec9SL","Chigwikwi Rural Health Centre",NULL,NULL,4
+1049,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/ujZ2RN5rk6c","Gororo Clinic",NULL,NULL,4
+1050,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/Wvse2gr2oTW","Nyahombe Clinic",NULL,NULL,4
+1051,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/x6Odi9BQi29","Varanda Rural Health Centre",NULL,NULL,4
+1052,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/XxCEgT27X8h","Madzivadondo Clinic",NULL,NULL,4
+1053,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/ZjbT0mVOxhT","Shindi Clinic",NULL,NULL,4
+1054,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/ZPy0zZuQJHc","Chivi Mission Clinic",NULL,NULL,4
+1055,"/Z9zOAr1dQ8K/Swcfysry1GK/YrreUKmRZTz/zW00y6AUxdv","Bwanya Clinic",NULL,NULL,4
+1056,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI","Gutu",NULL,NULL,3
+1057,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/AGkV135CYcT","Mazura Clinic",NULL,NULL,4
+1058,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/bNtcLJVMOwP","Magombedze Chitsa Rural Health Centre",NULL,NULL,4
+1059,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/BqwYIsKviQT","Mutero Rural Health Centre ",NULL,NULL,4
+1060,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/BXwx8ekYJ5Z","Cheshuro Clinic",NULL,NULL,4
+1061,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/CSJhvKnvviY","Nyazvidzi Clinic",NULL,NULL,4
+1062,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/D5ZtSR2xBki","Chipiri Clinic",NULL,NULL,4
+1063,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/diROooYxyaE","Zvavahera Clinic",NULL,NULL,4
+1064,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/E2KrijxLbKp","Denhere Clinic",NULL,NULL,4
+1065,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/gQu3bUzI3bn","Chinyika Rural Health Centre",NULL,NULL,4
+1066,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/hhrSCqMznTy","Gutu Rural Clinic",NULL,NULL,4
+1067,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/iDHtR8nseVL","Chitsa Rural Health Centre",NULL,NULL,4
+1068,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/jXnqxdI0Xk4","Magombedze Clinic",NULL,NULL,4
+1069,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/kaYiMIvMi6q","Chimombe Rural Hospital",NULL,NULL,4
+1070,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/LaR6odJIgbC","Mutema Clinic",NULL,NULL,4
+1071,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/lMPbb0M4NRu","Gutu Mission Hospital",NULL,NULL,4
+1072,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/lO6DFAvjICL","Chitando Rural Health Centre",NULL,NULL,4
+1073,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/onzEz7OrfEc","Matizha Clinic",NULL,NULL,4
+1074,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/oPm3qJ83j76","Guni Clinic",NULL,NULL,4
+1075,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/oqJB2RrFjGD","Chiwore Clinic",NULL,NULL,4
+1076,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/rAsVeklMvZ9","Mutero Mission Clinic",NULL,NULL,4
+1079,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/TIc3xF352lD","Muchekayaora Clinic",NULL,NULL,4
+1080,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/tJksCYMUYHm","Mushaviri Clinic",NULL,NULL,4
+1081,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/TzcYG8P3r5t","Serima Mission Hospital",NULL,NULL,4
+1082,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/vJvZoHHCXoL","Nemashakwe Clinic",NULL,NULL,4
+1083,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/VYPAMdNSEQf","Devure Mission Clinic",NULL,NULL,4
+1084,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/whCKffBHhqi","Soti Source Clinic",NULL,NULL,4
+1085,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/WXuXiKIOPTi","Mataruse Clinic",NULL,NULL,4
+1086,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/xaCB2mHuw5r","Mukaro Mission Clinic",NULL,NULL,4
+1087,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/xclPYKg6TTi","Munyikwa Rural Health Centre",NULL,NULL,4
+1088,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/ys2RKCMd2KW","Majarada Rural Health Centre",NULL,NULL,4
+1089,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/zDO70UxzQ52","Chepiri Clinic",NULL,NULL,4
+1090,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/zlK0QVfBy4S","Zinhata Clinic",NULL,NULL,4
+1091,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/zwiSn9vDwc6","Matomuse clinic",NULL,NULL,4
+1092,"/Z9zOAr1dQ8K/WJLP1MSmiS7","Harare",NULL,NULL,2
+1093,"/Z9zOAr1dQ8K/WJLP1MSmiS7/f0hCCPTK8WJ","Chitungwiza",NULL,NULL,3
+1094,"/Z9zOAr1dQ8K/WJLP1MSmiS7/f0hCCPTK8WJ/cswicu2amtm","Seke South Clinic",NULL,NULL,4
+1095,"/Z9zOAr1dQ8K/WJLP1MSmiS7/f0hCCPTK8WJ/dgPACqSJZIT","Zengeza Clinic Council Clinic",NULL,NULL,4
+1096,"/Z9zOAr1dQ8K/WJLP1MSmiS7/f0hCCPTK8WJ/Ev5Zpi0xxRx","Chitungwiza General Hospital",NULL,NULL,4
+1097,"/Z9zOAr1dQ8K/WJLP1MSmiS7/f0hCCPTK8WJ/iapmQ1i1Z6B","Chitungwiza Central Hospital 045]",NULL,NULL,4
+1098,"/Z9zOAr1dQ8K/WJLP1MSmiS7/f0hCCPTK8WJ/oSAzHWDLSzY","Zengeza 3 Clinic",NULL,NULL,4
+1099,"/Z9zOAr1dQ8K/WJLP1MSmiS7/f0hCCPTK8WJ/xjDifmwK0wG","Seke North Clinic",NULL,NULL,4
+1100,"/Z9zOAr1dQ8K/WJLP1MSmiS7/f0hCCPTK8WJ/z5w07xHWxPG","St. Marys Clinic",NULL,NULL,4
+1101,"/Z9zOAr1dQ8K/WJLP1MSmiS7/vpP5EC4QmhK","Harare",NULL,NULL,3
+1102,"/Z9zOAr1dQ8K/WJLP1MSmiS7/vpP5EC4QmhK/JoPZPhpHoo1","West End Hospital ",NULL,NULL,4
+59,"/Z9zOAr1dQ8K/kUS61oPWPF9/E6B1ltaZQm3/XDYoiA4av89","Dulibadzimu Satelite Clinic",NULL,NULL,4
+554,"/Z9zOAr1dQ8K/ngqYrheLIDD/MMEL64OWUht/arab3YkysoL","Mavhiza Clinic",NULL,NULL,4
+1077,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/RxO8k3zae2W","Tirizi Clinic",NULL,NULL,4
+1078,"/Z9zOAr1dQ8K/Swcfysry1GK/YXXZ4CkOzvI/TBPY2CXSDF6","Dambara Clinic",NULL,NULL,4

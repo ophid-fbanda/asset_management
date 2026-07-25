@@ -1,18 +1,21 @@
 <script setup>
 import { computed, reactive, watch, onMounted } from 'vue'
-import { Button, Column, DataTable, Tag } from 'primevue'
+import { Button, Column, DataTable } from 'primevue'
 import { arraySearch, objectHeaders, objectReset, objectSet } from '@/api/objectx'
 import { exportToExcel } from '@/api/exportx'
 import { dataRefreshCache, dataFromCache, dataSearchModel, dataClearSearch } from '@/api/datax'
-import { colorPalette } from '@/api/colorx'
 import FormRouter from '@/commons/FormRouter.vue'
+import StatusDot from '@/commons/StatusDot.vue'
 
 const search = dataSearchModel()
 const station = dataFromCache('role/40')
 
-const dataKey = computed(() => `approvals/supervisory/pending/${station.value}`)
-const dataRecords = computed(() => dataFromCache(dataKey.value).value)
-const dataRefresh = () => dataRefreshCache(dataKey.value)
+const dataKey = computed(() => (station.value != null ? `approvals/supervisory/pending/${station.value}` : null))
+const dataRecords = computed(() => (dataKey.value ? dataFromCache(dataKey.value).value : null))
+const dataRefresh = () => {
+  if (!dataKey.value) return
+  dataRefreshCache(dataKey.value)
+}
 const columns = computed(() => objectHeaders(dataRecords.value ?? [], ['latest_approval']))
 
 const filteredRecords = computed(() => arraySearch(dataRecords.value ?? [], search.value))
@@ -22,6 +25,12 @@ const filteredRecords = computed(() => arraySearch(dataRecords.value ?? [], sear
 const TEMPLATE_MAP = {
   Registration: 'regTemplate',
   Transfer:     'transferTemplate',
+  Issuance:     'issuanceTemplate',
+  Verification: 'verificationTemplate',
+  Evaluation:   'evaluationTemplate',
+  Placement:    'placementTemplate',
+  Disposal:     'disposalTemplate',
+  Incident:     'incidentTemplate',
 }
 
 const context = reactive({
@@ -31,6 +40,11 @@ const context = reactive({
 })
 
 const selectionMode = computed(() => Math.max(0, ...context.options.map((o) => o.table ?? 0)))
+
+const onRowClick = (event) => {
+  if (selectionMode.value === 1) toggleCollect(event.data)
+}
+
 
 const collect = () => objectSet(context, 'dialog', true)
 
@@ -66,13 +80,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex min-h-0 flex-1 flex-col gap-3">
-    <div class="flex items-center justify-between gap-3">
+  <div class="assem-table-shell">
+    <div class="assem-table-toolbar">
       <div class="flex items-baseline gap-3">
-        <h2 class="text-base font-semibold text-[#384884]">Pending Approvals</h2>
-        <span class="text-xs text-surface-500">{{ filteredRecords.length }} records</span>
+        <h2>Pending Approvals</h2>
+        <span class="assem-table-meta">{{ filteredRecords.length }} records</span>
       </div>
-      <div class="flex items-center gap-2">
+      <div class="assem-table-actions">
         <button
           v-if="selectionMode === 2"
           type="button"
@@ -99,30 +113,22 @@ onMounted(() => {
       data-key="entity_id"
       size="small"
       striped-rows
-      show-gridlines
       scrollable
       scroll-height="flex"
       paginator
       :rows="10"
       :rows-per-page-options="[10, 25, 50]"
-      class="flex min-h-0 flex-1 flex-col text-sm"
+      :row-class="() => (selectionMode === 1 ? 'cursor-pointer' : undefined)"
+      @row-click="onRowClick"
+      class="assem-table flex min-h-0 flex-1 flex-col text-sm"
     >
       <Column
-        v-if="selectionMode"
+        v-if="selectionMode === 2"
         :header-style='{ width: "2rem" }'
         :exportable="false"
       >
         <template #body="{ data }">
           <Button
-            v-if="selectionMode === 1"
-            icon="pi pi-folder"
-            severity="info"
-            size="small"
-            text
-            @click="toggleCollect(data)"
-          />
-          <Button
-            v-else
             :icon="context.collector.some((r) => r.entity_id === data.entity_id) ? 'pi pi-check-square' : 'pi pi-stop'"
             severity="info"
             size="small"
@@ -136,6 +142,7 @@ onMounted(() => {
         :key="col.field"
         :field="col.field"
         :header="col.header"
+        sortable
       >
         <template #body="{ data }">
           <span
@@ -147,7 +154,7 @@ onMounted(() => {
       </Column>
       <Column header="Status">
         <template #body="{ data }">
-          <Tag :value="data.latest_approval" :severity="colorPalette(data.latest_approval_type_id)" />
+          <StatusDot :label="data.latest_approval" :tone="data.latest_approval_type_id" />
         </template>
       </Column>
     </DataTable>
