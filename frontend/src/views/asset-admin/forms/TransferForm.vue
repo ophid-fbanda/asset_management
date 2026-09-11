@@ -1,6 +1,6 @@
 <script setup>
 import { computed, onMounted, reactive } from 'vue'
-import { DatePicker, Select, Textarea } from 'primevue'
+import { Select, Textarea } from 'primevue'
 import { objectComplete, objectReset, objectResetSet } from '@/api/objectx'
 import { dataFetchToCache, dataFromCache, dataSend } from '@/api/datax'
 import FeedBack from '@/commons/FeedBack.vue'
@@ -19,29 +19,21 @@ const destinationOptions = computed(() =>
 
 const form = reactive({
   receivingStationId: null,
-  eventDate: null,
   notes: null,
   items: null
 })
 
 const ui = reactive({ busy: null, error: null, success: null })
 
-const toIsoDate = (value) => {
-  if (!(value instanceof Date)) return value
-  const pad = (n) => String(n).padStart(2, '0')
-  return `${value.getFullYear()}-${pad(value.getMonth() + 1)}-${pad(value.getDate())}`
-}
-
 const submitForm = async () => {
   form.items = props.collected.map((a) => ({ registeredAssetId: a.asset_id }))
-  if (!objectComplete(form, ['notes'])) {
+  if (!objectComplete(form)) {
     objectResetSet(ui, 'error', 'Complete the form')
     return
   }
   objectResetSet(ui, 'busy', true)
   const payload = {
     ...form,
-    eventDate: toIsoDate(form.eventDate),
     eventStationId: eventStation.value,
   }
   const response = await dataSend('assets/transfer', payload)
@@ -78,17 +70,6 @@ onMounted(() => {
               option-value="id"
               placeholder="Select destination"
               filter
-              class="w-full"
-            />
-          </div>
-
-          <div class="flex flex-col gap-1.5">
-            <label class="text-sm font-medium text-[#384884]">Transfer Date</label>
-            <DatePicker
-              v-model="form.eventDate"
-              date-format="yy-mm-dd"
-              show-icon
-              placeholder="Select date"
               class="w-full"
             />
           </div>

@@ -55,7 +55,7 @@ const form = reactive({
   acquisitionTypeId: null,
   referenceAttachment: null,
   referenceTypeId: null,
-  eventDate: null,
+  referenceDate: null,
   supplierName: null,
   notes: null,
   // Not shown in the UI; resolved elsewhere before submit.
@@ -161,7 +161,7 @@ const submitForm = async () => {
 
   objectResetSet(ui, 'busy', true)
 
-  const payload = { ...form, eventDate: toIsoDate(form.eventDate) }
+  const payload = { ...form, referenceDate: toIsoDate(form.referenceDate) }
   const response = await dataUpload('assets/registration', payload)
 
   if (response.status === 200) {
@@ -234,9 +234,9 @@ onMounted(() => {
         </div>
 
         <div class="flex flex-col gap-1.5">
-          <label class="text-sm font-medium text-[#384884]">Acquisition Date</label>
+          <label class="text-sm font-medium text-[#384884]">Reference Date</label>
           <DatePicker
-            v-model="form.eventDate"
+            v-model="form.referenceDate"
             date-format="yy-mm-dd"
             show-icon
             placeholder="Select date"

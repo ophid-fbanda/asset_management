@@ -75,8 +75,8 @@ onMounted(() => {
           <span class="font-semibold">{{ details.supplier }}</span>
         </div>
         <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Acquisition Date</span>
-          <span class="font-semibold">{{ details.event_date }}</span>
+          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Reference Date</span>
+          <span class="font-semibold">{{ details.reference_date }}</span>
         </div>
         <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
           <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Program</span>

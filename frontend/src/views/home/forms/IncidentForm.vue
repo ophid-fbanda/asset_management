@@ -1,6 +1,6 @@
 <script setup>
 import { computed, onMounted, reactive } from 'vue'
-import { DatePicker, Select, Textarea } from 'primevue'
+import { Select, Textarea } from 'primevue'
 import { objectComplete, objectReset, objectResetSet } from '@/api/objectx'
 import { dataFetchToCache, dataFromCache, dataRefreshCache, dataUpload } from '@/api/datax'
 import FeedBack from '@/commons/FeedBack.vue'
@@ -14,19 +14,12 @@ const asset = computed(() => props.collected[0] ?? {})
 
 const form = reactive({
   incidentTypeId: null,
-  eventDate: null,
   eventNotes: null,
   incidentAssetImage: null,
   incidentPoliceReport: null,
 })
 
 const ui = reactive({ busy: null, error: null, success: null })
-
-const toIsoDate = (value) => {
-  if (!(value instanceof Date)) return value
-  const pad = (n) => String(n).padStart(2, '0')
-  return `${value.getFullYear()}-${pad(value.getMonth() + 1)}-${pad(value.getDate())}`
-}
 
 const onImagePick = (event) => {
   form.incidentAssetImage = event.target.files?.[0] ?? null
@@ -50,7 +43,6 @@ const submitForm = async () => {
 
   const payload = {
     incidentTypeId: form.incidentTypeId,
-    eventDate: toIsoDate(form.eventDate),
     eventNotes: form.eventNotes ?? '',
     registeredAssetId: asset.value.asset_id,
     eventStationId: asset.value.station_id,
@@ -100,17 +92,6 @@ onMounted(() => {
             option-value="id"
             placeholder="Select type"
             filter
-            class="w-full"
-          />
-        </div>
-
-        <div class="flex flex-col gap-1.5">
-          <label class="text-sm font-medium text-[#384884]">Incident Date</label>
-          <DatePicker
-            v-model="form.eventDate"
-            date-format="yy-mm-dd"
-            show-icon
-            placeholder="Select date"
             class="w-full"
           />
         </div>

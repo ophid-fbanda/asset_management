@@ -39,7 +39,7 @@ public class AssetRepository {
                     acquisition_types.name AS acquisition_type,
                     reference_types.name AS reference_type,
                     suppliers.supplier_name AS supplier_name,
-                    to_char(asset_registrations.event_date, 'DD/mm/YYYY') AS event_date,
+                    to_char(asset_registrations.reference_date, 'DD/mm/YYYY') AS reference_date,
                     stations.station_name AS station,
                     staff_profiles.full_name AS registered_by,
                     asset_count.total AS quantity,
@@ -138,7 +138,7 @@ public class AssetRepository {
                     acquisition_type_id,
                     reference_attachment,
                     reference_type_id,
-                    event_date,
+                    reference_date,
                     supplier_id,
                     notes,
                     event_register_id,
@@ -149,7 +149,7 @@ public class AssetRepository {
                     :acquisitionTypeId,
                     :referenceAttachmentPath,
                     :referenceTypeId,
-                    :eventDate,
+                    :referenceDate,
                     :supplierId,
                     :notes,
                     :eventId,
@@ -390,7 +390,7 @@ public class AssetRepository {
                 SELECT
                     asset_issuances.id AS entity_id,
                     asset_issuances.event_register_id AS event_id,
-                    to_char(asset_issuances.event_date, 'DD/MM/YYYY') AS issued_date,
+                    to_char(asset_issuances.stamp, 'DD/MM/YYYY') AS issued_date,
                     stations.station_name AS station,
                     staff_profiles.full_name AS issued_by,
                     issuance_types.name AS issuance_type,
@@ -448,7 +448,7 @@ public class AssetRepository {
                 SELECT
                     asset_transfers.id AS entity_id,
                     asset_transfers.event_register_id AS event_id,
-                    to_char(asset_transfers.event_date, 'DD/MM/YYYY') AS transfer_date,
+                    to_char(asset_transfers.stamp, 'DD/MM/YYYY') AS transfer_date,
                     from_station.station_name AS from_station,
                     to_station.station_name AS to_station,
                     staff_profiles.full_name AS transferred_by,
@@ -530,7 +530,7 @@ public class AssetRepository {
                 SELECT
                     asset_incidents.id AS entity_id,
                     asset_incidents.event_register_id AS event_id,
-                    to_char(asset_incidents.event_date, 'DD/MM/YYYY') AS incident_date,
+                    to_char(asset_incidents.stamp, 'DD/MM/YYYY') AS incident_date,
                     (incident_types.name || ' of ' || asset_types.name || ' '
                         || COALESCE(registered_assets.asset_number, registered_assets.serial_number)) AS details,
                     stations.station_name AS station,
@@ -604,7 +604,7 @@ public class AssetRepository {
                 SELECT
                     asset_incidents.id AS entity_id,
                     asset_incidents.event_register_id AS event_id,
-                    to_char(asset_incidents.event_date, 'DD/MM/YYYY') AS incident_date,
+                    to_char(asset_incidents.stamp, 'DD/MM/YYYY') AS incident_date,
                     (incident_types.name || ' of ' || asset_types.name || ' '
                         || COALESCE(registered_assets.asset_number, registered_assets.serial_number)) AS details,
                     staff_profiles.full_name AS submitted_by,
@@ -642,7 +642,7 @@ public class AssetRepository {
                 SELECT
                     asset_requests.id AS entity_id,
                     asset_requests.event_register_id AS event_id,
-                    to_char(asset_requests.event_date, 'DD/mm/YYYY') AS request_date,
+                    to_char(asset_requests.stamp, 'DD/mm/YYYY') AS request_date,
                     programs.program_name AS program,
                     stations.station_name AS station,
                     staff_profiles.full_name AS requested_by,
@@ -681,7 +681,7 @@ public class AssetRepository {
                 SELECT
                     asset_requests.event_register_id,
                     asset_requests.event_notes AS notes,
-                    to_char(asset_requests.event_date, 'DD/MM/YYYY') AS request_date,
+                    to_char(asset_requests.stamp, 'DD/MM/YYYY') AS request_date,
                     programs.program_name AS program
                 FROM asset_requests
                 JOIN programs ON programs.id = asset_requests.request_program_id
@@ -714,15 +714,13 @@ public class AssetRepository {
                     event_register_id,
                     request_program_id,
                     event_station_id,
-                    event_admin_id,
-                    event_date
+                    event_admin_id
                 ) VALUES (
                     :notes,
                     :eventId,
                     :requestProgramId,
                     :eventStationId,
-                    :eventAdminId,
-                    :eventDate
+                    :eventAdminId
                 )
                 RETURNING id
                 """, dto);
@@ -772,7 +770,7 @@ public class AssetRepository {
                 SELECT
                     asset_registrations.event_register_id,
                     asset_registrations.reference_attachment,
-                    to_char(asset_registrations.event_date, 'DD/MM/YYYY') AS event_date,
+                    to_char(asset_registrations.reference_date, 'DD/MM/YYYY') AS reference_date,
                     asset_registrations.notes,
                     reference_types.name   AS reference_type,
                     programs.program_name  AS program,
@@ -793,7 +791,7 @@ public class AssetRepository {
                 SELECT
                     asset_transfers.event_register_id,
                     asset_transfers.notes,
-                    to_char(asset_transfers.event_date, 'DD/MM/YYYY') AS transfer_date,
+                    to_char(asset_transfers.stamp, 'DD/MM/YYYY') AS transfer_date,
                     from_station.station_name                     AS from_station,
                     to_station.station_name                       AS to_station,
                     staff_profiles.full_name                      AS submitted_by
@@ -852,15 +850,13 @@ public class AssetRepository {
                     notes,
                     event_register_id,
                     event_station_id,
-                    event_admin_id,
-                    event_date
+                    event_admin_id
                 ) VALUES (
                     :receivingStationId,
                     :notes,
                     :eventId,
                     :eventStationId,
-                    :eventAdminId,
-                    :eventDate
+                    :eventAdminId
                 )
                 RETURNING id
                 """, dto);
@@ -1078,7 +1074,7 @@ public class AssetRepository {
                 SELECT
                     asset_issuances.event_register_id,
                     asset_issuances.notes,
-                    to_char(asset_issuances.event_date, 'DD/MM/YYYY') AS issuance_date,
+                    to_char(asset_issuances.stamp, 'DD/MM/YYYY') AS issuance_date,
                     receiving_staff.full_name                     AS recipient,
                     issuance_types.name                           AS issuance_type,
                     stations.station_name                         AS station,
@@ -1134,16 +1130,14 @@ public class AssetRepository {
                     notes,
                     event_register_id,
                     event_station_id,
-                    event_admin_id,
-                    event_date
+                    event_admin_id
                 ) VALUES (
                     :receivingStaffId,
                     :issuanceTypeId,
                     :notes,
                     :eventId,
                     :eventStationId,
-                    :eventAdminId,
-                    :eventDate
+                    :eventAdminId
                 )
                 RETURNING id
                 """, dto);
@@ -1190,7 +1184,7 @@ public class AssetRepository {
                 SELECT
                     asset_verifications.event_register_id,
                     asset_verifications.event_notes AS notes,
-                    to_char(asset_verifications.event_date, 'DD/MM/YYYY') AS verification_date,
+                    to_char(asset_verifications.stamp, 'DD/MM/YYYY') AS verification_date,
                     verification_types.name AS verification_type,
                     condition_types.name AS verified_condition,
                     stations.station_name AS station,
@@ -1232,8 +1226,7 @@ public class AssetRepository {
                     event_notes,
                     event_register_id,
                     event_station_id,
-                    event_admin_id,
-                    event_date
+                    event_admin_id
                 ) VALUES (
                     :registeredAssetId,
                     :verificationTypeId,
@@ -1241,8 +1234,7 @@ public class AssetRepository {
                     :eventNotes,
                     :eventId,
                     :eventStationId,
-                    :eventAdminId,
-                    :eventDate
+                    :eventAdminId
                 )
                 """, dto);
         if (!inserted.isOk()) return Result.error("Could not save the verification.");
@@ -1254,7 +1246,7 @@ public class AssetRepository {
                 SELECT
                     asset_evaluations.event_register_id,
                     asset_evaluations.event_notes AS notes,
-                    to_char(asset_evaluations.event_date, 'DD/MM/YYYY') AS evaluation_date,
+                    to_char(asset_evaluations.stamp, 'DD/MM/YYYY') AS evaluation_date,
                     asset_evaluations.evaluated_value,
                     evaluation_types.name AS evaluation_type,
                     stations.station_name AS station,
@@ -1295,8 +1287,7 @@ public class AssetRepository {
                     event_notes,
                     event_register_id,
                     event_station_id,
-                    event_admin_id,
-                    event_date
+                    event_admin_id
                 ) VALUES (
                     :registeredAssetId,
                     :evaluationTypeId,
@@ -1304,8 +1295,7 @@ public class AssetRepository {
                     :eventNotes,
                     :eventId,
                     :eventStationId,
-                    :eventAdminId,
-                    :eventDate
+                    :eventAdminId
                 )
                 """, dto);
         if (!inserted.isOk()) return Result.error("Could not save the evaluation.");
@@ -1317,7 +1307,7 @@ public class AssetRepository {
                 SELECT
                     asset_placements.event_register_id,
                     asset_placements.event_notes AS notes,
-                    to_char(asset_placements.event_date, 'DD/MM/YYYY') AS placement_date,
+                    to_char(asset_placements.stamp, 'DD/MM/YYYY') AS placement_date,
                     placement_types.name AS placement_type,
                     stations.station_name AS station,
                     staff_profiles.full_name AS submitted_by,
@@ -1356,16 +1346,14 @@ public class AssetRepository {
                     event_notes,
                     event_register_id,
                     event_station_id,
-                    event_admin_id,
-                    event_date
+                    event_admin_id
                 ) VALUES (
                     :registeredAssetId,
                     :placementTypeId,
                     :eventNotes,
                     :eventId,
                     :eventStationId,
-                    :eventAdminId,
-                    :eventDate
+                    :eventAdminId
                 )
                 """, dto);
         if (!inserted.isOk()) return Result.error("Could not save the placement.");
@@ -1377,7 +1365,7 @@ public class AssetRepository {
                 SELECT
                     asset_disposals.event_register_id,
                     asset_disposals.event_notes AS notes,
-                    to_char(asset_disposals.event_date, 'DD/MM/YYYY') AS disposal_date,
+                    to_char(asset_disposals.stamp, 'DD/MM/YYYY') AS disposal_date,
                     disposal_types.name AS disposal_type,
                     stations.station_name AS station,
                     staff_profiles.full_name AS submitted_by,
@@ -1416,16 +1404,14 @@ public class AssetRepository {
                     event_notes,
                     event_register_id,
                     event_station_id,
-                    event_admin_id,
-                    event_date
+                    event_admin_id
                 ) VALUES (
                     :registeredAssetId,
                     :disposalTypeId,
                     :eventNotes,
                     :eventId,
                     :eventStationId,
-                    :eventAdminId,
-                    :eventDate
+                    :eventAdminId
                 )
                 """, dto);
         if (!inserted.isOk()) return Result.error("Could not save the disposal.");
@@ -1454,7 +1440,6 @@ public class AssetRepository {
                     asset_incidents.event_station_id,
                     asset_incidents.event_admin_id,
                     asset_incidents.event_notes,
-                    asset_incidents.event_date,
                     incident_types.name AS incident_type
                 FROM asset_incidents
                 JOIN incident_types ON incident_types.id = asset_incidents.incident_type_id
@@ -1482,16 +1467,14 @@ public class AssetRepository {
                     event_notes,
                     event_register_id,
                     event_station_id,
-                    event_admin_id,
-                    event_date
+                    event_admin_id
                 ) VALUES (
                     :registeredAssetId,
                     :disposalTypeId,
                     :eventNotes,
                     :eventId,
                     :eventStationId,
-                    :eventAdminId,
-                    :eventDate
+                    :eventAdminId
                 )
                 """, Map.of(
                 "registeredAssetId", ((Number) row.get("registered_asset_id")).intValue(),
@@ -1499,8 +1482,7 @@ public class AssetRepository {
                 "eventNotes", row.get("event_notes") != null ? row.get("event_notes").toString() : "",
                 "eventId", eventId,
                 "eventStationId", ((Number) row.get("event_station_id")).intValue(),
-                "eventAdminId", ((Number) row.get("event_admin_id")).intValue(),
-                "eventDate", row.get("event_date")
+                "eventAdminId", ((Number) row.get("event_admin_id")).intValue()
         ));
         if (!inserted.isOk()) return Result.error("Could not compose disposal from incident.");
         return Result.ok(true);
@@ -1511,7 +1493,7 @@ public class AssetRepository {
                 SELECT
                     asset_incidents.event_register_id,
                     asset_incidents.event_notes AS notes,
-                    to_char(asset_incidents.event_date, 'DD/MM/YYYY') AS incident_date,
+                    to_char(asset_incidents.stamp, 'DD/MM/YYYY') AS incident_date,
                     incident_types.name AS incident_type,
                     stations.station_name AS station,
                     staff_profiles.full_name AS submitted_by,
@@ -1551,8 +1533,7 @@ public class AssetRepository {
                     incident_police_report,
                     event_register_id,
                     event_station_id,
-                    event_admin_id,
-                    event_date
+                    event_admin_id
                 ) VALUES (
                     :registeredAssetId,
                     :incidentTypeId,
@@ -1561,8 +1542,7 @@ public class AssetRepository {
                     :incidentPoliceReportPath,
                     :eventId,
                     :eventStationId,
-                    :eventAdminId,
-                    :eventDate
+                    :eventAdminId
                 )
                 """, dto);
         if (!inserted.isOk()) return Result.error("Could not save the incident.");
