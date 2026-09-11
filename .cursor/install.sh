@@ -12,11 +12,24 @@ export PGDATA="${PGDATA:-$HOME/pgdata}"
 PGPORT=5432
 PGSOCK=/tmp
 
+# Retry apt operations to ride out transient mirror errors (e.g. 502 Bad Gateway).
+apt_retry() {
+  local attempt
+  for attempt in 1 2 3 4 5; do
+    if sudo DEBIAN_FRONTEND=noninteractive apt-get "$@"; then
+      return 0
+    fi
+    echo "apt-get $* failed (attempt ${attempt}); retrying in $((attempt * 5))s" >&2
+    sleep $((attempt * 5))
+  done
+  return 1
+}
+
 # 1. Ensure the PostgreSQL server is installed.
 if [ ! -x "$PGBIN/postgres" ]; then
   echo "==> Installing PostgreSQL ${PG_VERSION}"
-  sudo apt-get update -qq
-  sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq postgresql postgresql-contrib
+  apt_retry update -qq
+  apt_retry install -y -qq postgresql postgresql-contrib
 fi
 
 # 2. Initialize a self-contained cluster (owned by the current user, so no sudo
