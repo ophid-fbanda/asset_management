@@ -1,0 +1,7 @@
+# Generated / local outputs
+*.csv
+*.pdf
+backend/storage/
+db_patches/
+schema_update.sql
+seeds.sql
