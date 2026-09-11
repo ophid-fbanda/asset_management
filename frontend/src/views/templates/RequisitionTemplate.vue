@@ -67,20 +67,12 @@ onMounted(() => {
       <!-- Meta grid -->
       <div class="grid grid-cols-3 gap-x-8 gap-y-3 mb-8">
         <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Acquisition Type</span>
-          <span class="font-semibold">{{ details.acquisition_type }}</span>
-        </div>
-        <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Supplier</span>
-          <span class="font-semibold">{{ details.supplier }}</span>
-        </div>
-        <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
-          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Reference Date</span>
-          <span class="font-semibold">{{ details.reference_date }}</span>
-        </div>
-        <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
           <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Program</span>
           <span class="font-semibold">{{ details.program }}</span>
+        </div>
+        <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
+          <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Request Date</span>
+          <span class="font-semibold">{{ details.request_date }}</span>
         </div>
         <div class="flex flex-col gap-0.5 border-b border-[#e2e8f0] pb-1.5">
           <span class="text-[8px] font-bold uppercase tracking-widest text-[#384884]">Station</span>

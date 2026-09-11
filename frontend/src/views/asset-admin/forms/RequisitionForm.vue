@@ -1,6 +1,6 @@
 <script setup>
 import { computed, onMounted, reactive } from 'vue'
-import { Column, DataTable, InputNumber, Select, Textarea } from 'primevue'
+import { Column, DataTable, DatePicker, InputNumber, Select, Textarea } from 'primevue'
 import {
   columnLookup,
   objectComplete,
@@ -26,6 +26,7 @@ const eventStation = dataFromCache('role/20')
 // Parent requisition (asset_requests). Submitted by submitForm.
 const form = reactive({
   requestProgramId: null,
+  eventDate: null,
   notes: null,
   eventStationId: null,
   items: null,
@@ -78,6 +79,12 @@ const removeItem = (index) => {
   context.items.splice(index, 1)
 }
 
+const toIsoDate = (value) => {
+  if (!(value instanceof Date)) return value
+  const pad = (n) => String(n).padStart(2, '0')
+  return `${value.getFullYear()}-${pad(value.getMonth() + 1)}-${pad(value.getDate())}`
+}
+
 const submitForm = async () => {
   form.eventStationId = eventStation.value
   form.items = context.items.map((item) => ({ ...item }))
@@ -89,7 +96,10 @@ const submitForm = async () => {
 
   objectResetSet(ui, 'busy', true)
 
-  const response = await dataSend('assets/request', form)
+  const response = await dataSend('assets/request', {
+    ...form,
+    eventDate: toIsoDate(form.eventDate),
+  })
 
   if (response.status === 200) {
     objectResetSet(ui, 'success', 'Requisition submitted successfully.')
@@ -130,6 +140,17 @@ onMounted(() => {
             option-value="id"
             placeholder="Select program"
             filter
+            class="w-full"
+          />
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-sm font-medium text-[#384884]">Request Date</label>
+          <DatePicker
+            v-model="form.eventDate"
+            date-format="yy-mm-dd"
+            show-icon
+            placeholder="Select date"
             class="w-full"
           />
         </div>

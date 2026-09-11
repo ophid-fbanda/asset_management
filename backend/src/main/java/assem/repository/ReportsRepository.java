@@ -161,7 +161,7 @@ public class ReportsRepository {
                        COALESCE(latest_custodian.full_name, reg_admin.full_name) AS custodian,
                        reg_station.station_name AS procured_station,
                        COALESCE(latest_location.station_name, reg_station.station_name) AS current_station,
-                       to_char(asset_registrations.reference_date, 'DD/MM/YYYY') AS procured_date
+                       to_char(asset_registrations.event_date, 'DD/MM/YYYY') AS procured_date
                 FROM registered_assets
                 JOIN asset_registrations
                   ON asset_registrations.id = registered_assets.asset_registration_id
@@ -201,7 +201,7 @@ public class ReportsRepository {
                     ORDER BY asset_transfers.stamp DESC
                     LIMIT 1
                 ) latest_location ON TRUE
-                WHERE asset_registrations.reference_date BETWEEN :from AND :to
+                WHERE asset_registrations.event_date BETWEEN :from AND :to
                   AND NOT EXISTS (
                       SELECT 1
                       FROM asset_disposals
@@ -216,7 +216,7 @@ public class ReportsRepository {
                     : "")
                 + stationFilter(mode, "asset_registrations.event_station_id", cascade)
                 + """
-                ORDER BY asset_registrations.reference_date DESC, asset_types.name
+                ORDER BY asset_registrations.event_date DESC, asset_types.name
                 """;
     }
 

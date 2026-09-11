@@ -14,7 +14,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDate;
 import java.util.List;
 
 // DTO for asset_registrations (the parent) plus its staged registered_assets.
@@ -44,10 +43,6 @@ public class Registration extends ExchangeBase {
     @NotNull(message = "Reference type is required.")
     @Setter(AccessLevel.NONE)
     Integer referenceTypeId;
-
-    @NotNull(message = "Reference date is required.")
-    @Setter(AccessLevel.NONE)
-    LocalDate referenceDate;
 
     @NotBlank(message = "Supplier is required.")
     @Size(max = 255, message = "Supplier must be at most 255 characters.")
@@ -97,15 +92,6 @@ public class Registration extends ExchangeBase {
             this.eventStationId = Integer.parseInt(value);
         } catch (Exception e) {
             this.eventStationId = null;
-        }
-    }
-
-    // Tolerates both "yyyy-MM-dd" and full ISO timestamps by reading the date head.
-    public void setReferenceDate(String value) {
-        try {
-            this.referenceDate = LocalDate.parse(value.substring(0, 10));
-        } catch (Exception e) {
-            this.referenceDate = null;
         }
     }
 

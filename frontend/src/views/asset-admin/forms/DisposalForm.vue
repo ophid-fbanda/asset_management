@@ -1,6 +1,6 @@
 <script setup>
 import { computed, onMounted, reactive } from 'vue'
-import { Select, Textarea } from 'primevue'
+import { DatePicker, Select, Textarea } from 'primevue'
 import { objectComplete, objectReset, objectResetSet } from '@/api/objectx'
 import { dataFetchToCache, dataFromCache, dataSend } from '@/api/datax'
 import FeedBack from '@/commons/FeedBack.vue'
@@ -16,10 +16,17 @@ const asset = computed(() => props.collected[0] ?? {})
 
 const form = reactive({
   disposalTypeId: null,
+  eventDate:      null,
   eventNotes:     null,
 })
 
 const ui = reactive({ busy: null, error: null, success: null })
+
+const toIsoDate = (value) => {
+  if (!(value instanceof Date)) return value
+  const pad = (n) => String(n).padStart(2, '0')
+  return `${value.getFullYear()}-${pad(value.getMonth() + 1)}-${pad(value.getDate())}`
+}
 
 const submitForm = async () => {
   if (!objectComplete(form, ['eventNotes'])) {
@@ -29,6 +36,7 @@ const submitForm = async () => {
   objectResetSet(ui, 'busy', true)
   const response = await dataSend('assets/disposal', {
     ...form,
+    eventDate: toIsoDate(form.eventDate),
     registeredAssetId: asset.value.asset_id,
     eventStationId:    eventStation.value,
   })
@@ -65,6 +73,17 @@ onMounted(() => {
             option-value="id"
             placeholder="Select type"
             filter
+            class="w-full"
+          />
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-sm font-medium text-[#384884]">Disposal Date</label>
+          <DatePicker
+            v-model="form.eventDate"
+            date-format="yy-mm-dd"
+            show-icon
+            placeholder="Select date"
             class="w-full"
           />
         </div>
