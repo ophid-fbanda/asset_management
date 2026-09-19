@@ -67,21 +67,29 @@ const panels = computed(() => [
   {
     id: 'by_type',
     title: 'By type',
+    icon: 'pi pi-tags',
+    accent: '#384884',
     rows: dashboard.value.by_type ?? [],
   },
   {
     id: 'by_station',
     title: 'By station',
+    icon: 'pi pi-building',
+    accent: '#0e7490',
     rows: dashboard.value.by_station ?? [],
   },
   {
     id: 'by_condition',
     title: 'By condition',
+    icon: 'pi pi-check-circle',
+    accent: '#0f766e',
     rows: dashboard.value.by_condition ?? [],
   },
   {
     id: 'by_type_condition',
     title: 'By type and condition',
+    icon: 'pi pi-th-large',
+    accent: '#b45309',
     rows: dashboard.value.by_type_condition ?? [],
   },
 ])
@@ -92,19 +100,24 @@ const cards = computed(() => [
     label: 'Total assets',
     value: summary.value.total_assets ?? 0,
     hint: 'Active inventory in this scope',
+    icon: 'pi pi-box',
+    accent: '#384884',
   },
   {
     id: 'value',
     label: 'Total value',
     value: summary.value.total_value ?? 0,
     hint: 'Sum of current values (active)',
+    icon: 'pi pi-wallet',
+    accent: '#0f766e',
   },
   {
     id: 'damaged',
     label: 'Damaged',
     value: summary.value.damaged_assets ?? 0,
     hint: 'Active assets in damaged condition',
-    accent: true,
+    icon: 'pi pi-exclamation-triangle',
+    accent: '#b45309',
   },
 ])
 
@@ -157,11 +170,14 @@ watch(dataKey, dataRefresh, { immediate: true })
         v-for="card in cards"
         :key="card.id"
         class="dash-kpi"
-        :class="{ 'dash-kpi--accent': card.accent }"
+        :style="{ '--accent': card.accent }"
       >
-        <p class="dash-kpi__label">{{ card.label }}</p>
-        <p class="dash-kpi__value">{{ formatValue(card) }}</p>
-        <p class="dash-kpi__hint">{{ card.hint }}</p>
+        <span class="dash-kpi__icon"><i :class="card.icon" /></span>
+        <div class="dash-kpi__body">
+          <p class="dash-kpi__label">{{ card.label }}</p>
+          <p class="dash-kpi__value">{{ formatValue(card) }}</p>
+          <p class="dash-kpi__hint">{{ card.hint }}</p>
+        </div>
       </div>
     </div>
 
@@ -170,10 +186,12 @@ watch(dataKey, dataRefresh, { immediate: true })
         v-for="panel in panels"
         :key="panel.id"
         class="dash-panel"
+        :style="{ '--accent': panel.accent }"
       >
         <div class="dash-panel__head">
+          <span class="dash-panel__icon"><i :class="panel.icon" /></span>
           <h2>{{ panel.title }}</h2>
-          <span>{{ panel.rows.length }} groups</span>
+          <span class="dash-panel__count">{{ panel.rows.length }} {{ panel.rows.length === 1 ? 'group' : 'groups' }}</span>
         </div>
 
         <DataTable
@@ -217,49 +235,66 @@ watch(dataKey, dataRefresh, { immediate: true })
 }
 
 .dash-kpi {
-  padding: 1.15rem 1.25rem 1.25rem;
-  border: 1px solid #d5dceb;
-  border-top: 3px solid #384884;
-  border-radius: 0.5rem;
-  background: linear-gradient(165deg, #eef1f8 0%, #ffffff 48%);
-  box-shadow: 0 1px 2px rgb(56 72 132 / 6%);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.95rem;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid #e2e8f2;
+  border-radius: 0.9rem;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 4%);
+  transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
 }
 
-.dash-kpi--accent {
-  border-top-color: #b45309;
-  background: linear-gradient(165deg, #fff7ed 0%, #ffffff 48%);
+.dash-kpi:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgb(15 23 42 / 8%);
+  border-color: color-mix(in srgb, var(--accent) 35%, #e2e8f2);
+}
+
+.dash-kpi__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.85rem;
+  height: 2.85rem;
+  flex-shrink: 0;
+  border-radius: 0.8rem;
+  font-size: 1.2rem;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, #ffffff);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.dash-kpi__body {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .dash-kpi__label {
   margin: 0;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #5b6aa1;
-}
-
-.dash-kpi--accent .dash-kpi__label {
-  color: #92400e;
+  color: #64748b;
 }
 
 .dash-kpi__value {
-  margin: 0.55rem 0 0;
-  font-size: 1.85rem;
+  margin: 0.1rem 0 0;
+  font-size: 1.95rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.1;
-  color: #384884;
-}
-
-.dash-kpi--accent .dash-kpi__value {
-  color: #9a3412;
+  line-height: 1.05;
+  color: #0f172a;
 }
 
 .dash-kpi__hint {
-  margin: 0.45rem 0 0;
+  margin: 0.1rem 0 0;
   font-size: 0.75rem;
-  color: #64748b;
+  color: #94a3b8;
 }
 
 .dash-grid {
@@ -279,35 +314,58 @@ watch(dataKey, dataRefresh, { immediate: true })
   min-height: 0;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid #d5dceb;
-  border-radius: 0.5rem;
+  border: 1px solid #e2e8f2;
+  border-radius: 0.9rem;
   background: #fff;
-  box-shadow: 0 1px 3px rgb(56 72 132 / 7%);
+  box-shadow: 0 1px 2px rgb(15 23 42 / 4%);
+  transition: box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.dash-panel:hover {
+  box-shadow: 0 10px 26px rgb(15 23 42 / 7%);
+  border-color: color-mix(in srgb, var(--accent) 28%, #e2e8f2);
 }
 
 .dash-panel__head {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.85rem 1.15rem;
-  border-bottom: 1px solid #e4e9f4;
-  background: linear-gradient(180deg, #f3f5fb 0%, #f8fafd 100%);
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid #eef2f8;
+  background: #fff;
+}
+
+.dash-panel__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.95rem;
+  height: 1.95rem;
+  flex-shrink: 0;
+  border-radius: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, #ffffff);
 }
 
 .dash-panel__head h2 {
+  flex: 1;
   margin: 0;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #384884;
+  font-size: 0.92rem;
+  font-weight: 650;
+  color: #0f172a;
 }
 
-.dash-panel__head span {
-  font-size: 0.72rem;
+.dash-panel__count {
+  flex-shrink: 0;
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: #94a0b8;
+  color: #475569;
+  background: #f1f5f9;
+  border-radius: 999px;
+  padding: 0.18rem 0.62rem;
 }
 
 .dash-panel :deep(.p-datatable) {
@@ -323,25 +381,29 @@ watch(dataKey, dataRefresh, { immediate: true })
 }
 
 .dash-panel :deep(.p-datatable-thead > tr > th) {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   border: 0 !important;
-  border-bottom: 1px solid #e4e9f4 !important;
-  background: #fff !important;
-  color: #5b6aa1 !important;
+  border-bottom: 1px solid #eef2f8 !important;
+  background: #fafbfe !important;
+  color: #64748b !important;
   box-shadow: none !important;
-  padding: 0.65rem 1rem !important;
+  padding: 0.6rem 1.05rem !important;
 }
 
 .dash-panel :deep(.p-datatable-tbody > tr > td) {
-  font-size: 0.8125rem;
+  font-size: 0.82rem;
   font-weight: 500;
   color: #334155 !important;
   border: 0 !important;
-  border-bottom: 1px solid #eef2f8 !important;
-  padding: 0.65rem 1rem !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  padding: 0.68rem 1.05rem !important;
+}
+
+.dash-panel :deep(.p-datatable-tbody > tr:nth-child(even) > td) {
+  background: #fbfcfe !important;
 }
 
 .dash-panel :deep(.p-datatable-tbody > tr:last-child > td) {
@@ -349,13 +411,17 @@ watch(dataKey, dataRefresh, { immediate: true })
 }
 
 .dash-panel :deep(.p-datatable-tbody > tr:hover > td) {
-  background: #f3f5fb !important;
+  background: #f4f7fd !important;
+}
+
+.dash-panel :deep(.p-datatable-tbody > tr:hover) {
+  box-shadow: none !important;
 }
 
 .dash-panel :deep(.p-paginator) {
   border: 0;
-  border-top: 1px solid #e4e9f4;
-  background: #f8fafd;
+  border-top: 1px solid #eef2f8;
+  background: #fafbfe;
   padding: 0.55rem 0.75rem;
   justify-content: flex-end;
   flex-wrap: wrap;
