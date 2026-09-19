@@ -16,9 +16,10 @@ const hasRole = (id) => roleTypeIds.value.includes(id)
 const primaryRole = computed(() => [20, 40, 50].find((id) => roleTypeIds.value.includes(id)) ?? null)
 
 const menuLinkClass =
-  'flex items-center gap-2.5 rounded-lg px-3.5 py-2.5 text-sm leading-5 text-[#a0a9ca] no-underline transition [&_i]:text-[#a0a9ca] hover:bg-white/10 hover:text-white hover:[&_i]:text-white'
+  'group relative flex items-center gap-3 rounded-lg px-3.5 py-2.5 text-sm leading-5 text-[#aab4d4] no-underline transition-all duration-150 [&_i]:text-[#8f9bc4] [&_i]:text-[0.95rem] hover:bg-white/10 hover:text-white hover:[&_i]:text-white'
 
-const menuLinkActiveClass = 'bg-[#5b6aa1] font-semibold text-white [&_i]:text-white'
+const menuLinkActiveClass =
+  'bg-white/12 font-semibold text-white [&_i]:text-white before:absolute before:left-0 before:top-1/2 before:h-6 before:w-[3px] before:-translate-y-1/2 before:rounded-r-full before:bg-white'
 </script>
 
 <template>

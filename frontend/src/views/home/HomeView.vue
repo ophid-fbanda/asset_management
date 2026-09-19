@@ -15,7 +15,7 @@ const searchQuery = dataSearchModel()
   <div class="flex h-screen flex-col overflow-hidden font-sans antialiased">
     <input id="nav-toggle" type="checkbox" class="peer sr-only" />
 
-    <header class="flex shrink-0 items-center justify-between border-b border-surface-200 bg-white px-4 py-3 sm:px-6">
+    <header class="relative z-20 flex shrink-0 items-center justify-between border-b border-surface-200/70 bg-white px-4 py-3 shadow-[0_1px_3px_rgb(15_23_42/0.06)] sm:px-6">
       <div class="flex items-center gap-3">
         <label
           for="nav-toggle"
@@ -114,7 +114,7 @@ const searchQuery = dataSearchModel()
     />
 
     <aside
-      class="fixed top-0 left-0 z-50 flex h-full w-[min(18rem,88vw)] -translate-x-full flex-col bg-[#384884] shadow-2xl transition-transform peer-checked:translate-x-0 md:hidden"
+      class="fixed top-0 left-0 z-50 flex h-full w-[min(18rem,88vw)] -translate-x-full flex-col bg-gradient-to-b from-[#384884] via-[#2f3d70] to-[#26325c] shadow-2xl transition-transform peer-checked:translate-x-0 md:hidden"
     >
       <div class="flex items-center justify-between border-b border-white/10 p-4">
         <p class="text-xs font-semibold tracking-[0.2em] text-[#a0a9ca] uppercase">Menu</p>
@@ -132,14 +132,14 @@ const searchQuery = dataSearchModel()
     </aside>
 
     <div class="flex min-h-0 flex-1">
-      <aside class="hidden w-56 shrink-0 bg-[#384884] md:block">
+      <aside class="hidden w-60 shrink-0 border-r border-black/10 bg-gradient-to-b from-[#384884] via-[#2f3d70] to-[#26325c] md:block">
         <div class="p-4">
-          <p class="mb-3 text-xs font-semibold tracking-[0.2em] text-[#a0a9ca] uppercase">Menu</p>
+          <p class="mb-3 px-1 text-[0.68rem] font-semibold tracking-[0.22em] text-[#8f9bc4] uppercase">Menu</p>
           <AppMenu />
         </div>
       </aside>
 
-      <main class="flex min-h-0 flex-1 flex-col overflow-hidden bg-[#e8eefa] p-4 sm:p-6">
+      <main class="flex min-h-0 flex-1 flex-col overflow-hidden bg-[#e9edf7] p-4 sm:p-6">
         <slot />
       </main>
     </div>
