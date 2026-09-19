@@ -144,26 +144,26 @@ watch(dataKey, dataRefresh, { immediate: true })
 
 <template>
   <div class="dash flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto overscroll-contain pb-4">
-    <div class="flex shrink-0 flex-wrap items-end justify-between gap-4">
-      <div>
-        <h2 class="text-xl font-semibold tracking-tight text-[#384884]">
+    <header class="dash-head">
+      <div class="dash-head__text">
+        <h2 class="dash-head__title">
           Welcome{{ profile?.name ? `, ${profile.name}` : '' }}
         </h2>
-        <p class="mt-1 text-sm text-slate-500">
-          Asset snapshot for the selected scope.
-        </p>
+        <p class="dash-head__sub">Asset snapshot for the selected scope.</p>
       </div>
-      <Select
-        v-if="scopeOptions.length > 1"
-        v-model="ui.scopeId"
-        :options="scopeOptions"
-        option-label="label"
-        option-value="id"
-        placeholder="Scope"
-        size="small"
-        class="w-64"
-      />
-    </div>
+      <div v-if="scopeOptions.length > 1" class="dash-scope">
+        <i class="pi pi-sliders-h dash-scope__icon" aria-hidden="true" />
+        <Select
+          v-model="ui.scopeId"
+          :options="scopeOptions"
+          option-label="label"
+          option-value="id"
+          placeholder="Scope"
+          size="small"
+          class="dash-scope__select"
+        />
+      </div>
+    </header>
 
     <div class="dash-kpis shrink-0">
       <div
@@ -178,6 +178,7 @@ watch(dataKey, dataRefresh, { immediate: true })
           <p class="dash-kpi__value">{{ formatValue(card) }}</p>
           <p class="dash-kpi__hint">{{ card.hint }}</p>
         </div>
+        <i class="dash-kpi__ghost" :class="card.icon" aria-hidden="true" />
       </div>
     </div>
 
@@ -222,6 +223,70 @@ watch(dataKey, dataRefresh, { immediate: true })
 </template>
 
 <style scoped>
+/* Header band ------------------------------------------------------------- */
+.dash-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.35rem;
+  border: 1px solid #e2e8f2;
+  border-radius: 0.9rem;
+  background:
+    radial-gradient(120% 140% at 0% 0%, #f4f7fe 0%, #ffffff 42%);
+  box-shadow: 0 1px 2px rgb(15 23 42 / 4%);
+}
+
+.dash-head__title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+.dash-head__sub {
+  margin: 0.3rem 0 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.dash-scope {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dash-scope__icon {
+  position: absolute;
+  left: 0.85rem;
+  z-index: 1;
+  font-size: 0.8rem;
+  color: #5b6aa1;
+  pointer-events: none;
+}
+
+.dash-scope :deep(.p-select) {
+  min-width: 16rem;
+  border-radius: 999px;
+  border-color: #d5dceb;
+  background: #ffffff;
+  padding-left: 1.4rem;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 5%);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dash-scope :deep(.p-select:hover) {
+  border-color: #a8b6db;
+}
+
+.dash-scope :deep(.p-select.p-focus) {
+  border-color: #5268a8;
+  box-shadow: 0 0 0 3px rgb(82 104 168 / 18%);
+}
+
+/* KPI cards --------------------------------------------------------------- */
 .dash-kpis {
   display: grid;
   gap: 1rem;
@@ -235,35 +300,51 @@ watch(dataKey, dataRefresh, { immediate: true })
 }
 
 .dash-kpi {
+  position: relative;
   display: flex;
   align-items: flex-start;
   gap: 0.95rem;
-  padding: 1.15rem 1.25rem;
+  overflow: hidden;
+  padding: 1.25rem 1.35rem 1.25rem 1.6rem;
   border: 1px solid #e2e8f2;
-  border-radius: 0.9rem;
+  border-radius: 1rem;
   background: #ffffff;
-  box-shadow: 0 1px 2px rgb(15 23 42 / 4%);
-  transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+  box-shadow:
+    0 1px 2px rgb(15 23 42 / 4%),
+    0 1px 3px rgb(15 23 42 / 3%);
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* colored accent rail down the left edge */
+.dash-kpi::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--accent);
+  opacity: 0.9;
 }
 
 .dash-kpi:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgb(15 23 42 / 8%);
-  border-color: color-mix(in srgb, var(--accent) 35%, #e2e8f2);
+  transform: translateY(-3px);
+  box-shadow:
+    0 14px 30px rgb(15 23 42 / 9%),
+    0 4px 10px rgb(15 23 42 / 5%);
+  border-color: color-mix(in srgb, var(--accent) 40%, #e2e8f2);
 }
 
 .dash-kpi__icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.85rem;
-  height: 2.85rem;
+  width: 3rem;
+  height: 3rem;
   flex-shrink: 0;
-  border-radius: 0.8rem;
-  font-size: 1.2rem;
+  border-radius: 0.85rem;
+  font-size: 1.25rem;
   color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 12%, #ffffff);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent);
+  background: color-mix(in srgb, var(--accent) 13%, #ffffff);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
 .dash-kpi__body {
@@ -277,24 +358,37 @@ watch(dataKey, dataRefresh, { immediate: true })
   margin: 0;
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #64748b;
 }
 
 .dash-kpi__value {
-  margin: 0.1rem 0 0;
-  font-size: 1.95rem;
+  margin: 0.15rem 0 0;
+  font-size: 2.1rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
-  color: #0f172a;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
 }
 
 .dash-kpi__hint {
-  margin: 0.1rem 0 0;
+  margin: 0.15rem 0 0;
   font-size: 0.75rem;
   color: #94a3b8;
+}
+
+/* oversized translucent watermark of the metric icon */
+.dash-kpi__ghost {
+  position: absolute;
+  right: -0.6rem;
+  bottom: -1.1rem;
+  font-size: 6rem;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.05;
+  pointer-events: none;
 }
 
 .dash-grid {
@@ -329,23 +423,24 @@ watch(dataKey, dataRefresh, { immediate: true })
 .dash-panel__head {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
   padding: 0.85rem 1.1rem;
   border-bottom: 1px solid #eef2f8;
-  background: #fff;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 5%, #ffffff) 0%, #ffffff 100%);
 }
 
 .dash-panel__icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.95rem;
-  height: 1.95rem;
+  width: 2rem;
+  height: 2rem;
   flex-shrink: 0;
   border-radius: 0.6rem;
   font-size: 0.85rem;
   color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 12%, #ffffff);
+  background: color-mix(in srgb, var(--accent) 13%, #ffffff);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
 .dash-panel__head h2 {
